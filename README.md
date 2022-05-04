@@ -10,7 +10,7 @@ Unicode separated values (USV) is a data format that places Unicode characters b
 
 * ␜ = U+241C = FS = File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
-If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know how to use USV.
+If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know about USV.
 
 
 ## Examples
@@ -38,7 +38,7 @@ USV works with many kinds of editors. Any editor that can render the USV charact
 
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 
-USE works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, Go, Java, JavaScript, Julia, Python, R, Ruby, Rust, Swift, PHP, etc.
+USV works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, Go, Java, JavaScript, Julia, Python, R, Ruby, Rust, Swift, PHP, etc.
 
 
 ## Why use USV?
@@ -69,15 +69,19 @@ USV is simpler and clearer to use and write because there are no escape characte
 
 <dt>Is USV easy?</dt>
 
-<dd>Yes. If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know how to use USV.</dd>
+<dd>Yes. If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most everything about USV.</dd>
 
 <dt>Is USV a standard?</dt>
 
-<dd>Yes soon. USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to [IANA TSV](https://www.iana.org/assignments/media-types/text/tab-separated-values).</dd>
+<dd>Yes as soon as possible. USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to [IANA TSV](https://www.iana.org/assignments/media-types/text/tab-separated-values).</dd>
 
 <dt>Can USV use escaping so data can contain the special USV characters?</dt>
 
-<dd>No on purpose. This deliberate decision is in order for USV to be simpler to use, faster to parse, clearer to standardize, and closer in alignment with [IANA TSV](https://www.iana.org/assignments/media-types/text/tab-separated-values).
+<dd>No. This deliberate decision of no-escaping helps USV be simpler to use, faster to parse, clearer to standardize, and closer in alignment with <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.
+
+<dt>Why choose USV over CSV or TSV?</dt>
+
+<dd>Choose USV over CSV or TSV when you want your data content to be able to contain commas, or tabs, or newlines. Choose USV over CSV when you want a consistent compatible standardized format, and a consistent compatible standardized file name extension.</dd>
 
 <dt>Why choose UTF over ASV?</dt>
 
@@ -103,15 +107,25 @@ Completed pull requests:
 * Miller: <https://github.com/johnkerl/miller/issues/245>
 
 
-## Comparison to CSV, TSV/TDF, ASV/DEL
+## Comparison to CSV, TSV and TDF, ASV and DEL
 
-Unicode separated values (USV) is a data format similar in purpose to these:
+Unicode separated values (USV) is a data format similar in purpose to other formats.
 
-* comma separated values (CSV): this format uses a comma to separate values, and a newline to separate records. 
+<dl>
 
-* tab separated values (TSV) a.k.a. tab delimited format (TDF): this format uses a tab to separate values, and a newline to separate records.
+<dt>comma separated values (CSV)</dt>
 
-* ASCII separated values (ASV) a.k.a. DEL (Delimited ASCII) a.k.a. ASCII 30-31: this format uses ASCII character 30 to separate values and ASCII character 31 to separate records.
+<dd>CSV format uses a comma to separate values, and a newline to separate records. In our experience, the CSV format has various kinds of implementations, some incompatible, some with escaping and some without. In our experience, some software programs use the file name extension ".csv" to mean other ways of separating data with other characters, such as using tabs, or semi-colons, or spaces. CSV handles data units/columns/cells and data records/rows/lines, but does not handle data groups/tables/grids or data files/schemas/folios.</dd>
+
+<dt>tab separated values (TSV) a.k.a. tab delimited format (TDF)</dt>
+
+<dd>TSV format uses a tab to separate values, and a newline to separate records. In our experience, the TSV format can be difficult to edit with some editors, because the tab character can be invisible, or can take up a varying number of character widths such as the equivalent of 2 spaces, or 4 spaces, or 8 spaces, or as many spaces as it takes to get to the next tab stop. TSV handles data units/columns/cells and data records/rows/lines, but does not handle data groups/tables/grids or data files/schemas/folios.</dd>
+
+<dt>ASCII separated values (ASV) a.k.a. DEL (Delimited ASCII)</dt>
+
+<dd>ASV format uses ASCII character 28 as file separator, 29 as group separator, 30 as record separator, 31 as unit separator. ASV and USV both handle all the same data separations. In our experience, these ASCII characters tend to be hard to edit manually, because many editors treat the characters as invisible zero-width characters. USV uses the same semantics, yet with visible letter-width characters.</dd>
+
+</dl>
 
 
 ## Example scripts
