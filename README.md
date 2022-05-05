@@ -99,13 +99,13 @@ USV is simpler and clearer to use and write because there are no escape characte
 
 <dd>For machin-only data, such as data that never for human reading or human editing, then USV or ASV are similar because both can handle units, fields, groups, and files.
 
-<dt>Can USV use escaping so data content can use the special USV characters?</dt>
+<dt>Can USV have special handling for escaping?</dt>
 
-<dd>No. This is a deliberate decision. No escaping enables USV be simpler to use, faster to parse, and clearer to standardize. If you have a need for escaping, for example you have data content that really does need the USV characters in the content, then please contact us because we'd like to hear about your needs.</dd>
+<dd>No. This is a deliberate decision. There is no special treatment of escaping, such as backslashes, ampersands, quotes, doubled-characters, etc. This escaping enables USV be simpler to use, faster to parse, and clearer to standardize. If you have a need for escaping, for example you have data content that really does need the USV characters in the content, then please contact us because we'd like to hear about your needs.</dd>
 
-<dt>Can USV use whitespace before and/or after the USV characters?</dt>
+<dt>Does USV have special handling for whitespace?</dt>
 
-<dd>No. This is a deliberate decision. No special treatment of whitepace (such as spaces, tabs, newlines, etc.) enables USV be simpler to use, faster to parse, and clearer to standardize. In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</dd>
+<dd>No. This is a deliberate decision. There is no special treatment of whitepace, such as spaces, tabs, newlines, etc. This enables USV be simpler to use, faster to parse, and clearer to standardize. In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</dd>
 
 </dl>
 
