@@ -39,6 +39,13 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
 
+USV with typical shell commands:
+
+```sh
+echo "a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p" | 
+sed 's/␟/ US /g; s/␞/ RS /g; s/␝/ GS /g; s/␜/ FS /g;'
+```
+
 
 ## USV is easy and friendly
 
@@ -142,7 +149,7 @@ Unicode separated values (USV) is a data format similar in purpose to other form
 
 ## Example scripts
 
-Create an example USV file:
+Create an example USV file with 3 units by 3 records:
 
 ```
 $ echo 'a␟b␟c␞d␟e␟f␞g␟h␟i' > example.usv
