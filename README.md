@@ -109,21 +109,11 @@ Add USV capabilities to command line tools, such as Miller (done!), TextQL (issu
 
 <dt>Why choose USV over CSV or TSV?</dt>
 
-<dd>
-
-<p>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios.</p> 
-
-<p>You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</p>
-
-</dd>
+<dd>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios. You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</dd>
 
 <dt>Why choose UTF over ASV?</dt>
 
-<dd>
-
-<p>You want your data content to be friendlier for human reading and human editing. This is because USV provides typically-visible letter-width characters (such as Unicode 241F), whereas ASV provides typically-invisible zero-width characters (such as ASCII 31).</p>
-
-<p>It's true that some editors do render ASV characters using other visual respresentations, such as using the corresponding USV visible characters; however in practice we haven't found much support for this approach.</p>
+<dd>You want your data content to be friendlier for human reading and human editing. This is because USV provides typically-visible letter-width characters (such as Unicode 241F), whereas ASV provides typically-invisible zero-width characters (such as ASCII 31).It's true that some editors do render ASV characters using other visual respresentations, such as using the corresponding USV visible characters; however in practice we haven't found much support for this approach.</p>
 
 </dd>
 
@@ -133,27 +123,20 @@ Add USV capabilities to command line tools, such as Miller (done!), TextQL (issu
 
 <dt>Can USV have special character escaping?</dt>
 
-<dd>
+<dd>No. This is a deliberate decision. There is no special treatment of escaping, such as backslashes, ampersands, quotes, doubled-characters, etc. This escaping enables USV be simpler to use, faster to parse, and clearer to standardize. When we researched character escaping, we found that it solved some needs, yet caused difficulties for other needs. We concluded that CSV escaping is very important because commas are so frequent in real world English text. The USV doesn't have this same frequent need.</dd>
 
-<p>No. This is a deliberate decision. There is no special treatment of escaping, such as backslashes, ampersands, quotes, doubled-characters, etc. This escaping enables USV be simpler to use, faster to parse, and clearer to standardize.</p>
+<dt>What if I really want special character escaping?</dt>
 
-<p>If you have a need for character escaping, for example you have data content that really does need USV characters in the content, then you may want to use a different format with more power (such as JSON or XML), or you may want to create your own non-USV internal encoding akin to HTML ampersand encoding (such as "&us;" meaning unit separator) or Unicode backslash-u encoding (such as "\u241F").</p>
-
-<p>When we researched character escaping, we found that it solved some needs, yet caused difficulties for other needs. We concluded that CSV escaping is very important because commas are so frequent in real world English text. The USV doesn't have this same frequent need.</p>
-
-</dd>
+<dd>Some people really want special character escaping. For example, suppose you have data content that contains USV characters. For these inds of goals, you may want to use a different format with more power (such as JSON or XML), or you may want to create your own non-USV internal encoding akin to HTML ampersand encoding (such as "&us;" meaning unit separator) or Unicode backslash-u encoding (such as "\u241F").</dd>
 
 <dt>Does USV have special whitespace handling?</dt>
 
-<dd>
-
-<p>No. This is a deliberate decision. There is no special treatment of whitepace, such as spaces, tabs, newlines, etc. This enables USV be simpler to use, faster to parse, and clearer to standardize.</p>
-
-<p>In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</p>
-
-<p>When we researched whitespace handling, we found that it solved some needs, yet caused difficulties for other needs. We concluded that whitespace handling can be convenient, yet is not a must-have, and thus must be ommitted from the USV standard.</p>
-
+<dd>No. This is a deliberate decision. There is no special treatment of whitepace, such as spaces, tabs, newlines, etc. This enables USV be simpler to use, faster to parse, and clearer to standardize. When we researched whitespace handling, we found that it solved some needs, yet caused difficulties for other needs. We concluded that whitespace handling can be convenient, yet is not a must-have, and thus must be ommitted from the USV standard.
 </dd>
+
+<dt>What if I really want special whitespace handling?</dt>
+
+<dd>Some people really want special whitespace handling. For example, suppose you want surrounding whitespace, such for a newline before the USV character and/or a newline after the USV character. For these kinds of goals, you can use USV as usual, then afterwards add your own whitepace handling, such as calling a function `trim` or `strip` or `chomp`.</dd>
 
 </dl>
 
