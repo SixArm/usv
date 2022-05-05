@@ -87,10 +87,6 @@ USV is simpler and clearer to use and write because there are no escape characte
 
 <dd>Yes as soon as possible. USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.</dd>
 
-<dt>Can USV use escaping so data content can use the special USV characters?</dt>
-
-<dd>No. This is deliberate decision. No escaping enables USV be simpler to use, faster to parse, clearer to standardize, and closer in alignment with <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.
-
 <dt>Why choose USV over CSV or TSV?</dt>
 
 <dd>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios. You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</dd>
@@ -102,6 +98,14 @@ USV is simpler and clearer to use and write because there are no escape characte
 <dt>Why choose UTF over ASF for machine-only data?</dt>
 
 <dd>For machin-only data, such as data that never for human reading or human editing, then USV or ASV are similar because both can handle units, fields, groups, and files.
+
+<dt>Can USV use escaping so data content can use the special USV characters?</dt>
+
+<dd>No. This is a deliberate decision. No escaping enables USV be simpler to use, faster to parse, and clearer to standardize. If you have a need for escaping, for example you have data content that really does need the USV characters in the content, then please contact us because we'd like to hear about your needs.</dd>
+
+<dt>Can USV use whitespace before and/or after the USV characters?</dt>
+
+<dd>No. This is a deliberate decision. No special treatment of whitepace (such as spaces, tabs, newlines, etc.) enables USV be simpler to use, faster to parse, and clearer to standardize. In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</dd>
 
 </dl>
 
