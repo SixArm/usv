@@ -91,31 +91,69 @@ Add USV capabilities to command line tools, such as Miller (done!), TextQL (issu
 
 <dt>Is USV easy?</dt>
 
-<dd>Yes. If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most everything about USV.</dd>
+<dd>
+
+<p>Yes. If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most everything about USV.</p>
+
+</dd>
 
 <dt>Is USV a standard?</dt>
 
-<dd>Yes as soon as possible. USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.</dd>
+<dd>
+
+<p>Yes as soon as possible.</p>
+
+<p>USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.</p>
+
+</dd>
 
 <dt>Why choose USV over CSV or TSV?</dt>
 
-<dd>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios. You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</dd>
+<dd>
+
+<p>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios.</p> 
+
+<p>You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</p>
+
+</dd>
 
 <dt>Why choose UTF over ASV?</dt>
 
-<dd>You want your data content to be friendlier for human reading and human editing. This is because USV provides typically-visible letter-width characters (such as Unicode 241F), whereas ASV provides typically-invisible zero-width characters (such as ASCII 31). It's true that some editors do render ASV characters using other visual respresentations, such as using the corresponding USV visible characters; however in practice we haven't found much support for this approach.</dd>
+<dd>
+
+<p>You want your data content to be friendlier for human reading and human editing. This is because USV provides typically-visible letter-width characters (such as Unicode 241F), whereas ASV provides typically-invisible zero-width characters (such as ASCII 31).</p>
+
+<p>It's true that some editors do render ASV characters using other visual respresentations, such as using the corresponding USV visible characters; however in practice we haven't found much support for this approach.</p>
+
+</dd>
 
 <dt>Why choose UTF over ASF for machine-only data?</dt>
 
 <dd>For machin-only data, such as data that never for human reading or human editing, then USV or ASV are similar because both can handle units, fields, groups, and files.
 
-<dt>Can USV have special handling for escaping?</dt>
+<dt>Can USV have special character escaping?</dt>
 
-<dd>No. This is a deliberate decision. There is no special treatment of escaping, such as backslashes, ampersands, quotes, doubled-characters, etc. This escaping enables USV be simpler to use, faster to parse, and clearer to standardize. If you have a need for escaping, for example you have data content that really does need the USV characters in the content, then please contact us because we'd like to hear about your needs.</dd>
+<dd>
 
-<dt>Does USV have special handling for whitespace?</dt>
+<p>No. This is a deliberate decision. There is no special treatment of escaping, such as backslashes, ampersands, quotes, doubled-characters, etc. This escaping enables USV be simpler to use, faster to parse, and clearer to standardize.</p>
 
-<dd>No. This is a deliberate decision. There is no special treatment of whitepace, such as spaces, tabs, newlines, etc. This enables USV be simpler to use, faster to parse, and clearer to standardize. In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</dd>
+<p>If you have a need for character escaping, for example you have data content that really does need USV characters in the content, then you may want to use a different format with more power (such as JSON or XML), or you may want to create your own non-USV internal encoding akin to HTML ampersand encoding (such as "&us;" meaning unit separator) or Unicode backslash-u encoding (such as "\u241F").</p>
+
+<p>When we researched character escaping, we found that it solved some needs, yet caused difficulties for other needs. We concluded that CSV escaping is very important because commas are so frequent in real world English text. The USV doesn't have this same frequent need.</p>
+
+</dd>
+
+<dt>Does USV have special whitespace handling?</dt>
+
+<dd>
+
+<p>No. This is a deliberate decision. There is no special treatment of whitepace, such as spaces, tabs, newlines, etc. This enables USV be simpler to use, faster to parse, and clearer to standardize.</p>
+
+<p>In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</p>
+
+<p>When we researched whitespace handling, we found that it solved some needs, yet caused difficulties for other needs. We concluded that whitespace handling is convenient. The USV doesn't have this same frequent need.</p>
+
+</dd>
 
 </dl>
 
