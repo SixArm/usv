@@ -129,7 +129,7 @@ Add USV capabilities to command line tools, such as Miller (done!), TextQL (issu
 
 <dt>Why choose UTF over ASF for machine-only data?</dt>
 
-<dd>For machin-only data, such as data that never for human reading or human editing, then USV or ASV are similar because both can handle units, fields, groups, and files.
+<dd>For machine-only data, such as data that will never be used for human reading or human editing, then USV or ASV are similar because both can handle units, fields, groups, and files.
 
 <dt>Can USV have special character escaping?</dt>
 
@@ -151,7 +151,7 @@ Add USV capabilities to command line tools, such as Miller (done!), TextQL (issu
 
 <p>In practice, programmers who read USV and edit USV do sometimes like to have surrounding whitespace, such as a newline before the USV character and a newline after the USV character; for uses such as these, the programmers can use USV as usual, then afterwards add their own whitepace handling, such as sending the parsed output to a function `trim` or `strip` or `chomp`.</p>
 
-<p>When we researched whitespace handling, we found that it solved some needs, yet caused difficulties for other needs. We concluded that whitespace handling is convenient. The USV doesn't have this same frequent need.</p>
+<p>When we researched whitespace handling, we found that it solved some needs, yet caused difficulties for other needs. We concluded that whitespace handling can be convenient, yet is not a must-have, and thus must be ommitted from the USV standard.</p>
 
 </dd>
 
