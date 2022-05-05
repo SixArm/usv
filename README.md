@@ -15,16 +15,28 @@ If you know about comma separated values (CSV), or tab separated values (TSV), o
 
 ## Examples
 
-Example USV with 3 units:
+USV with 2 units:
 
 ```
-a␟b␟c
+a␟b
 ```
 
-Example USV with 3 units by 3 records:
+USV with 2 units by 2 records:
 
 ```
-a␟b␟c␞d␟e␟f␞g␟h␟i
+a␟b␞c␟d
+```
+
+USV with 2 units by 2 records by 2 groups:
+
+```
+a␟b␞c␟d␝e␟f␞g␟h
+```
+
+USV with 2 units by 2 records by 2 groups by 2 files:
+
+```
+a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
 
 
