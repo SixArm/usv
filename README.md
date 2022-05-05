@@ -130,24 +130,29 @@ Unicode separated values (USV) is a data format similar in purpose to other form
 
 ## Example scripts
 
+Create an example USV file:
+
+```
+$ echo 'a␟b␟c␞d␟e␟f␞g␟h␟i' > example.usv
+```
+
 Convert USV to CSV by using `sed`:
 
 ```sh
-$ echo 'a␟b␟c␞d␟e␟f␞g␟h␟i' | sed 's/␟/,/g; s/␞/\n/g;'
-a,b,c
-d,e,f
-g,h,i
+$ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;' 
 ```
 
 Convert USV to TSV by using `tr`:
 
 ```sh
-$ echo 'a␟b␟c␞d␟e␟f␞g␟h␟i' | tr ␟␞ '\t\n'
-a      b      c
-d      e      f
-g      h      i
+$ cat example.usv | tr ␟␞ ',\n'
 ```
 
+Convert USV to TSV by using `awk`:
+
+```sh
+$ cat example.usv | awk 'BEGIN { FS="␟"; RS="␞"; OFS=","; ORS="\n"; } {$1=$1}1' | grep -v ^$
+```
 
 ## BNF pseudocode
 
