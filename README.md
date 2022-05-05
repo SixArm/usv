@@ -74,6 +74,16 @@ USV works well within typical search tools.
 USV is simpler and clearer to use and write because there are no escape characters.
 
 
+## TODO list for people who want to help
+
+Add USV formats to productivity applications, such as LibreOffice Calc, Microsoft Excel, Google Sheets, etc.
+
+Add USV handling to statistics systems, such as R, Julia, MatLab, Mathematica, etc.
+
+Add USV libraries to programming languages, such as creating a Node package, Ruby gem, Rust crate, etc.
+
+Add USV capabilities to command line tools, such as Miller (done!), TextQL (issue open), Q (issue open), jq, etc.
+
 
 ## Frequently Asked Questions
 
