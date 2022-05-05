@@ -39,13 +39,6 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
 
-USV with typical shell commands:
-
-```sh
-echo "a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p" | 
-sed 's/␟/ US /g; s/␞/ RS /g; s/␝/ GS /g; s/␜/ FS /g;'
-```
-
 
 ## USV is easy and friendly
 
@@ -172,6 +165,25 @@ Convert USV to TSV by using `awk`:
 ```sh
 $ cat example.usv | awk 'BEGIN { FS="␟"; RS="␞"; OFS=","; ORS="\n"; } {$1=$1}1' | grep -v ^$
 ```
+
+Display USV with typical shell commands and pretty output:
+
+```sh
+$ echo "a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p" | 
+  sed 's/␟/,/g; s/␞/\n/g; s/␝/\n---\n/g; s/␜/\n===\n/g;'
+a,b
+c,d
+---
+e,f
+g,h
+===
+i,j
+k,l
+---
+m,n
+o,p
+```
+
 
 ## BNF pseudocode
 
