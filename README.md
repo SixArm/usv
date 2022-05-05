@@ -85,19 +85,19 @@ USV is simpler and clearer to use and write because there are no escape characte
 
 <dt>Is USV a standard?</dt>
 
-<dd>Yes as soon as possible. USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to [IANA TSV](https://www.iana.org/assignments/media-types/text/tab-separated-values).</dd>
+<dd>Yes as soon as possible. USV is a standard proposal led by Joel Parker Henderson (joel@joelparkerhenderson.com), and aiming to standardize akin to <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.</dd>
 
-<dt>Can USV use escaping so data can contain the special USV characters?</dt>
+<dt>Can USV use escaping so data content can use the special USV characters?</dt>
 
-<dd>No. This deliberate decision of no-escaping helps USV be simpler to use, faster to parse, clearer to standardize, and closer in alignment with <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.
+<dd>No. This is deliberate decision. No escaping enables USV be simpler to use, faster to parse, clearer to standardize, and closer in alignment with <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>.
 
 <dt>Why choose USV over CSV or TSV?</dt>
 
-<dd>Choose USV over CSV or TSV when you want your data content to be able to contain commas, or tabs, or newlines. Choose USV over CSV when you want a consistent compatible standardized format, and a consistent compatible standardized file name extension.</dd>
+<dd>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios. You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</dd>
 
 <dt>Why choose UTF over ASV?</dt>
 
-<dd>When data are potentially for human reading or human editing, such as by a programmer, then USV provides visible letter-width characters (U+241E and U+241F) whereas ASV provides tinvisible zero-width characters (ASCII 30 and ASCII 31). Some editors do render ASV invisible characters using the corresponding USV visible characters; however, we haven't found much support for this approach.</dd>
+<dd>You want your data content to be friendlier for human reading and human editing. This is because USV provides typically-visible letter-width characters (such as Unicode 241F), whereas ASV provides typically-invisible zero-width characters (such as ASCII 31). It's true that some editors do render ASV characters using other visual respresentations, such as using the corresponding USV visible characters; however in practice we haven't found much support for this approach.</dd>
 
 <dt>Why choose UTF over ASF for machine-only data?</dt>
 
