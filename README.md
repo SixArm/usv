@@ -151,6 +151,13 @@ Print USV characters by using a shell script with `bash`:
 
 ```bash
 #!/usr/local/bin/bash
+set -euf -o pipefail
+
+# USV example shell script that demonstrates the use of USV characters.
+# This script reads STDIN one character at a time, and prints output.
+# There is a similar USVX example shell script that demonstrates
+# extensions for whitespace trimming and backslash escaping.
+
 while IFS= read -n1 -r c; do
     case  "$c" in
     "␟")
@@ -185,6 +192,63 @@ Create an example USVX file with 2 units by 2 records by 2 groups by 2 files:
 
 ```sh
 echo "a\n␟\nb\n␞\nc\n␟\nd\n␝\ne\n␟\nf\n␞\ng\n␟\nh\n␜\ni\n␟\nj\n␞\nk\n␟\nl\n␝\nm\n␟\nn\n␞\no\n␟\np" > example.usvx
+```
+
+Print USVX characters by using a shell script with `bash`:
+
+```bash
+#!/usr/local/bin/bash
+set -euf -o pipefail
+
+# USVX example shell script that demonstrates the use of USVX characters.
+# This script reads STDIN one character at a time, and prints output.
+# There is a similar USV example shell script that does not provide
+# extensions for whitespace trimming and backslash escaping.
+
+state="start"
+escape=false
+whitespace=""
+while IFS= read -n1 -r c; do
+    if [ "$escape" = true ]; then
+        printf %s "$c"
+        escape=false
+    else
+        case "$c" in
+        "␟"|"␞"|"␝"|"␜")
+            case  "$c" in
+            "␟")
+                printf "\nunit separator\n"
+                ;;
+            "␞")
+                printf "\nrecord separator\n"
+                ;;
+            "␝")
+                printf "\ngroup separator\n"
+                ;;
+            "␜")
+                printf "\nfile separator\n"
+                ;;
+            esac
+            state="start"
+            whitespace=""
+            ;;
+        "\\")
+            escape=true
+            ;;
+        " "|"\t"|"\n"|"\r")
+            if [ "$state" = "content" ]; then
+                whitespace="$whitespace$c"
+            fi
+            ;;
+        *)
+            state="content"
+            printf %s "$whitespace$c"
+            whitespace=""
+            ;;
+        esac
+    fi
+done
+printf "\n";
 ```
 
 
