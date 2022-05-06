@@ -29,6 +29,6 @@ In our experience, some software programs use the file name extension ".tsv", ot
 
 ASV format uses ASCII character 28 as file separator, 29 as group separator, 30 as record separator, 31 as unit separator. 
 
-ASV and USV both handle the same data separations. 
+ASV and USV both handle the same data separators: file, group, record, unit.
 
 In our experience, these ASCII characters tend to be hard to edit manually, because many editors treat the characters as invisible zero-width characters. USV uses the same semantics, yet with visible letter-width characters.
