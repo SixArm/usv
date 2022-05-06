@@ -276,10 +276,8 @@ Some people refute USV for various reasons. This section lists them.
 
 <dl>
 
-<dt>USV wrongly uses Control Picture characters rather than the control characters themselves.</dt>
-
+<dt>USV wrongly uses control picture characters rather than the control characters themselves.</dt>
 <dd>
-
 <p>Yes. This is on purpose.</p>
 
 <p>We tried using the control characters, and also tried configuring various editors to show the control characters by rendering the control picture characters.</p>
