@@ -10,12 +10,24 @@ Unicode separated values (USV) is a data format that places Unicode characters b
 
 * ␜ = U+241C = FS = File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
-Unicode separated values extensions (USVX) is USV with extensions: the extensions are for whitespace trimming and character escaping.
+If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know about USV.
 
-If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know about USV and USVX.
+Unicode separated values extensions (USVX) is USV plus these extras:
+
+* whitespace trim, so you can use whitespace before any USV character or after it.
+
+* backslash escape, so you can protect any USV character within your data content.
+
+* final newline, so your files can be more compatible with some editors and tools.
+
+The file name extension for USV is ".usv".
+
+The file name extension for USVX is ".usvx".
 
 
-Documentation:
+## Documentation
+
+Documentation files here:
 
 * [Frequently asked questions](doc/faq.md)
 
@@ -203,7 +215,7 @@ set -euf -o pipefail
 # USVX example shell script that demonstrates the use of USVX characters.
 # This script reads STDIN one character at a time, and prints output.
 # There is a similar USV example shell script that does not provide
-# extensions for whitespace trimming and backslash escaping.
+# extensions for whitespace trim, backslash escape, and final newline.
 
 state="start"
 escape=false
