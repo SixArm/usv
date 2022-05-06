@@ -249,6 +249,47 @@ files ::= file ( file_separator file ) *
 usv ::= units or records or groups or files
 
 
+## Refutations
+
+Some people refute USV for various reasons. This section lists them.
+
+<dl>
+
+<dt>USV wrongly uses Control Picture characters rather than the control characters themselves.</dt>
+
+<dd>
+
+<p>Yes. This is on purpose.</p>
+
+<p>We tried using the control characters, and also tried configuring various editors to show the control characters by rendering the control picture characters.</p>
+
+<p>First, we encountered many difficulties with editor configurations, attempting to make each editor treat the invisible zero-width characters by rendering with the visible letter-width characters.</p> 
+
+<p>Second, we encountered problems with copy/paste functionality, where it often didn't work because the editor implementations and terminal implementations copied visible letter-width characters, not the underlying invisible zero-width characters.</p>
+
+<p>Third, users were unable to distinguish between the rendered control picture characters (e.g. the editor saw ASCII 31 and rendered Unicode Unit Separator) versus the control picture characters being in the data content (e.g. someone actually typed Unicode Unit Separator into the data content).</p>
+
+</dd>
+
+<dt>USV doesn't handle valid reasons to include Control Picture characters in data content.</dt>
+
+<dd>
+
+<p>Yes. This is on purpose.</p>
+
+<p>Suppose you have a set of blog articles, and some of the articles talk about USV, and use the picture characters. You cannot export this using solely USV.</p>
+
+<p>We tried many hundreds of real world data sets, and we also experimented with data content such as the blog posts.</p>
+
+<p>We found that in all cases, there are three good approaches.</p>
+
+<p>First, consider a data format other than USV. For example, consider ASV with invisible zero-width characters, or CSV with escaping, or JSON, or XML, or binary formats. USV aims to be as simple as possible, thus trades off handling embedded USV characters.</p>
+
+<p>Second, consider a two-step data format, where the data content is encoded to protect it, then exported using USV. For example, typical HTML blog posts tend to encode some characters such as angle brackets and ampersands, and can encode arbitrary Unicode characters.</p>
+
+</dd>
+
+
 ## History of ASCII separated values (ASV)
 
 ➤ <https://www.lammertbies.nl/comm/info/ascii-characters>
