@@ -94,24 +94,34 @@ USV is simpler and clearer to use and write because there are no escape characte
 
 
 
-## Example scripts
+## Example USV scripts 
 
-Create an example USV file with 3 units by 3 records:
+Create an example USV file with 2 units by 2 records:
 
 ```
-$ echo 'a␟b␟c␞d␟e␟f␞g␟h␟i' > example.usv
+$ echo 'a␟b␞c␟d' > example.usv
 ```
 
 Convert USV to CSV by using `sed`:
 
 ```sh
 $ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;' 
+a,b
+c,d
 ```
 
 Convert USV to TSV by using `tr`:
 
 ```sh
 $ cat example.usv | tr ␟␞ ',\n'
+a,b
+c,d
+```
+
+Create an example USV file with 2 units by 2 records by 2 groups by 2 files:
+
+```sh
+echo "a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p" > example.usv
 ```
 
 Convert USV to TSV by using `awk`:
@@ -120,11 +130,10 @@ Convert USV to TSV by using `awk`:
 $ cat example.usv | awk 'BEGIN { FS="␟"; RS="␞"; OFS=","; ORS="\n"; } {$1=$1}1' | grep -v ^$
 ```
 
-Display USV with typical shell commands and pretty output:
+Print USV with typical shell commands and pretty output:
 
 ```sh
-$ echo "a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p" | 
-  sed 's/␟/,/g; s/␞/\n/g; s/␝/\n---\n/g; s/␜/\n===\n/g;'
+$ cat example.usv | sed 's/␟/,/g; s/␞/\n/g; s/␝/\n---\n/g; s/␜/\n===\n/g;'
 a,b
 c,d
 ---
@@ -136,6 +145,46 @@ k,l
 ---
 m,n
 o,p
+```
+
+Print USV characters by using a shell script with `bash`:
+
+```bash
+#!/usr/local/bin/bash
+while IFS= read -n1 -r c; do
+    case  "$c" in
+    "␟")
+        printf "\nunit separator\n"
+        ;;
+    "␞")
+        printf "\nrecord separator\n"
+        ;;
+    "␝")
+        printf "\ngroup separator\n"
+        ;;
+    "␜")
+        printf "\nfile separator\n"
+        ;;
+    *)
+        printf %s "$c"
+        ;;
+    esac
+done
+```
+
+
+## Example USVX scripts
+
+Create an example USVX file with 2 units by 2 records:
+
+```sh
+echo "a\n␟\nb\n␟\nc\n␞\nd" > example.usvx
+```
+
+Create an example USVX file with 2 units by 2 records by 2 groups by 2 files:
+
+```sh
+echo "a\n␟\nb\n␞\nc\n␟\nd\n␝\ne\n␟\nf\n␞\ng\n␟\nh\n␜\ni\n␟\nj\n␞\nk\n␟\nl\n␝\nm\n␟\nn\n␞\no\n␟\np" > example.usvx
 ```
 
 
