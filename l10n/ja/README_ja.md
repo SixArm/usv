@@ -123,85 +123,85 @@ Miller (対応済み)、TextQL (オープンissueあり)、Q (オープンissue�
 
 <dt>USVでは特殊文字のエスケープが可能ですか？</dt>
 
-<dd>いいえ。意図的にエスケープを扱わない決断をしました。バックスラッシュ、アンパサンド、引用符、二重文字などで特別なエスケープ処理が行われることはありません。このエスケープ処理の方針により、USVはより簡単に使用でき、より速くパースでき、より明瞭に標準化することができます。文字エスケープについて調べたところ、エスケープは一部のニーズを解決する一方で、他のニーズに困難を生じさせることがわかりました。現実の英語のテキストではカンマが頻繁に使われるため、CSVのエスケープは非常に重要であるという結論に達しました。USVでは、このようなニーズが頻繁に生じることはありません。</dd>
+<dd>いいえ。意図的にエスケープを扱わない決断をしました。バックスラッシュ、アンパサンド、引用符、二重文字などで特別なエスケープ処理が行われることはありません。この方針により、USVはより簡単に使用でき、より速くパースでき、より明瞭に標準化することができます。文字エスケープについて調べたところ、エスケープは一部のニーズを解決する一方で、他のニーズに困難を生じさせることがわかりました。現実の英語のテキストではカンマが頻繁に使われるため、CSVのエスケープは非常に重要であるという結論に達しました。USVでは、このようなニーズが頻繁に生じることはありません。</dd>
 
 <dt>特殊文字のエスケープがどうしても必要な場合はどうすればよいですか？</dt>
 
-<dd>Some people really want special character escaping. For example, suppose you have data content that contains USV characters. For these inds of goals, you may want to use a different format with more power (such as JSON or XML), or you may want to create your own non-USV internal encoding akin to HTML ampersand encoding (such as "&us;" meaning unit separator) or Unicode backslash-u encoding (such as "\u241F").</dd>
+<dd>どうしても特殊文字のエスケープが必要なことがあります。例えば、USV文字を含むデータコンテンツがあるとします。このような目的のためには、より強力な別のフォーマット (JSONやXMLなど) を使用するか、HTMLのアンパサンドエンコーディング (ユニット区切りは「&us;」など) やUnicodeの「バックスラッシュu」エンコーディング (「\u241F」など) といった、USVを使わない独自の内部エンコーディングを作り出すのがよいかもしれません。</dd>
 
-<dt>Does USV have special whitespace handling?</dt>
+<dt>USVでは空白文字を特別に扱いますか？</dt>
 
-<dd>No. This is a deliberate decision. There is no special treatment of whitepace, such as spaces, tabs, newlines, etc. This enables USV be simpler to use, faster to parse, and clearer to standardize. When we researched whitespace handling, we found that it solved some needs, yet caused difficulties for other needs. We concluded that whitespace handling can be convenient, yet is not a must-have, and thus must be ommitted from the USV standard.
+<dd>いいえ。意図的にそのような処理を行わない決断をしました。スペース、タブ、改行などのホワイトスペースの特別な処理は行いません。この方針により、USVはより簡単に使用でき、より速くパースでき、より明瞭に標準化することができます。空白の処理について調べたところ、空白処理は一部のニーズを解決する一方で、他のニーズに困難を生じさせることがわかりました。それを受けて、ホワイトスペースの処理は利便性を提供する場面があるものの、必須のものではないため、USVの規格からは取り除くという結論に達しました。
 </dd>
 
-<dt>What if I really want special whitespace handling?</dt>
+<dt>ホワイトスペースの特別処理が必要な場合は？</dt>
 
-<dd>Some people really want special whitespace handling. For example, suppose you want surrounding whitespace, such for a newline before the USV character and/or a newline after the USV character. For these kinds of goals, you can use USV as usual, then afterwards add your own whitepace handling, such as calling a function `trim` or `strip` or `chomp`.</dd>
+<dd>どうしてもホワイトスペースの特別処理が必要なことがあります。例えばUSV文字の直前や直後に入れた改行など、データを囲っている空白文字を取り込みたいといったケースです。このような場合、通常のようにUSVを使用し、後から `trim`、`strip`、`chomp` といった関数を呼び出すなどの独自のホワイトスペース処理を入れるとよいでしょう。</dd>
 
 </dl>
 
 
-## Pull requests for USV 
+## USVのプルリクエスト 
 
-Open pull requests:
+プルリクエストを作成する:
 
 * Q: <https://github.com/harelba/q/issues/201>
 
 * TextQL: https://github.com/dinedal/textql/issues/115
 
-Completed pull requests:
+完了したプルリクエスト:
 
 * Miller: <https://github.com/johnkerl/miller/issues/245>
 
 
-## Comparison to CSV, TSV and TDF, ASV and DEL
+## CSV、TSV、TDF、ASV、DELとの比較
 
-Unicode separated values (USV) is a data format similar in purpose to other formats.
+ユニコード区切り値 (USV) は、他のフォーマットと同様の目的を持ったデータフォーマットです。
 
 <dl>
 
-<dt>comma separated values (CSV)</dt>
+<dt>カンマ区切り値 (CSV)</dt>
 
-<dd>CSV format uses a comma to separate values, and a newline to separate records. In our experience, the CSV format has various kinds of implementations, some incompatible, some with escaping and some without. In our experience, some software programs use the file name extension ".csv" to mean other ways of separating data with other characters, such as using tabs, or semi-colons, or spaces. CSV handles data units/columns/cells and data records/rows/lines, but does not handle data groups/tables/grids or data files/schemas/folios.</dd>
+<dd>CSV形式では、値の区切りにカンマを、レコードの区切りに改行を使用します。経験上、CSV形式には様々な実装があり、互換性のないもの、エスケープを使用するもの、使用しないものがあります。また、ファイル名の拡張子「.csv」は、タブ、セミコロン、スペースなど、他の文字で区切られたデータであるという意味で使っているソフトウェアもあります。CSVではデータのユニット/列/セル、データのレコード/行/列を扱うことはできますが、データのグループ/表/グリッド、データのファイル/スキーマ/ポートフォリオは扱えません。</dd>
 
-<dt>tab separated values (TSV) a.k.a. tab delimited format (TDF)</dt>
+<dt>タブ区切り値 (TSV)、別名タブ区切り形式 (TDF)</dt>
 
-<dd>TSV format uses a tab to separate values, and a newline to separate records. In our experience, the TSV format can be difficult to edit with some editors, because the tab character can be invisible, or can take up a varying number of character widths such as the equivalent of 2 spaces, or 4 spaces, or 8 spaces, or as many spaces as it takes to get to the next tab stop. TSV handles data units/columns/cells and data records/rows/lines, but does not handle data groups/tables/grids or data files/schemas/folios.</dd>
+<dd>TSV形式では、値の区切りにタブを、レコードの区切りに改行を使用します。経験上、TSV形式はタブ文字が見えないことや、2スペース、4スペース、8スペース、あるいは次のタブストップが現れるまで任意の数のスペースと等しい可変の文字幅を取るため、エディターによっては編集が困難な場合があるようです。TSVではデータのユニット/列/セル、データのレコード/行/列を扱うことはできますが、データのグループ/表/グリッド、データのファイル/スキーマ/フォリオは扱えません。</dd>
 
-<dt>ASCII separated values (ASV) a.k.a. DEL (Delimited ASCII)</dt>
+<dt>ASCII区切り値 (ASV)、別名DEL (Delimited ASCII)</dt>
 
-<dd>ASV format uses ASCII character 28 as file separator, 29 as group separator, 30 as record separator, 31 as unit separator. ASV and USV both handle all the same data separations. In our experience, these ASCII characters tend to be hard to edit manually, because many editors treat the characters as invisible zero-width characters. USV uses the same semantics, yet with visible letter-width characters.</dd>
+<dd>ASV形式では、ファイル区切りにASCII文字28、グループ区切りに29、レコード区切りに30、ユニット区切りに31を使用します。ASVとUSVはどちらも同様のデータ区切りを行います。経験上、これらのASCII文字は、多くのエディターで目に見えないゼロ幅文字として扱われるため、手動で編集するのが難しいという傾向があります。USVは同じ趣向ですが、文字幅を持った、目に見える文字を使用します。</dd>
 
 </dl>
 
 
-## Example scripts
+## スクリプト例
 
-Create an example USV file with 3 units by 3 records:
+3ユニット×3レコードのUSVファイルのサンプルを作成する:
 
 ```
 $ echo 'a␟b␟c␞d␟e␟f␞g␟h␟i' > example.usv
 ```
 
-Convert USV to CSV by using `sed`:
+`sed` を使ってUSVからCSVに変換する:
 
 ```sh
 $ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;' 
 ```
 
-Convert USV to TSV by using `tr`:
+`tr` を使ってUSVをTSVに変換する:
 
 ```sh
 $ cat example.usv | tr ␟␞ ',\n'
 ```
 
-Convert USV to TSV by using `awk`:
+`awk` を使ってUSVをTSVに変換する:
 
 ```sh
 $ cat example.usv | awk 'BEGIN { FS="␟"; RS="␞"; OFS=","; ORS="\n"; } {$1=$1}1' | grep -v ^$
 ```
 
-Display USV with typical shell commands and pretty output:
+典型的なシェルコマンドでUSVを表示し、きれいに出力する:
 
 ```sh
 $ echo "a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p" | 
@@ -220,7 +220,7 @@ o,p
 ```
 
 
-## BNF pseudocode
+## BNF疑似コード
 
 unit_separator ::= U+241F
 
@@ -230,7 +230,7 @@ group_separator ::= U+241D
 
 file_separator ::= U+241C
 
-unit ::= [character]+  # All characters except the 4 separators
+unit ::= [character]+  # 4種類の区切り文字を除くすべての文字
 
 units ::= unit ( unit_separator unit ) *
 
@@ -249,31 +249,31 @@ files ::= file ( file_separator file ) *
 usv ::= units or records or groups or files
 
 
-## History of ASCII separated values (ASV)
+## ASCII区切り値 (ASV) の歴史
 
 ➤ <https://www.lammertbies.nl/comm/info/ascii-characters>
 
 <dl>
 
-<dt>ASCII 28 = FS = File separator</dt>
+<dt>ASCII 28 = FS = ファイル区切り</dt>
 
-<dd>The file separator FS is an interesting control code, as it gives us insight in the way that computer technology was organized in the sixties. We are now used to random access media like RAM and magnetic disks, but when the ASCII standard was defined, most data was serial. I am not only talking about serial communications, but also about serial storage like punch cards, paper tape and magnetic tapes. In such a situation it is clearly efficient to have a single control code to signal the separation of two files. The FS was defined for this purpose.</dd>
+<dd>ファイル区切りのFSは、60年代のコンピューター技術がどのように編成されていたかを知る上で興味深い制御コードです。今でこそRAMや磁気ディスクのようなランダムアクセスメディアが広まっていますが、ASCII規格が定義された当時、ほとんどのデータはシリアルでした。シリアル通信だけでなく、パンチカード、紙テープ、磁気テープなど、ストレージもシリアルだったということです。このような状況では、ファイルがそこで分かれることを知らせる制御コードを持っておくと、明らかに効率的です。そのために定義されたのがFSです。</dd>
 
-<dt>ASCII 29 = GS = Group separator</dt>
+<dt>ASCII 29 = GS = グループ区切り</dt>
 
-<dd>Data storage was one of the main reasons for some control codes to get in the ASCII definition. Databases are most of the time setup with tables, containing records. All records in one table have the same type, but records of different tables can be different. The group separator GS is defined to separate tables in a serial data storage system. Note that the word table wasn't used at that moment and the ASCII people called it a group.</dd>
+<dd>データを保存するという用途は、いくつかの制御コードがASCIIの定義に組み込まれた主な理由の1つでした。データベースは、複数のレコードを格納した複数のテーブルで構成されることがほとんどです。1つのテーブル内のすべてのレコードは同じ型を持ちますが、異なるテーブルのレコードは異なる型になることがあります。グループ区切りのGSは、シリアルデータストレージシステムでテーブルを分割する目的で定義されました。なお、当時はテーブルという言葉が使われておらず、ASCIIを策定した人たちはグループと呼んでいました。</dd>
 
-<dt>ASCII 30 = RS = Record separator</dt>
+<dt>ASCII 30 = RS = レコード区切り</dt>
 
-<dd>Within a group (or table) the records are separated with RS or record separator.</dd>
+<dd>グループ (またはテーブル) 内では、レコードがRS (レコード区切り) で区切られます。</dd>
 
-<dt>ASCII 31 = US = Unit separator</dt> 
+<dt>ASCII 31 = US = ユニット区切り</dt> 
 
-<dd>The smallest data items to be stored in a database are called units in the ASCII definition. We would call them field now. The unit separator separates these fields in a serial data storage environment. Most current database implementations require that fields of most types have a fixed length. Enough space in the record is allocated to store the largest possible member of each field, even if this is not necessary in most cases. This costs a large amount of space in many situations. The US control code allows all fields to have a variable length. If data storage space is limited—as in the sixties—this is a good way to preserve valuable space. On the other hand is serial storage far less efficient than the table driven RAM and disk implementations of modern times. I can't imagine a situation where modern SQL databases are run with the data stored on paper tape or magnetic reels.</dd>
+<dd>データベースに格納される最小のデータ項目を、ASCIIの定義では「ユニット」と呼びます。現在では「フィールド」と呼ばれるものです。ユニット区切りは、シリアルデータを保存する環境において、そのようなフィールドを区切ります。現在のデータベース実装では、ほとんどの種類のフィールドが固定長であることが求められます。各フィールドで可能な限り大きなメンバーを格納するため、たとえそれが必要となる場面がほとんどないとしても、レコードには十分なスペースが割り当てられます。このため、多くの場面では大きなスペースが犠牲になります。US制御コードを用いると、すべてのフィールドを可変長にすることができます。60年代のようにデータの保存スペースが限られている場合、これは貴重なスペースを取っておくための優れた方法です。一方で、現代のテーブル駆動のRAMやディスク装置に比べ、シリアルストレージははるかに効率が悪いものでした。現代のSQLデータベースが紙テープや磁気リールに保存されたデータを扱う状況など、想像もつきません。</dd>
 
 
-## Conclusion
+## 結論
 
-USV is helping us with real-world data format projects, and we hope USV can be helpful to you too.
+USVは、実際のデータ形式プロジェクトでも役立っています。皆さんにもUSVがお役に立てればと思っています。
 
-We welcome constructive feeback about USV, as well as git issues, pull requests, and standardization help.
+USVに関する建設的なフィードバックや、git issue、pull request、標準化に関するお手伝いを歓迎します。
