@@ -101,7 +101,7 @@ Miller (対応済み)、TextQL (オープンissueあり)、Q (オープンissue�
 
 <dd>
 
-<p>できるだけ早く標準化を目指します。</p>
+<p>その予定です。できる限り早期の標準化を目指しています。</p>
 
 <p>USVはJoel Parker Henderson (joel@joelparkerhenderson.com) が中心となって提案した規格で、<a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA TSV</a>と同様の標準化を目指しています。</p>
 
@@ -109,23 +109,23 @@ Miller (対応済み)、TextQL (オープンissueあり)、Q (オープンissue�
 
 <dt>CSVやTSVではなくUSVを選ぶメリットは？</dt>
 
-<dd>You want your data content to be able to contain commas, or tabs, or newlines. You want your data content to be able to use  data groups, or database tables, or spreadsheet grids. You want your data format to be able to use data files, or database schemas, or spreadsheet folios. You want a consistent compatible standardard format, which CSV doesn't typically provide. You want a consistent compatible standardized file name extension, which CSV/TSV/TDF doesn't typically provide.</dd>
+<dd>カンマ、タブ、改行をデータの中で使用することができます。データグループ、データベースのテーブル、スプレッドシートのグリッドをデータの中で示すことができます。データファイル、データベーススキーマ、スプレッドシートのフォリオをデータ形式の中で扱うことができます。CSVでは通常得られない、一貫性と互換性を備えた標準的な形式が必要な場合に適しています。CSV/TSV/TDFでは通常得られない、一貫性と互換性を備えた標準的なファイル拡張子が必要な場合に適しています。</dd>
 
-<dt>Why choose UTF over ASV?</dt>
+<dt>ASVではなくUTFを選ぶメリットは？</dt>
 
-<dd>You want your data content to be friendlier for human reading and human editing. This is because USV provides typically-visible letter-width characters (such as Unicode 241F), whereas ASV provides typically-invisible zero-width characters (such as ASCII 31).It's true that some editors do render ASV characters using other visual respresentations, such as using the corresponding USV visible characters; however in practice we haven't found much support for this approach.</p>
+<dd>データの中身を人間が読んだり編集したりする時のために、より扱いやすいものにすることができます。USVでは通常目に見える、文字幅を持ったUnicode 241Fなどの文字を使用します。これに対しASVでは、ASCII 31など、通常目に見えないゼロ幅の文字を使用します。エディターのなかには、それらに対応するUSVの可視文字などの視覚表現を使ってASV文字を表示してくれるものもありますが、実際にこの方法がサポートされる例はあまり見られませんでした。</p>
 
 </dd>
 
-<dt>Why choose UTF over ASF for machine-only data?</dt>
+<dt>機械のみが使用するデータにASFではなくUTFを選ぶメリットは？</dt>
 
-<dd>For machine-only data, such as data that will never be used for human reading or human editing, then USV or ASV are similar because both can handle units, fields, groups, and files.
+<dd>人間が読んだり編集したりすることのない、機械のみが使用するデータの場合は、USVとASVのどちらもユニット、フィールド、グループ、ファイルなどが扱えるため、類似しています。
 
-<dt>Can USV have special character escaping?</dt>
+<dt>USVでは特殊文字のエスケープが可能ですか？</dt>
 
-<dd>No. This is a deliberate decision. There is no special treatment of escaping, such as backslashes, ampersands, quotes, doubled-characters, etc. This escaping enables USV be simpler to use, faster to parse, and clearer to standardize. When we researched character escaping, we found that it solved some needs, yet caused difficulties for other needs. We concluded that CSV escaping is very important because commas are so frequent in real world English text. The USV doesn't have this same frequent need.</dd>
+<dd>いいえ。意図的にエスケープを扱わない決断をしました。バックスラッシュ、アンパサンド、引用符、二重文字などで特別なエスケープ処理が行われることはありません。このエスケープ処理の方針により、USVはより簡単に使用でき、より速くパースでき、より明瞭に標準化することができます。文字エスケープについて調べたところ、エスケープは一部のニーズを解決する一方で、他のニーズに困難を生じさせることがわかりました。現実の英語のテキストではカンマが頻繁に使われるため、CSVのエスケープは非常に重要であるという結論に達しました。USVでは、このようなニーズが頻繁に生じることはありません。</dd>
 
-<dt>What if I really want special character escaping?</dt>
+<dt>特殊文字のエスケープがどうしても必要な場合はどうすればよいですか？</dt>
 
 <dd>Some people really want special character escaping. For example, suppose you have data content that contains USV characters. For these inds of goals, you may want to use a different format with more power (such as JSON or XML), or you may want to create your own non-USV internal encoding akin to HTML ampersand encoding (such as "&us;" meaning unit separator) or Unicode backslash-u encoding (such as "\u241F").</dd>
 
