@@ -10,7 +10,10 @@ Unicode separated values (USV) is a data format that places Unicode characters b
 
 * ␜ = U+241C = FS = File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
-If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know about USV.
+Unicode separated values extensions (USVX) is USV with extensions: the extensions are for whitespace trimming and character escaping.
+
+If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know about USV and USVX.
+
 
 Documentation:
 
@@ -54,7 +57,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 ```
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
-
+s
 
 ## USV is easy and friendly
 
