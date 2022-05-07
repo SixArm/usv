@@ -1,5 +1,6 @@
 # BNF疑似コード
 
+
 ## 区切り文字
 
 unit_separator ::= U+241F
@@ -10,9 +11,10 @@ group_separator ::= U+241D
 
 file_separator ::= U+241C
 
+
 ## USV
 
-unit ::= character * # 区切り文字を除くすべての文字
+unit ::= character *  # 区切り文字を除くすべての文字
 
 units ::= unit ( unit_separator unit ) *
 
@@ -30,11 +32,12 @@ files ::= file ( file_separator file ) *
 
 usv ::= units | records | groups | files
 
+
 ## USVX
 
-space ::= [:space:] # スペース、タブ、垂直タブ、フォームフィード、改行、またはキャリッジリターン
+space ::= [:space:]  # スペース、タブ、垂直タブ、フォームフィード、改行、またはキャリッジリターン
 
-unit ::= character * # 区切り文字以外のすべての文字。先頭/末尾の空白は不可。
+unit ::= character *  # 区切り文字以外のすべての文字。先頭/末尾の空白は不可。
 
 units ::= unit ( space* unit_separator space* unit ) *
 
