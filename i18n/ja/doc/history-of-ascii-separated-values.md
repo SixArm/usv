@@ -1,6 +1,6 @@
 # ASCII区切り値 (ASV) の歴史
 
-➤ [https://www.lammertbies.nl/comm/info/ascii-characters](https://www.lammertbies.nl/comm/info/ascii-characters)
+➤ <https://www.lammertbies.nl/comm/info/ascii-characters>
 
 
 ## ASCII 28 = FS = ファイル区切り

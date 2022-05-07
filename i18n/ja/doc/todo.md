@@ -7,57 +7,57 @@
 
 生産性アプリケーションにUSVフォーマットを追加する:
 
-- [ ] OpenOffice Calc
+* [ ] OpenOffice Calc
 
-- [ ] LibreOffice Calc
+* [ ] LibreOffice Calc
 
-- [ ] Microsoft Excel
+* [ ] Microsoft Excel
 
-- [ ] Google Sheets
+* [ ] Google Sheets
 
-- 他
+* 他
 
 
 ## USVの取り扱いの追加
 
 統計システムにUSVの取り扱いを追加する:
 
-- [ ] R
+* [ ] R
 
-- [ ] Julia
+* [ ] Julia
 
-- [ ] MatLab
+* [ ] MatLab
 
-- [ ] Mathematica
+* [ ] Mathematica
 
-- 他
+* 他
 
 
 ## ライブラリの作成
 
 プログラミング言語用のUSVライブラリを作成する:
 
-- [ ] Node npmパッケージ
+* [ ] Node npmパッケージ
 
-- [ ] Python pipパッケージ
+* [ ] Python pipパッケージ
 
-- [ ] Ruby gem
+* [ ] Ruby gem
 
-- [ ] Rust crate
+* [ ] Rust crate
 
-- 他
+* 他
 
 
 ## CLIツールの拡張
 
 Extend USV capabilties for command line interface tools:
 
-- [x] Miller [https://github.com/johnkerl/miller/issues/245](https://github.com/johnkerl/miller/issues/245)
+* [x] Miller <https://github.com/johnkerl/miller/issues/245>
 
-- [ ] TextQL [https://github.com/dinedal/textql/issues/115](https://github.com/dinedal/textql/issues/115)
+* [ ] TextQL <https://github.com/dinedal/textql/issues/115>
 
-- [ ] Q [https://github.com/harelba/q/issues/201](https://github.com/harelba/q/issues/201)
+* [ ] Q <https://github.com/harelba/q/issues/201>
 
-- [ ] jq
+* [ ] jq
 
-- 他
+* 他
