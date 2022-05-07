@@ -39,7 +39,7 @@ Create USV libraries for programming languages:
 
 * [ ] Node npm package
 
-* [ ] Python pip package 
+* [ ] Python pip package
 
 * [ ] Ruby gem
 
