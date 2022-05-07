@@ -1,6 +1,6 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a data format that places Unicode characters between data parts:
+Unicode separated values (USV) is a data format that places Unicode characters between data parts.
 
 * ␟ = U+241F = US = Unit Separator. Use between each data unit, database column, spreadsheet cell, etc.
 
@@ -10,19 +10,26 @@ Unicode separated values (USV) is a data format that places Unicode characters b
 
 * ␜ = U+241C = FS = File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
-If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know about USV.
+If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most of USV.
+
+The file name extension for USV is ".usv".
+
+The USV repo is <https://github.com/sixarm/usv>.
+
+
+## Unicode separated values extensions (USVX)
 
 Unicode separated values extensions (USVX) is USV plus these extras:
 
-* whitespace trim, so you can use whitespace before any USV character or after it.
+* whitespace trim, so you can use whitespace around any USV character.
 
 * backslash escape, so you can protect any USV character within your data content.
 
 * final newline, so your files can be more compatible with some editors and tools.
 
-The file name extension for USV is ".usv".
-
 The file name extension for USVX is ".usvx".
+
+The USVX repo is <https://github.com/sixarm/usvx>.
 
 
 ## Documentation
@@ -39,7 +46,7 @@ Documentation files here:
 
 * [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons.md)
 
-* [Objections to USV](doc/objections.md)
+* [Objections to USV and USVX](doc/objections.md)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values.md)
 
@@ -69,7 +76,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 ```
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
-s
+
 
 ## USV is easy and friendly
 
@@ -90,7 +97,7 @@ USV can handle data that contains commas, tabs, newlines, and other special char
 
 USV can format units/columns/cells and records/rows/lines (similar to CSV and TSV) and also groups/tables/grids and files/schemas/folios (similar to ASV).
 
-USV is aiming to be an international standard. 
+USV is aiming to be an international standard.
 
 USV uses Unicode characters that are semantically meaningful.
 
@@ -106,7 +113,7 @@ USV is simpler and clearer to use and write because there are no escape characte
 
 
 
-## Example USV scripts 
+## Example USV scripts
 
 Create an example USV file with 2 units by 2 records:
 
@@ -117,7 +124,7 @@ $ echo 'a␟b␞c␟d' > example.usv
 Convert USV to CSV by using `sed`:
 
 ```sh
-$ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;' 
+$ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;'
 a,b
 c,d
 ```
@@ -192,80 +199,16 @@ done
 ```
 
 
-## Example USVX scripts
-
-Create an example USVX file with 2 units by 2 records:
-
-```sh
-echo "a\n␟\nb\n␟\nc\n␞\nd" > example.usvx
-```
-
-Create an example USVX file with 2 units by 2 records by 2 groups by 2 files:
-
-```sh
-echo "a\n␟\nb\n␞\nc\n␟\nd\n␝\ne\n␟\nf\n␞\ng\n␟\nh\n␜\ni\n␟\nj\n␞\nk\n␟\nl\n␝\nm\n␟\nn\n␞\no\n␟\np" > example.usvx
-```
-
-Print USVX characters by using a shell script with `bash`:
-
-```bash
-#!/usr/local/bin/bash
-set -euf -o pipefail
-
-# USVX example shell script that demonstrates the use of USVX characters.
-# This script reads STDIN one character at a time, and prints output.
-# There is a similar USV example shell script that does not provide
-# extensions for whitespace trim, backslash escape, and final newline.
-
-state="start"
-escape=false
-whitespace=""
-while IFS= read -n1 -r c; do
-    if [ "$escape" = true ]; then
-        printf %s "$c"
-        escape=false
-    else
-        case "$c" in
-        "␟"|"␞"|"␝"|"␜")
-            case  "$c" in
-            "␟")
-                printf "\nunit separator\n"
-                ;;
-            "␞")
-                printf "\nrecord separator\n"
-                ;;
-            "␝")
-                printf "\ngroup separator\n"
-                ;;
-            "␜")
-                printf "\nfile separator\n"
-                ;;
-            esac
-            state="start"
-            whitespace=""
-            ;;
-        "\\")
-            escape=true
-            ;;
-        " "|"\t"|"\n"|"\r")
-            if [ "$state" = "content" ]; then
-                whitespace="$whitespace$c"
-            fi
-            ;;
-        *)
-            state="content"
-            printf %s "$whitespace$c"
-            whitespace=""
-            ;;
-        esac
-    fi
-done
-printf "\n";
-```
-
-
 ## Conclusion
 
-USV is helping us with real-world data format projects, and we hope USV can be helpful to you too.
+USV is simple and fast, without extras.
 
-We welcome constructive feeback about USV, as well as git issues, pull requests, and standardization help.
+USVX adds extras for whitespace trim, backslash escape, and final newline.
+
+USV and USVX are helping us with many data format projects, and we hope USV may be able to help you too.
+
+We welcome constructive feeback about USV and USVX, as well as git issues, pull requests, and standardization help.
+
+<https://github.com/sixarm/usv>
+
+<https://github.com/sixarm/usvx>

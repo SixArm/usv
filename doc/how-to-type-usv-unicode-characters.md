@@ -1,19 +1,19 @@
 # How to type USV Unicode characters
 
-On many systems, you can type Unicode characters like this:
- 
-1. Press and hold down the Alt key.
- 
-2. Press the plus key on the numeric keypad.
- 
-3. Type the hexidecimal unicode value.
+On many systems, you can type USV Unicdoe characters this way:
 
-4. Release the Alt key.
- 
+* US: press and hold Alt, type +241f, release Alt.
+
+* RS: press and hold Alt, type +241e, release Alt.
+
+* GS: press and hold Alt, type +241d, release Alt.
+
+* FS: press and hold Alt, type +241c, release Alt.
+
 On Apple macOS, you may need to do a one-time setup:
 
-1. Go to System Preferences -> input menu 
+1. Go to System Preferences -> input menu
 
-2. Check the box next to "Unicode Hex". 
+2. Check the box next to "Unicode Hex".
 
 3. Switch to Unicode input in the menu bar.
