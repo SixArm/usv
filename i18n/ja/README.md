@@ -1,6 +1,6 @@
 # Unicode区切り値 (USV)
 
-Unicode区切り値 (USV) は、データとデータの間にUnicode文字を配置するデータ形式です。以下のUnicode文字を使用します:
+Unicode区切り値 (USV) は、データとデータの間にUnicode文字を配置するデータ形式です。
 
 * ␟ = U+241F = US = ユニット区切り。データユニット間、データベースの列、スプレッドシートのセルなどの区切りに使用します。
 
@@ -10,19 +10,25 @@ Unicode区切り値 (USV) は、データとデータの間にUnicode文字を�
 
 * ␜ = U+241C = FS = ファイル区切り。データファイル間、データベースのスキーマ、スプレッドシートのフォリオなどの区切りに使用します。
 
-カンマ区切り値 (CSV)、タブ区切り値 (TSV)、ASCII区切り値 (ASV) をご存知なら、すでにUSVもご存じでしょう。
+USVのファイル名の拡張子は ".usv " です。
 
-拡張Unicode区切り値 (USVX) は、USVに以下の機能を追加したものです:
+USVのレポジトリは <https://github.com/sixarm/usv> です。
 
-* 空白文字のトリミングを行う。USV文字の前後に空白文字が使えます。
+カンマ区切り値 (CSV)、タブ区切り値 (TSV)、ASCII区切り値 (ASV) をご存知なら、すでにUSVもほぼ知っていると言えます。
+
+もっと多くの機能が必要な場合は、「Unicode区切り値拡張 (USVX)」を試してみてください。次のような機能が追加で利用できます:
+
+* 空白文字のトリミング。USV文字の周囲の空白文字を扱うことができます。
 
 * バックスラッシュのエスケープ。これにより、データコンテンツ内のUSV文字を保つことができます。
 
 * 最後の改行文字。一部のエディターやツールに対してファイルの互換性を高めることができます。
 
-USVのファイル名の拡張子は".usv "です。
+USVXのファイル名の拡張子は ".usvx" です。
 
-USVXのファイル名の拡張子は".usvx "です。
+USVXのレポジトリは <https://github.com/sixarm/usvx> です。
+
+カンマ区切り値 (CSV) に対するオプションでの空白文字のトリム、タブ区切り値 (TSV) に対するオプションでの文字エスケープ、ASCII区切り値 (ASV) でのオプションでの末尾改行を扱った経験があれば、すでにUSVXもほぼ知っていると言えます。
 
 
 ## ドキュメント
@@ -39,9 +45,9 @@ USVXのファイル名の拡張子は".usvx "です。
 
 * [CSV、TSV、TDF、ASV、DELとの比較](doc/comparisons.md)
 
-* [USVへの異論](doc/objections.md)
+* [USVとUSVXへの異論](doc/objections.md)
 
-* ASCII区切り値 (ASV) の歴史
+* [ASCII区切り値 (ASV) の歴史](history-of-ascii-separated-values.md)
 
 
 ## 例
@@ -69,7 +75,7 @@ a␟b␞c␟d␝e␟f␞g␟h
 ```
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
-s
+
 
 ## USVは簡単で親しみやすい
 
@@ -117,7 +123,7 @@ $ echo 'a␟b␞c␟d' > example.usv
 `sed` を使ってUSVからCSVに変換する:
 
 ```sh
-$ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;' 
+$ cat example.usv | sed 's/␟/,/g; s/␞/\n/g;'
 a,b
 c,d
 ```
@@ -192,80 +198,16 @@ done
 ```
 
 
-## USVXスクリプトの例
-
-2ユニット×2レコードのUSVXファイルのサンプルを作成する:
-
-```sh
-echo "a\n␟\nb\n␟\nc\n␞\nd" > example.usvx
-```
-
-2ユニット×2レコード×2グループ×2ファイルのUSVXファイルのサンプルを作成する:
-
-```sh
-echo "a\n␟\nb\n␞\nc\n␟\nd\n␝\ne\n␟\nf\n␞\ng\n␟\nh\n␜\ni\n␟\nj\n␞\nk\n␟\nl\n␝\nm\n␟\nn\n␞\no\n␟\np" > example.usvx
-```
-
-`bash`でシェルスクリプトを使ってUSVX文字を表示する:
-
-```bash
-#!/usr/local/bin/bash
-set -euf -o pipefail
-
-# USVX文字の使用方法を示すシェルスクリプトの例です。
-# このスクリプトは、STDINから1文字ずつ読み取って出力します。
-# 同様のUSVサンプルシェルスクリプトがありますが、そちらでは
-# 空白文字のトリム、バックスラッシュのエスケープ、最終改行などの拡張を行いません。
-
-state="start"
-escape=false
-whitespace=""
-while IFS= read -n1 -r c; do
-    if [ "$escape" = true ]; then
-        printf %s "$c"
-        escape=false
-    else
-        case "$c" in
-        "␟"|"␞"|"␝"|"␜")
-            case  "$c" in
-            "␟")
-                printf "\nunit separator\n"
-                ;;
-            "␞")
-                printf "\nrecord separator\n"
-                ;;
-            "␝")
-                printf "\ngroup separator\n"
-                ;;
-            "␜")
-                printf "\nfile separator\n"
-                ;;
-            esac
-            state="start"
-            whitespace=""
-            ;;
-        "\\")
-            escape=true
-            ;;
-        " "|"\t"|"\n"|"\r")
-            if [ "$state" = "content" ]; then
-                whitespace="$whitespace$c"
-            fi
-            ;;
-        *)
-            state="content"
-            printf %s "$whitespace$c"
-            whitespace=""
-            ;;
-        esac
-    fi
-done
-printf "\n";
-```
-
-
 ## 結論
 
-USVは、実際のデータ形式プロジェクトでも役立っています。皆さんにもUSVがお役に立てればと思っています。
+USVは余計なものがなく、シンプルで高速です。
 
-USVに関する建設的なフィードバックや、git issue、pull request、標準化に関するお手伝いを歓迎します。
+USVXでは、空白文字のトリム、バックスラッシュのエスケープ、末尾改行などの追加機能が利用できます。
+
+USVとUSVXは、多くのデータ形式プロジェクトでも実際に役に立っています。USVが皆さんの役にも立てればと思っています。
+
+USVやUSVXに関する建設的な意見、git issue、pull request、標準化のお手伝いなどをお待ちしています。
+
+<https://github.com/sixarm/usv>
+
+<https://github.com/sixarm/usvx>
