@@ -12,8 +12,10 @@ On many systems, you can type Unicode characters like this:
  
 On Apple macOS, you may need to do a one-time setup:
 
-1. Go to System Preferences -> input menu 
+1. Go to System Preferences -> Keyboard -> Input Sources.
 
-2. Check the box next to "Unicode Hex". 
+2. Click on + button, select "Others" -> "Unicode Hex Input" and press "Add". (End of one-time)
 
-3. Switch to Unicode input in the menu bar.
+3. Switch to the Unicode Hex Input in the menu bar.
+
+4. Hold down the Option key and type the hexidecimal unicode value, then release the Alt key.
