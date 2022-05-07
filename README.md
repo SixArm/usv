@@ -92,24 +92,19 @@ USV works with many kinds of languages. Any language that can handle UTF-8 chara
 
 ## Why use USV?
 
-USV can handle data that contains commas, tabs, newlines, and other special characters, all without escaping.
+USV can handle data that contains commas, semicolons, quotes, tabs, newlines, and other special characters, all without escaping.
 
-USV can format units/columns/cells and records/rows/lines (similar to CSV and TSV) and also groups/tables/grids and files/schemas/folios (similar to ASV).
+USV can format units/columns/cells and records/rows/lines (similar to CSV) and groups/tables/grids and files/schemas/folios (similar to ASV).
 
 USV is aiming to be an international standard.
 
 USV uses Unicode characters that are semantically meaningful.
 
-USV works well with any typical Unicode editor, any typical Unicode language, and any typical Unicode font.
+USV works well with any typical modern editor, font, terminal, shell, search, and language.
 
 USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
 
-USV works well within typical shell scripts.
-
-USV works well within typical search tools.
-
 USV is simpler and clearer to use and write because there are no escape characters.
-
 
 
 ## Example USV scripts
