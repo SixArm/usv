@@ -10,16 +10,13 @@ Unicode separated values (USV) is a data format that places Unicode characters b
 
 * ␜ = U+241C = FS = File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
-If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most of USV.
-
-The file name extension for USV is ".usv".
+The USV file name extension is ".usv".
 
 The USV repo is <https://github.com/sixarm/usv>.
 
+If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most of USV.
 
-## Unicode separated values extensions (USVX)
-
-Unicode separated values extensions (USVX) is USV plus these extras:
+If you want more capabilties, then try Unicode separated values extensions (USVX), which adds these extras:
 
 * whitespace trim, so you can use whitespace around any USV character.
 
@@ -27,9 +24,11 @@ Unicode separated values extensions (USVX) is USV plus these extras:
 
 * final newline, so your files can be more compatible with some editors and tools.
 
-The file name extension for USVX is ".usvx".
+The USVX file name extension for USVX is ".usvx".
 
 The USVX repo is <https://github.com/sixarm/usvx>.
+
+If you know about comma separated values (CSV) with optional whitespace trim, or tab separated values (TSV) with optional character escaping, or ASCII separated values (ASV) with optional final newline, then you already know most of USVX.
 
 
 ## Documentation
