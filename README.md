@@ -16,19 +16,7 @@ The USV repo is <https://github.com/sixarm/usv>.
 
 If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most of USV.
 
-If you want more capabilties, then try Unicode separated values extensions (USVX), which adds these extras:
-
-* whitespace trim, so you can use whitespace around any USV character.
-
-* backslash escape, so you can protect any USV character within your data content.
-
-* final newline, so your files can be more compatible with some editors and tools.
-
-The USVX file name extension for USVX is ".usvx".
-
-The USVX repo is <https://github.com/sixarm/usvx>.
-
-If you know about comma separated values (CSV) with optional whitespace trim, or tab separated values (TSV) with optional character escaping, or ASCII separated values (ASV) with optional final newline, then you already know most of USVX.
+If you want more capabilties, then try Unicode Separated Values Extensions (USVX), which uses the same Unicode characters, with extensions that provide whitespace trim, backslash escape, and final newline. See <https://github.com/sixarm/usvx>.
 
 
 ## Documentation
@@ -197,9 +185,9 @@ done
 
 USV is simple and fast, without extras.
 
-USVX adds extras for whitespace trim, backslash escape, and final newline.
+USVX adds extensions for whitespace trim, backslash escape, and final newline.
 
-USV and USVX are helping us with many data format projects, and we hope USV may be able to help you too.
+USV and USVX are helping us with data format projects, and we hope USV and USVX may be able to help you too.
 
 We welcome constructive feeback about USV and USVX, as well as git issues, pull requests, and standardization help.
 
