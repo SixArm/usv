@@ -1,56 +1,119 @@
 # BNF pseudocode
 
+This page is a work in progress. Constructive feedback welcome.
 
-## Separators
 
-unit_separator ::= U+241F
+## Unicode
 
-record_separator ::= U+241E
+unicode_unit_separator ::= U+241F
 
-group_separator ::= U+241D
+unicode_record_separator ::= U+241E
 
-file_separator ::= U+241C
+unicode_group_separator ::= U+241D
+
+unicode_file_separator ::= U+241C
+
+unicode_space ::= U+0020
+
+unicode_horizonal_tab ::= U+0009
+
+unicode_vertical_tab ::= U+0011
+
+unicode_linefeed ::= U+0010  
+
+unicode_carriage_return ::= U+0013
+
+unicode_backslash ::= U+0008
 
 
 ## USV
 
-unit ::= character *  # All characters except the separator characters
+unit_separator := unicode_unit_separator
 
-units ::= unit ( unit_separator unit ) *
+record_separator := unicode_record_separator
 
-record ::= units *
+group_separator := unicode_group_separator
 
-records ::= record ( record_separator record ) *
+file_separator := unicode_file_separator
 
-group ::= records *
+separator ::= [
+    unit_separator
+    record_separator
+    group_separator
+    file_separator
+]
 
-groups ::= group ( group_separator group ) *
+atom = [^ separator ]  # Any text except separator text
 
-file ::= groups *
+unit := atom*
 
-files ::= file ( file_separator file ) *
+units ::= unit ( unit_separator unit )*  # Any number of unit items, each separated by a separator
 
-usv ::= units | records | groups | files
+record ::= units*
+
+records ::= record ( record_separator record )*
+
+group ::= records*
+
+groups ::= group ( group_separator group )*
+
+file ::= groups*
+
+files ::= file ( file_separator file )*
+
+usv ::= \A ( units | records | groups | files ) \Z
 
 
 ## USVX
 
-space ::= [:space:]  # A space, tab, vertical tab, form feed, new line, or carriage return
+space ::= [
+    unicode_space
+    unicode_horizonal_tab
+    unicode_vertical_tab
+    unicdoe_linefeed
+    unicode_carriage_return 
+]
 
-unit ::= character *  # All characters except the separator characters; no leading/trailing spaces.
+unit_separator ::= space* unicode_unit_separator space*
 
-units ::= unit ( space* unit_separator space* unit ) *
+record_separator ::= space* unicode_record_separator space*
 
-record ::= units *
+group_separator ::= space* unicode_group_separator space*
 
-records ::= record ( space* record_separator space* record ) *
+file_separator ::= space* unicode_file_separator space*
+
+separator ::= [
+    unit_separator
+    record_separator
+    group_separator
+    file_separator
+]
+
+escape ::= unicode_backslash
+
+normal_atom ::= [^ separator escape ]  # Any text except separator text or escape text
+
+escape_atom ::= escape character
+
+atom ::= (
+    normal_atom
+    escape_atom
+)
+
+unit ::= space* content* space*
+
+units ::= unit ( unit_separator unit )*
+
+record ::= units*
+
+records ::= record ( record_separator record )*
 
 group ::= records *
 
-groups ::= group ( space* group_separator space* group ) *
+groups ::= group ( group_separator group )*
 
 file ::= groups *
 
-files ::= file ( space* file_separator space* file ) *
+files ::= file ( file_separator file )*
 
-usvx ::= ( units or records or groups or files ) + newline
+usvx ::= \A ( units | records | groups | files ) unicode_newline \Z
