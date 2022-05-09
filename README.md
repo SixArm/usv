@@ -151,7 +151,7 @@ o,p
 Print USV characters by using a shell script with `bash`:
 
 ```bash
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 set -euf -o pipefail
 
 # USV example shell script that demonstrates the use of USV characters.
