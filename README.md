@@ -10,6 +10,8 @@ Unicode separated values (USV) is a data format that places Unicode characters b
 
 * ␜ = U+241C = FS = File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
+* ␛ = U+241B = ES = Escape separator. Use to escape any separator, so it can be within data.
+
 The USV file name extension is ".usv".
 
 The USV repo is <https://github.com/sixarm/usv>.
@@ -69,13 +71,13 @@ a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 
 USV is intended to be easy to use and friendly to try:
 
-USV works with many kinds of data. Any data can contain any characters except the four USV characters.
+USV works with many kinds of data. Any data can contain any characters except the five USV characters.
 
 USV works with many kinds of editors. Any editor that can render the USV characters will work. We use vi, emacs, Coda, Notepad++, TextMate, Sublime, VS Code, etc.
 
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 
-USV works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, Go, Java, JavaScript, Julia, Python, R, Ruby, Rust, Swift, PHP, etc.
+USV works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, C++, C#, Elixir, Erland, Go, Java, JavaScript, Julia, Kotlin, Perl, PHP, Python, R, Ruby, Rust, Swift, TypeScript, etc.
 
 
 ## Why use USV?
@@ -84,15 +86,13 @@ USV can handle data that contains commas, semicolons, quotes, tabs, newlines, an
 
 USV can format units/columns/cells and records/rows/lines (similar to CSV) and groups/tables/grids and files/schemas/folios (similar to ASV).
 
-USV is aiming to be an international standard.
+USV aims to be an international standard.
 
 USV uses Unicode characters that are semantically meaningful.
 
 USV works well with any typical modern editor, font, terminal, shell, search, and language.
 
 USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
-
-USV is simpler and clearer to use and write because there are no escape characters.
 
 
 ## Example USV scripts
@@ -185,7 +185,7 @@ done
 
 USV is simple and fast, without extras.
 
-USVX adds extensions for whitespace trim, backslash escape, and final newline.
+USVX adds extensions for whitespace trim and final newline.
 
 USV and USVX are helping us with data format projects, and we hope USV and USVX may be able to help you too.
 
