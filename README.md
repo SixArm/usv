@@ -10,7 +10,7 @@ Unicode separated values (USV) is a data format that places Unicode symbol chara
 
 * ␜ = U+241C = Symbol for File separator. Use between each data file, database schema, spreadsheet folio, etc.
 
-* ␛ = U+241B = Symbol for Escape separator. Use to escape any separator, so it can be within data.
+* ␛ = U+241B = Symbol for Escape separator. Use to escape these five symbols, so they can be in content data.
 
 The USV file name extension is ".usv".
 
