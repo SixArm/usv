@@ -3,17 +3,20 @@
 This page is a work in progress. Constructive feedback welcome.
 
 
-## Unicode
+## Unicode symbols
 
-unicode_symbol_for_unit_separator ::= U+241F
-
-unicode_symbol_for_record_separator ::= U+241E
-
-unicode_symbol_for_group_separator ::= U+241D
+unicode_symbol_for_escape ::= U+241B
 
 unicode_symbol_for_file_separator ::= U+241C
 
-unicode_symbol_for_escape ::= U+241C
+unicode_symbol_for_group_separator ::= U+241D
+
+unicode_symbol_for_record_separator ::= U+241E
+
+unicode_symbol_for_unit_separator ::= U+241F
+
+
+## Unicode spaces
 
 unicode_space ::= U+0020
 
