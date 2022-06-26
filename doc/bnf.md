@@ -13,7 +13,7 @@ unicode_symbol_for_group_separator ::= U+241D
 
 unicode_symbol_for_file_separator ::= U+241C
 
-unicode_symbol_for_escape ::= U+0008
+unicode_symbol_for_escape ::= U+241C
 
 unicode_space ::= U+0020
 
