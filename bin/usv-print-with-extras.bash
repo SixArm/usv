@@ -1,10 +1,9 @@
 #!/usr/local/bin/bash
 set -euf -o pipefail
 
-# USVX example shell script that demonstrates the use of USVX characters.
+# USV example shell script that demonstrates the use of USV characters.
 # This script reads STDIN one character at a time, and prints output.
-# There is a similar USV example shell script that does not provide
-# extensions for whitespace trim, backslash escape, and final newline.
+# This handls whitespace trim, backslash escape, and final newline.
 
 state="start"
 escape=false
