@@ -195,9 +195,7 @@ done
 
 USV is simple and fast, without extras.
 
-USVX adds extensions for whitespace trim and final newline.
-
-USV and USVX are helping us with data format projects, and we hope USV and USVX may be able to help you too.
+USV is helping us with data format projects. We hope USV may help you too.
 
 We welcome constructive feeback about USV and USVX, as well as git issues, pull requests, and standardization help.
 
