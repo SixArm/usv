@@ -3,7 +3,7 @@ set -euf -o pipefail
 
 # USV example shell script that demonstrates the use of USV characters.
 # This script reads STDIN one character at a time, and prints output.
-# This handls whitespace trim, backslash escape, and final newline.
+# This handles whitespace trim, backslash escape, and final newline.
 
 state="start"
 escape=false
@@ -32,7 +32,7 @@ while IFS= read -n1 -r c; do
             state="start"
             whitespace=""
             ;;
-        "\\")
+        "␛")
             escape=true
             ;;
         " "|"\t"|"\n"|"\r")
