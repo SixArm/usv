@@ -2,23 +2,23 @@
 
 Unicode separated values (USV) is a data format that places Unicode symbol characters between data parts.
 
-* ␟ = U+241F = Symbol for Unit Separator.
+* ␟ = U+241F = Symbol for Unit Separator
 
   * Use it between each data unit, database column, spreadsheet cell, etc.
 
-* ␞ = U+241E = Symbol for Record Separator. 
+* ␞ = U+241E = Symbol for Record Separator
 
   * Use it between each data record, database row, spreadsheet line, etc.
 
-* ␝ = U+241D = Symbol for Group Separator. 
+* ␝ = U+241D = Symbol for Group Separator 
 
   * Use it between each data group, database table, spreadsheet grid, etc.
 
-* ␜ = U+241C = Symbol for File separator. 
+* ␜ = U+241C = Symbol for File separator 
 
   * Use it between each data file, database schema, spreadsheet folio, etc.
 
-* ␛ = U+241B = Symbol for Escape separator. 
+* ␛ = U+241B = Symbol for Escape separator
 
   * Use it to escape these five symbols, so they can be in content data.
 
