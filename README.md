@@ -1,6 +1,6 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a data format that places Unicode symbol characters between data parts.
+Unicode separated values (USV) is a data format that places Unicode symbol characters between data parts. If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you know much of USV.
 
 * ␟ = U+241F = Symbol for Unit Separator
 
@@ -25,10 +25,6 @@ Unicode separated values (USV) is a data format that places Unicode symbol chara
 The USV file name extension is ".usv".
 
 The USV repo is <https://github.com/sixarm/usv>.
-
-If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know most of USV.
-
-If you want more capabilties, then try Unicode Separated Values Extensions (USVX), which uses the same Unicode characters, with extensions that provide whitespace trim, backslash escape, and final newline. See <https://github.com/sixarm/usvx>.
 
 
 ## Documentation
