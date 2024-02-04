@@ -1,6 +1,6 @@
 # Comparisons with CSV, TSV, TDF, ASV, DEL
 
-Unicode separated values (USV) and Unicode separated values extensions (USVX) are data formats that are similar in purpose to other formats.
+Unicode separated values (USV) is similar to these formats, plus offers more capabilities, editor-friendly markup, and standards-track syntax.
 
 
 ## comma separated values (CSV)

@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euf -o pipefail
+
+# USV example shell script that demonstrates the use of USV characters.
+# This script reads STDIN one character at a time, and prints text.
+
+escape=false
+
+while IFS= read -n1 -r c; do
+    if [ "$escape" = true ]; then
+        printf %s "$c"
+        escape=false
+        continue
+    fi
+    case  "$c" in
+    "␛")
+        printf "\nescape\n"
+        escape=true
+        ;;
+    "␟")
+        printf "\nunit separator\n"
+        ;;
+    "␞")
+        printf "\nrecord separator\n"
+        ;;
+    "␝")
+        printf "\ngroup separator\n"
+        ;;
+    "␜")
+        printf "\nfile separator\n"
+        ;;
+    "␏")
+        printf "\nshift in\n"
+        ;;
+    "␎")
+        printf "\nshift out\n"
+        ;;
+    "␗")
+        printf "\nend of transmission block\n"
+        break
+        ;;
+    *)
+        printf %s "$c"
+        ;;
+    esac
+done
+printf "\n"
