@@ -8,40 +8,41 @@ escape=false
 
 while IFS= read -n1 -r c; do
     if [ "$escape" = true ]; then
-        printf %s "$c"
         escape=false
-        continue
+        case "$c" in 
+        "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
+            printf %s "\nescaped special character: " "$c"
+            ;;
+        *)
+            printf %s "\nescaped typical character: " "$c"
+            ;;        
+        esac
+    else
+        case  "$c" in
+        "␛")
+            printf "\nescape\n"
+            escape=true
+            ;;
+        "␟")
+            printf "\nunit separator\n"
+            ;;
+        "␞")
+            printf "\nrecord separator\n"
+            ;;
+        "␝")
+            printf "\ngroup separator\n"
+            ;;
+        "␜")
+            printf "\nfile separator\n"
+            ;;
+        "␗")
+            printf "\nend of transmission block\n"
+            break
+            ;;
+        *)
+            printf %s "$c"
+            ;;
+        esac
     fi
-    case  "$c" in
-    "␛")
-        printf "\nescape\n"
-        escape=true
-        ;;
-    "␟")
-        printf "\nunit separator\n"
-        ;;
-    "␞")
-        printf "\nrecord separator\n"
-        ;;
-    "␝")
-        printf "\ngroup separator\n"
-        ;;
-    "␜")
-        printf "\nfile separator\n"
-        ;;
-    "␏")
-        printf "\nshift in\n"
-        ;;
-    "␎")
-        printf "\nshift out\n"
-        ;;
-    "␗")
-        printf "\nend of transmission block\n"
-        break
-        ;;
-    *)
-        printf %s "$c"
-        ;;
-    esac
 done
 printf "\n"

@@ -52,7 +52,7 @@ representations, such as using the corresponding USV visible characters;
 however in practice we haven't found much support for this approach.
 
 
-## Why choose USV/USVX over ASV for machine-only data?
+## Why choose USV over ASV for machine-only data?
 
 For machine-only data, such as data that will never be used for human reading or
 human editing, then USV or ASV are similar because both can handle units,

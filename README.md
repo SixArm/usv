@@ -9,32 +9,24 @@ The USV repo is <https://github.com/sixarm/usv>.
 
 ## USV characters
 
-For Units, Records, Groups, Files:
+USV separators:
 
 * ␟ U+241F Symbol for Unit Separator (US).<br>
-  Use it between each data unit, database field, spreadsheet cell, etc.
+  Use between each spreadsheet cell, database field, etc.
 
 * ␞ U+241E Symbol for Record Separator (RS).<br>
-  Use it between each data record, database row, spreadsheet line, etc.
+  Use between each spreadsheet line, database row, etc.
 
 * ␝ U+241D Symbol for Group Separator (GS).<br>
-  Use it between each data group, database table, spreadsheet grid, etc.
+  Use between each spreadsheet grid, database table, etc.
 
 * ␜ U+241C Symbol for File Separator (FS).<br>
-  Use it between each data file, database schema, spreadsheet folio, etc.
+  Use between each spreadsheet folio, database schema, etc.
 
-For Hierarchy Levels:
-
-* ␏ U+240F Symbol for Shift In (SI).<br>
-  Use it to shift inward a level, for nesting, blocks, outlines, etc.
-
-* ␎ U+240E Symbol for Shift Out (SO).<br>
-  Use it to shift outward a level, for nesting, blocks, outlines, etc.
-
-For Adjustments:
+USV modifiers:
 
 * ␛ U+241B Symbol for Escape separator (ESC).<br>
-  Use it to escape the next character.
+  Use it to escape the next character i.e. flip meaning.<br>
 
 * ␗ U+2417 Symbol For End of Transmission Block (EOT).<br>
   Use it to exit the processing i.e. stop parsing here.
@@ -50,7 +42,7 @@ Documentation files here:
 
 * [TODO list](doc/todo.md)
 
-* [BNF: Backus-Naur form for standarization](doc/bnf.md)
+* [BNF: Backus-Naur form for standardization](doc/bnf.md)
 
 * [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons.md)
 
@@ -59,69 +51,33 @@ Documentation files here:
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values.md)
 
 
-## What is a unit?
+## Examples
 
-A unit represents one item. For example, one database field, one spreadsheet cell, etc.
-
-USV with 2 units:
+USV with 2 units i.e. [a,b]:
 
 ```usv
 a␟b
 ```
 
-Pretty print:
-
-```sh
-a,b
-```
-
-## What is a record?
-
-A record is a collection of units. For example, a database row is a collection of database fields, and a spreadsheet line is a collection of spreadsheet cells, etc.
-
-USV with 2 units by 2 records:
+USV with 2 units by 2 records i.e. [[a,b],[c,d]]:
 
 ```usv
 a␟b␞c␟d
 ```
-Pretty print:
 
-```txt
-a,b
-c,d
-```
-
-### What is a group?
-
-A group is a collection of records. For example, a database table is a collection of database rows, and a spreadsheet grid is a collection of spreadsheet lines, etc.
-
-USV with 2 units by 2 records by 2 groups:
+USV with 2 units by 2 records by 2 groups i.e. [[[a,b],[c,d]],[[e,f],[g,h]]]
 
 ```usv
 a␟b␞c␟d␝e␟f␞g␟h
 ```
 
-Pretty print:
-
-```txt
-a,b
-c,d
--
-e,f
-g,h
-```
-
-### What is a file?
-
-A file is a collection of groups. For example, a database schema is a collection of database tables, and a spreadsheet folio is a collection of spreadsheet grids, etc.
-
-USV with 2 units by 2 records by 2 groups by 2 files:
+USV with 2 units by 2 records by 2 groups by 2 files i.e. [[[[a,b],[c,d]],[[e,f],[g,h]]],[[[i,j],[k,l]],[[m,n],[o,p]]]]
 
 ```usv
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
 
-Pretty print:
+This is what the USV looks like when you display it with a simple display script, included in this repository:
 
 ```txt
 a,b
@@ -136,52 +92,30 @@ k,l
 m,n
 o,p
 ```
+</details> 
 
 
-## What is a hierarchy?
+## Escape
 
-A hierarchy is a way to nest data. A hierarchy is made of hierarchy levels.
+The escape separator flips the purpose of the subsequent character:
 
-USV with a shift in and shift out:
+* Escape then a USV character means the character becomes normal data. This is especially useful for protecting special characters.
 
-```usv
-color␏red␎
-```
+* Escape then a normal character means the character becomes ignored. This is especially useful to do line continuations.
 
-Pretty print:
-
-```txt
-color
-{ 
-  red
-}
-```
-
-USV with 2 shift ins and 2 shift outs:
+USV with 2 units, and the first unit contains an Escape + End Transmission Block (ETB); the escaped ETB is content.
 
 ```usv
-colors␏red␏scarlet␎green␏emerald␎blue␏cerulean␎␎
+a␛␗b
 ```
 
-Pretty print:
+USV with 2 units by 2 records, with each line ending with Escape + newline; the escaped newline is ignorable.
 
-```sh
-colors
-{
-    red
-    {
-        scarlet
-    }
-    green
-    {
-        emerald
-    }
-    blue
-    {
-        cerulean
-    }
-}
+```usv
+a␟b␞␛
+c␟d␝␛
 ```
+
 
 ## USV is easy and friendly
 
@@ -213,7 +147,9 @@ USV uses visible letter-width characters, and these are easy to view, select, co
 
 ## Example USV script with character parsing
 
-Print USV characters by using a shell script with `bash`:
+This is a simple example USV script with character parsing. The script is a bash shell script, and should run on any current Unix system or current Bash shell. 
+
+Source: [usv-to-display.bash](bin/usv-to-display.bash)
 
 ```bash
 #!/usr/bin/env bash
@@ -226,42 +162,44 @@ escape=false
 
 while IFS= read -n1 -r c; do
     if [ "$escape" = true ]; then
-        printf %s "$c"
         escape=false
-        continue
+        case "$c" in 
+        "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
+            printf %s "\nescaped special character: " "$c"
+            ;;
+        *)
+            printf %s "\nescaped typical character: " "$c"
+            ;;        
+        esac
+    else
+        case  "$c" in
+        "␛")
+            printf "\nescape\n"
+            escape=true
+            ;;
+        "␟")
+            printf "\nunit separator\n"
+            ;;
+        "␞")
+            printf "\nrecord separator\n"
+            ;;
+        "␝")
+            printf "\ngroup separator\n"
+            ;;
+        "␜")
+            printf "\nfile separator\n"
+            ;;
+        "␗")
+            printf "\nend of transmission block\n"
+            break
+            ;;
+        *)
+            printf %s "$c"
+            ;;
+        esac
     fi
-    case  "$c" in
-    "␛")
-        printf "\nescape\n"
-        escape=true
-        ;;
-    "␟")
-        printf "\nunit separator\n"
-        ;;
-    "␞")
-        printf "\nrecord separator\n"
-        ;;
-    "␝")
-        printf "\ngroup separator\n"
-        ;;
-    "␜")
-        printf "\nfile separator\n"
-        ;;
-    "␏")
-        printf "\nshift in\n"
-        ;;
-    "␎")
-        printf "\nshift out\n"
-        ;;
-    "␗")
-        printf "\nend of transmission block\n"
-        break
-        ;;
-    *)
-        printf %s "$c"
-        ;;
-    esac
 done
+printf "\n"
 ```
 
 

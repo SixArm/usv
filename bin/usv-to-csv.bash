@@ -10,38 +10,37 @@ escape=false
 
 while IFS= read -n1 -r c; do
     if [ "$escape" = true ]; then
-        printf %s "$c"
         escape=false
-        continue
+        case "$c" in 
+        "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
+            printf %s "$c"
+            ;;
+        esac
+    else
+        case  "$c" in
+        "␛")
+            escape=true
+            ;;
+        "␟")
+            printf ","
+            ;;
+        "␞")
+            printf "\n"
+            ;;
+        "␝")
+            >&2 printf "\nerror: group separator\n"
+            ;;
+        "␜")
+            >&2 printf "\nerror: file separator\n"
+            ;;
+        "␗")
+            break
+            ;;
+        *)
+            printf %s "$c"
+            ;;
+        esac
     fi
-    case  "$c" in
-    "␛")
-        escape=true
-        ;;
-    "␟")
-        printf ","
-        ;;
-    "␞")
-        printf "\n"
-        ;;
-    "␝")
-        >&2 printf "\nerror: group separator\n"
-        ;;
-    "␜")
-        >&2 printf "\nerror: file separator\n"
-        ;;
-    "␏")
-        >&2 printf "\nerror: shift in\n"
-        ;;
-    "␎")
-        >&2 printf "\nerror: shift out\n"
-        ;;
-    "␗")
-        break
-        ;;
-    *)
-        printf %s "$c"
-        ;;
-    esac
 done
 printf "\n"
+

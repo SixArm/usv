@@ -5,45 +5,39 @@ set -euf -o pipefail
 # This script reads STDIN one character at a time, and prints text.
 
 escape=false
-indent=""
 
 while IFS= read -n1 -r c; do
     if [ "$escape" = true ]; then
-        printf %s "$c"
         escape=false
-        continue
+        case "$c" in 
+        "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
+            printf %s "$c"
+            ;;
+        esac
+    else
+        case  "$c" in
+        "␛")
+            escape=true
+            ;;
+        "␟")
+            printf ","
+            ;;
+        "␞")
+            printf "\n"
+            ;;
+        "␝")
+            printf "\n-\n"
+            ;;
+        "␜")
+            printf "\n=\n"
+            ;;
+        "␗")
+            break
+            ;;
+        *)
+            printf %s "$c"
+            ;;
+        esac
     fi
-    case  "$c" in
-    "␛")
-        escape=true
-        ;;
-    "␟")
-        printf ","
-        ;;
-    "␞")
-        printf "\n%s" "$indent"
-        ;;
-    "␝")
-        printf "\n%s-\n%s" "$indent" "$indent"
-        ;;
-    "␜")
-        printf "\n%s=\n%s" "$indent" "$indent"
-        ;;
-    "␏")
-        printf "\n%s{" "$indent"
-        indent="$indent    "
-        printf "\n%s" "$indent"
-        ;;
-    "␎")
-        indent=${indent%????}
-        printf "\n%s}\n%s" "$indent" "$indent"
-        ;;
-    "␗")
-        break
-        ;;
-    *)
-        printf %s "$c"
-        ;;
-    esac
 done
 printf "\n"
