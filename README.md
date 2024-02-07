@@ -151,13 +151,15 @@ USV works well with any typical modern editor, font, terminal, shell, search, an
 USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
 
 
-## Example USV script with character parsing
+## Example USV scripts
 
-This repository includes s a simple example USV script with character parsing. The script is a bash shell script, and should run on any current Unix system or current Bash shell. 
+This repository includes example USV scripts with character parsing. The scripts are a bash shell scripts, and should run on any current Unix system or current Bash shell. 
 
-Source: [usv-to-display.bash](bin/usv-to-display.bash)
+* [usv-to-display.bash](bin/usv-to-display.bash)
 
+* [usv-to-debug.bash](bin/usv-to-debug.bash)
 
+* [usv-to-csv.bash](bin/usv-to-csv.bash)
 
 
 ## Legal protection for standardization
