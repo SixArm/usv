@@ -1,63 +1,85 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. USV is similar to comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV).
-
-The USV file name extension is ".usv".
+Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. USV competes with comma separated values (CSV), tab separated values (TSV), ASCII separated values (ASV), and similar systems. USV offers more capabilities and standards-track syntax.
 
 The USV repo is <https://github.com/sixarm/usv>.
 
+The USV file name extension is ".usv".
 
-## Example
-
-This kind of data: `[a, b], [c, d]`
-
-Is represented in USV as: `a␟b␞c␟d`
-
-Which is: "a" + Unit Separator + "b" + Group Separator + "c" + Unit Separator + "d"
+The USV MIME type is "text/usv".
 
 
 ## USV characters
 
-USV separators:
+Separators:
 
-* ␟ U+241F Symbol for Unit Separator (US).<br>
-  Use between each spreadsheet cell, database field, etc.
+* ␟ U+241F Symbol for Unit Separator (US).
 
-* ␞ U+241E Symbol for Record Separator (RS).<br>
-  Use between each spreadsheet line, database row, etc.
+* ␞ U+241E Symbol for Record Separator (RS).
 
-* ␝ U+241D Symbol for Group Separator (GS).<br>
-  Use between each spreadsheet grid, database table, etc.
+* ␝ U+241D Symbol for Group Separator (GS).
 
-* ␜ U+241C Symbol for File Separator (FS).<br>
-  Use between each spreadsheet folio, database schema, etc.
+* ␜ U+241C Symbol for File Separator (FS).
 
-USV modifiers:
+Modifiers:
 
-* ␛ U+241B Symbol for Escape separator (ESC).<br>
-  Use it to escape the next character i.e. flip meaning.<br>
+* ␛ U+241B Symbol for Escape (ESC).
 
-* ␗ U+2417 Symbol For End of Transmission Block (EOT).<br>
-  Use it to exit the processing i.e. stop parsing here.
+* ␗ U+2417 Symbol For End of Transmission Block (EOT).
+
+
+## Example
+
+This kind of data: 
+
+`[a, b], [c, d]`
+
+Is represented in USV as: 
+
+```
+a␟b␞c␟d
+```
+
+If you prefer to see one unit per line, you can escape newlines:
+
+```usv
+a␟␛
+b␞␛
+c␟␛
+d␞␛
+```
+
+If you prefer to see one record per line, you can escape newlines:
+
+```usv
+a␟b␞␛
+c␟d␞␛
+```
 
 
 ## Documentation
 
-Documentation files here:
+Documentation links:
 
 * [Frequently asked questions](doc/faq.md)
 
-* [How to type Unicode characters](doc/how-to-type-unicode-characters.md)
+* [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons.md)
 
-* [TODO list](doc/todo.md)
+* [How to type Unicode characters](doc/how-to-type-unicode-characters.md)
 
 * [BNF: Backus-Naur form for standardization](doc/bnf.md)
 
-* [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons.md)
-
-* [Objections to USV](doc/objections.md)
-
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values.md)
+
+* [TODO list](doc/todo.md)
+
+Example files:
+
+* [hello-world.usv](examples/hello-world.usv) versus [hello-world.csv](examples/hello-world.csv)
+
+* [zen-koans.usv](examples/zen-koans.usv) versus [zen-koans.csv](examples/koans.csv)
+  
+* [blog-posts.usv](examples/blog-posts.usv) versus [blog-posts.csv](examples/koans.csv)
 
 
 ## Examples
@@ -96,7 +118,6 @@ k,l
 m,n
 o,p
 ```
-</details> 
 
 
 ## Escape
