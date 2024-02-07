@@ -8,7 +8,7 @@ set -euf -o pipefail
 
 escape=false
 
-while IFS= read -n1 -r c; do
+while IFS= read -N1 -r c; do
     if [ "$escape" = true ]; then
         escape=false
         case "$c" in 
