@@ -1,10 +1,19 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. If you know about comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV), then you already know much of USV.
+Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. USV is similar to comma separated values (CSV), or tab separated values (TSV), or ASCII separated values (ASV).
 
 The USV file name extension is ".usv".
 
 The USV repo is <https://github.com/sixarm/usv>.
+
+
+## Example
+
+This kind of data: `[a, b], [c, d]`
+
+Is represented in USV as: `a␟b␞c␟d`
+
+Which is: "a" + Unit Separator + "b" + Group Separator + "c" + Unit Separator + "d"
 
 
 ## USV characters
@@ -53,31 +62,26 @@ Documentation files here:
 
 ## Examples
 
-USV with 2 units i.e. [a,b]:
-
-```usv
-a␟b
-```
-
-USV with 2 units by 2 records i.e. [[a,b],[c,d]]:
+USV with 2 units by 2 records by 2 groups by 2 files:
 
 ```usv
 a␟b␞c␟d
 ```
 
-USV with 2 units by 2 records by 2 groups i.e. [[[a,b],[c,d]],[[e,f],[g,h]]]
+This is what the USV looks like when you display it with a simple display script included in this repository:
 
-```usv
-a␟b␞c␟d␝e␟f␞g␟h
+```txt
+a,b
+c,d
 ```
 
-USV with 2 units by 2 records by 2 groups by 2 files i.e. [[[[a,b],[c,d]],[[e,f],[g,h]]],[[[i,j],[k,l]],[[m,n],[o,p]]]]
+USV with 2 units by 2 records by 2 groups by 2 files:
 
 ```usv
 a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
 ```
 
-This is what the USV looks like when you display it with a simple display script, included in this repository:
+This is what the USV looks like when you display it with a simple display script included in this repository:
 
 ```txt
 a,b
@@ -99,9 +103,9 @@ o,p
 
 The escape separator flips the purpose of the subsequent character:
 
-* Escape then a USV character means the character becomes normal data. This is especially useful for protecting special characters.
+* Escape + USV character: the character becomes content.
 
-* Escape then a normal character means the character becomes ignored. This is especially useful to do line continuations.
+* Escape + normal character: the character becomes ignored.
 
 USV with 2 units, and the first unit contains an Escape + End Transmission Block (ETB); the escaped ETB is content.
 
@@ -115,6 +119,8 @@ USV with 2 units by 2 records, with each line ending with Escape + newline; the 
 a␟b␞␛
 c␟d␝␛
 ```
+
+Notably, Escape + newline is especially useful for typical text editor line continuations, and also for ending a text editor file with a newline.
 
 
 ## USV is easy and friendly
@@ -201,6 +207,14 @@ while IFS= read -n1 -r c; do
 done
 printf "\n"
 ```
+
+
+
+## Legal protection for standardization
+
+The USV project aims to become a free open source IANA standard, much like the IANA standard for CSV.
+
+Until the standardization happens, the terms "USV" and "Unicode Separated Values" are trademarks of this project, and this repository is copyright 2022-2024. When IANA approves the standard, then the trademarks and copyrights become public domain.
 
 
 ## Conclusion
