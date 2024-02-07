@@ -1,0 +1,31 @@
+a
+unit separator
+b
+record separator
+c
+unit separator
+d
+group separator
+e
+unit separator
+f
+record separator
+g
+unit separator
+h
+file separator
+i
+unit separator
+j
+record separator
+k
+unit separator
+l
+group separator
+m
+unit separator
+n
+record separator
+o
+unit separator
+p
