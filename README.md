@@ -77,9 +77,9 @@ Example files:
 
 * [hello-world.usv](examples/hello-world.usv) versus [hello-world.csv](examples/hello-world.csv)
 
-* [zen-koans.usv](examples/zen-koans.usv) versus [zen-koans.csv](examples/koans.csv)
+* [zen-koans.usv](examples/zen-koans.usv) versus [zen-koans.csv](examples/zen-koans.csv)
   
-* [blog-posts.usv](examples/blog-posts.usv) versus [blog-posts.csv](examples/koans.csv)
+* [blog-posts.usv](examples/blog-posts.usv) versus [blog-posts.csv](examples/blog-posts.csv)
 
 * [end-of-transmission-block.usv](examples/end-of-transmission-block.usv)
 
