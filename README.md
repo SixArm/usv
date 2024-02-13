@@ -4,9 +4,9 @@ Unicode separated values (USV) is a data format that uses Unicode symbol charact
 
 The USV repo is <https://github.com/sixarm/usv>.
 
-The USV file name extension is ".usv".
+The USV file name extension is "usv".
 
-The USV MIME type is "text/usv".
+The USV media type is "text/usv". We have applied for IANA registration.
 
 
 ## USV characters
@@ -173,7 +173,7 @@ USV works well with any typical modern editor, font, terminal, shell, search, an
 USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
 
 
-## Example USV scripts
+## USV source code
 
 This repository includes example USV scripts with character parsing. The scripts are a bash shell scripts, and should run on any current Unix system or current Bash shell. 
 
@@ -182,6 +182,14 @@ This repository includes example USV scripts with character parsing. The scripts
 * [usv-to-debug.bash](bin/usv-to-debug.bash)
 
 * [usv-to-csv.bash](bin/usv-to-csv.bash)
+
+USV is available as a Rust crate:
+
+* `cargo install usv`
+  
+* [https://crates.io/crate/usv](https://crates.io/crate/usv)
+
+* [https://github.com/sixarm/usv-rust-crate](https://github.com/sixarm/usv-rust-crate) (GitHub repository)
 
 
 ## Legal protection for standardization
