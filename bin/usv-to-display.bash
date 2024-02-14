@@ -9,7 +9,7 @@ escape=false
 while IFS= read -N1 -r c; do
     if [ "$escape" = true ]; then
         escape=false
-        case "$c" in 
+        case "$c" in
         "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
             printf %s "$c"
             ;;

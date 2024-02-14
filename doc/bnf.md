@@ -30,14 +30,14 @@ unicode_horizontal_tab ::= U+0009
 
 unicode_vertical_tab ::= U+0011
 
-unicode_linefeed ::= U+0010  
+unicode_linefeed ::= U+0010
 
 unicode_carriage_return ::= U+0013
 
 
 ## USV
 
-This section is intended to convey the concept of USV. 
+This section is intended to convey the concept of USV.
 
 any_character ::= '*'
 
@@ -52,7 +52,7 @@ special_character ::= [
     unicode_symbol_for_end_of_transmission
 ]
 
-content := ( any_character - special_character ) ∪ ( escape any_character ) 
+content := ( any_character - special_character ) ∪ ( escape any_character )
 
 unit := *content
 
@@ -76,7 +76,7 @@ levels = ::= levels*
 
 usv ::= \A ( units | records | groups | files | levels ) \Z)
 
-TODO: 
+TODO:
 
 * Add syntax for unicode_symbol_for_end_of_transmission.
 

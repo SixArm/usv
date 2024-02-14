@@ -8,6 +8,8 @@ The USV file name extension is "usv".
 
 The USV media type is "text/usv". We have applied for IANA registration.
 
+[Frequently asked questions](doc/faq.md)
+
 
 ## USV characters
 
@@ -25,35 +27,49 @@ Modifiers:
 
 * ␛ U+241B Symbol for Escape (ESC).
 
-* ␗ U+2417 Symbol For End of Transmission Block (EOT).
+* ␗ U+2417 Symbol for End of Transmission Block (ETB).
 
 
-## Example
+## Hello World
 
-This kind of data: 
+This kind of data …
 
-`[a, b], [c, d]`
-
-Is represented in USV as: 
-
-```
-a␟b␞c␟d
+```txt
+hello, world
 ```
 
-If you prefer to see one unit per line, you can escape newlines:
+… is represented in USV as two units:
 
 ```usv
-a␟␛
-b␞␛
-c␟␛
-d␞␛
+hello␟world␟
 ```
 
-If you prefer to see one record per line, you can escape newlines:
+Optional: if you prefer to see one unit per line, then end each line with a USV escape:
 
 ```usv
-a␟b␞␛
-c␟d␞␛
+hello␟␛
+world␟␛
+```
+
+## Hello World Goodnight Moon
+
+This kind of data …
+
+```txt
+[ hello, world ], [ goodnight, moon ]
+```
+
+… is represented in USV as two records, each with two units:
+
+```usv
+hello␟world␞goodnight␟moon␞
+```
+
+Optional: if you prefer to see one record per line, then end each line with a USV escape:
+
+```usv
+hello␟world␞␛
+goodnight␟moon␞␛
 ```
 
 
@@ -78,30 +94,18 @@ Example files:
 * [hello-world.usv](examples/hello-world.usv) versus [hello-world.csv](examples/hello-world.csv)
 
 * [zen-koans.usv](examples/zen-koans.usv) versus [zen-koans.csv](examples/zen-koans.csv)
-  
+
 * [blog-posts.usv](examples/blog-posts.usv) versus [blog-posts.csv](examples/blog-posts.csv)
 
 * [end-of-transmission-block.usv](examples/end-of-transmission-block.usv)
+
 
 ## Examples
 
 USV with 2 units by 2 records by 2 groups by 2 files:
 
 ```usv
-a␟b␞c␟d
-```
-
-This is what the USV looks like when you display it with a simple display script included in this repository:
-
-```txt
-a,b
-c,d
-```
-
-USV with 2 units by 2 records by 2 groups by 2 files:
-
-```usv
-a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p
+a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p␜
 ```
 
 This is what the USV looks like when you display it with a simple display script included in this repository:
@@ -125,24 +129,22 @@ o,p
 
 The escape separator flips the purpose of the subsequent character:
 
-* Escape + USV character: the character becomes content.
+* Escape + USV special character: the character is treated as content.
 
-* Escape + normal character: the character becomes ignored.
+* Escape + USV typical character: the character is ignored.
 
-USV with 2 units, and the first unit contains an Escape + End Transmission Block (ETB); the escaped ETB is content.
+USV with a unit that contains an Escape + End Transmission Block (ETB), which is treated as content:
 
 ```usv
-a␛␗b
+a␛␗b␟
 ```
 
-USV with 2 units by 2 records, with each line ending with Escape + newline; the escaped newline is ignorable.
+Escape + newline can be helpful for typical text editor line continuations:
 
 ```usv
 a␟b␞␛
-c␟d␝␛
+c␟d␞␛
 ```
-
-Notably, Escape + newline is especially useful for typical text editor line continuations, and also for ending a text editor file with a newline.
 
 
 ## USV is easy and friendly
@@ -175,7 +177,7 @@ USV uses visible letter-width characters, and these are easy to view, select, co
 
 ## USV source code
 
-This repository includes example USV scripts with character parsing. The scripts are a bash shell scripts, and should run on any current Unix system or current Bash shell. 
+This repository includes example USV scripts with character parsing. The scripts are a bash shell scripts, and should run on any current Unix system or current Bash shell.
 
 * [usv-to-display.bash](bin/usv-to-display.bash)
 
@@ -186,7 +188,7 @@ This repository includes example USV scripts with character parsing. The scripts
 USV is available as a Rust crate:
 
 * `cargo install usv`
-  
+
 * [https://crates.io/crate/usv](https://crates.io/crate/usv)
 
 * [https://github.com/sixarm/usv-rust-crate](https://github.com/sixarm/usv-rust-crate) (GitHub repository)

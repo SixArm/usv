@@ -5,7 +5,7 @@ On many systems, you can type Unicode characters this way:
 1. Press and hold the Alt key a.k.a. Option key.
 
 2. Type + and the Unicode character hexadecimal code, such as +241f for Unit Separator.
-   
+
 3. Release the Alt key a.k.a. Option key.
 
 On Apple macOS, you may need to do a one-time setup:

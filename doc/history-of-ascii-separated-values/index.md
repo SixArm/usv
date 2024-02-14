@@ -25,7 +25,7 @@ The smallest data items to be stored in a database are called units in the ASCII
 
 ## ASCII 14 = Shift Out & ASCII 15 = Shift In
 
-The original purpose of these characters was to provide a way to shift a coloured ribbon, split longitudinally usually with red and black, up and down to the other color in an electro-mechanical typewriter or teleprinter, such as the Teletype Model 38, to automate the same function of manual typewriters. Black was the conventional ambient default color and so was shifted "in" or "out" with the other color on the ribbon. 
+The original purpose of these characters was to provide a way to shift a coloured ribbon, split longitudinally usually with red and black, up and down to the other color in an electro-mechanical typewriter or teleprinter, such as the Teletype Model 38, to automate the same function of manual typewriters. Black was the conventional ambient default color and so was shifted "in" or "out" with the other color on the ribbon.
 
 ➤ <https://wikipedia.org/wiki/Shift_Out_and_Shift_In_characters>
 
