@@ -8,7 +8,7 @@ The USV file name extension is "usv".
 
 The USV media type is "text/usv". We have applied for IANA registration.
 
-[Frequently asked questions](doc/faq.md)
+[Frequently asked questions](doc/faq/)
 
 
 ## USV characters
@@ -51,6 +51,15 @@ hello␟␛
 world␟␛
 ```
 
+Optional: you can use the [USV Rust crate](https://crates.io/crates/usv/):
+
+```rust
+use usv::*;
+let input = "hello␟world␟";
+let units = input.units().collect();
+```
+
+
 ## Hello World Goodnight Moon
 
 This kind of data …
@@ -72,22 +81,29 @@ hello␟world␞␛
 goodnight␟moon␞␛
 ```
 
+Optional: you can use the [USV Rust crate](https://crates.io/crates/usv/):
+
+```rust
+use usv::*;
+let input = "hello␟world␞goodnight␟moon␞";
+let records = input.records().collect();
+```
 
 ## Documentation
 
 Documentation links:
 
-* [Frequently asked questions](doc/faq.md)
+* [Frequently asked questions](doc/faq/)
 
-* [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons.md)
+* [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons/)
 
-* [How to type Unicode characters](doc/how-to-type-unicode-characters.md)
+* [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
-* [BNF: Backus-Naur form for standardization](doc/bnf.md)
+* [BNF: Backus-Naur form for standardization](doc/bnf/)
 
-* [History of ASCII separated values (ASV)](history-of-ascii-separated-values.md)
+* [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
-* [TODO list](doc/todo.md)
+* [TODO list](doc/todo/)
 
 Example files:
 

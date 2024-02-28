@@ -20,7 +20,7 @@ Within a group (or table) the records are separated with RS or record separator.
 
 ## ASCII 31 = US = Unit separator
 
-The smallest data items to be stored in a database are called units in the ASCII definition. We would call them field now. The unit separator separates these fields in a serial data storage environment. Most current database implementations require that fields of most types have a fixed length. Enough space in the record is allocated to store the largest possible member of each field, even if this is not necessary in most cases. This costs a large amount of space in many situations. The US control code allows all fields to have a variable length. If data storage space is limited—as in the sixties—this is a good way to preserve valuable space. On the other hand is serial storage far less efficient than the table driven RAM and disk implementations of modern times. I can't imagine a situation where modern SQL databases are run with the data stored on paper tape or magnetic reels.
+The smallest data item to be stored in a database is called a unit in the ASCII definition. The unit separator separates these fields in a serial data storage environment. The US control code allows all fields to have a variable length. If data storage space is limited—as in the sixties—this is a good way to preserve valuable space. On the other hand is serial storage far less efficient than the table driven RAM and disk implementations of modern times.
 
 
 ## ASCII 14 = Shift Out & ASCII 15 = Shift In
