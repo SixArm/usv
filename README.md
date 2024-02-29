@@ -99,9 +99,11 @@ Documentation links:
 
 * [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
+* [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
+
 * [BNF: Backus-Naur form for standardization](doc/bnf/)
 
-* [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
+* [RRC: Request for Commands for standardization](doc/rfc/)
 
 * [TODO list](doc/todo/)
 

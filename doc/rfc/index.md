@@ -325,5 +325,3 @@ Acknowledgement
 
    Funding for the RFC Editor function is currently provided by the
    Internet Society.
-
-Shafranovich                 Informational                      [Page 8]
