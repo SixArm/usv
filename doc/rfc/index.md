@@ -98,9 +98,17 @@ RFC ??         Common Format and MIME Type for CSV Files        May 2022
 
    data = [header] [body] *ETB *chaff
 
-   header = [ unit / record / group / file ] 
+   header = [ unit_run / record_run / group_run / file_run ] 
 
-   body = [ units / records / groups / files ]
+   body = *( unit_run / record_run / group_run / file_run )
+
+   file_run = *( file FS ) file ( FS / ETB )
+
+   group_run = *( group GS ) group ( GS / FS / ETB )
+
+   record_run = *( record RS ) record ( RS / GS / FS / ETB )
+
+   unit_run = *( unit US ) unit ( US / RS / GS / FS / ETB )
 
    Semantics:
 
@@ -122,11 +130,13 @@ RFC ??         Common Format and MIME Type for CSV Files        May 2022
 
    Details:
 
-   content = *( '*' / escape-special / escape-typical )
+   content = *( typical-character / ESC '*' )
 
-   escape-special = ESC special
+   ESC-character = ESC ( special-character / typical-character )
 
-   escape-typical = ESC typical
+   special-character = US / RS / GS / FS / ESC / ETB
+
+   typical-character = '*' - special-character
 
    Special characters:
 
@@ -141,12 +151,6 @@ RFC ??         Common Format and MIME Type for CSV Files        May 2022
    ESC = U+241B Symbol for Escape (ESC)
 
    ETB = U+2417 Symbol for End of Transmission Block (ETB)
-
-   TODO:
-
-   * Add syntax for unicode_symbol_for_end_of_transmission.
-
-   * Add syntax for a level that contains units, records, groups, files.
 
 
 Henderson                    Informational                   [Section 2]

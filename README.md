@@ -101,11 +101,13 @@ Documentation links:
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
-* [BNF: Backus-Naur form for standardization](doc/bnf/)
-
-* [RRC: Request for Commands for standardization](doc/rfc/)
-
 * [TODO list](doc/todo/)
+
+Standardization work in progress:
+
+* [Request for Comments (RFC)](doc/rfc/)
+
+* [Augmented Backus–Naur form (ABNF)](doc/abnf/)
 
 Example files:
 
