@@ -54,6 +54,6 @@ unit = *content-character
 
 data = [header] [body] *ETB *'*'
 
-header = [ unit_run / record_run / group_run / file_run ] 
+header = [ unit_run / record_run / group_run / file_run ]
 
 body = *( unit_run / record_run / group_run / file_run )

@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    draft-rfcxml-general-template-annotated-00
+
+    This template includes examples of most of the features of RFCXML with comments explaining
+    how to customise them, and examples of how to achieve specific formatting.
+
+    Documentation is at https://authors.ietf.org/en/templates-and-schemas
+
+    To parse this XML, such as to create a PDF:
+    https://author-tools.ietf.org/
+
+    RFCXML vocabulary:
+    https://authors.ietf.org/rfcxml-vocabulary
+
+-->
+<?xml-model href="rfc7991bis.rnc"?>  <!-- Required for schema validation and schema-aware editing -->
+<!-- <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?> -->
+<!-- This third-party XSLT can be enabled for direct transformations in XML processors, including most browsers -->
+
+<!DOCTYPE rfc [
+  <!ENTITY nbsp    "&#160;">
+  <!ENTITY zwsp   "&#8203;">
+  <!ENTITY nbhy   "&#8209;">
+  <!ENTITY wj     "&#8288;">
+]>
+<!-- If further character entities are required then they should be added to the DOCTYPE above.
+     Use of an external entity file is not recommended. -->
+
+<rfc
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  category="exp"
+  docName="draft-unicode-separated-values-00"
+  ipr="trust200902"
+  obsoletes=""
+  updates=""
+  submissionType="IETF"
+  xml:lang="en"
+  version="3">
+<!--
+    * docName should be the name of your draft
+    * category should be one of std, bcp, info, exp, historic
+    * ipr should be one of trust200902, noModificationTrust200902, noDerivativesTrust200902, pre5378Trust200902
+    * updates can be an RFC number as NNNN
+    * obsoletes can be an RFC number as NNNN
+-->
+
+  <front>
+    <title abbrev="Unicode Separated Values (USV)">Unicode Separated Values (USV)</title> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#title-4 -->
+    <!--  The abbreviated title is required if the full title is longer than 39 characters -->
+
+    <seriesInfo name="Internet-Draft" value="unicode-separated-values"/> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#seriesinfo -->
+    <!-- Set value to the name of the draft  -->
+
+    <author fullname="Joel Parker Henderson" initials="J" role="editor" surname="Henderson"> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#author -->
+    <!-- initials should not include an initial for the surname -->
+    <!-- role="editor" is optional -->
+    <!-- Can have more than one author -->
+
+    <!-- all of the following elements are optional -->
+      <address> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#address -->
+        <postal>
+          <!-- Reorder these if your country does things differently -->
+          <street>601 Van Ness Ave #E3-359</street>
+          <city>San Francisco</city>
+          <region>CA</region>
+          <code>94102</code>
+          <country>US</country>
+          <!-- Can use two letter country code -->
+        </postal>
+        <phone>1-415-317-2700</phone>
+        <email>joel@joelparkerhenderson.com</email>
+        <!-- Can have more than one <email> element -->
+        <uri>https://linkedin.com/in/joelparkerhenderson</uri>
+      </address>
+    </author>
+
+    <date year="2024" month="3" day="1"/> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#date -->
+    <!-- On draft subbmission:
+         * If only the current year is specified, the current day and month will be used.
+         * If the month and year are both specified and are the current ones, the current day will
+           be used
+         * If the year is not the current one, it is necessary to specify at least a month and day="1" will be used.
+    -->
+
+    <area>General</area>
+    <workgroup>Internet Engineering Task Force</workgroup>
+    <!-- "Internet Engineering Task Force" is fine for individual submissions.  If this element is
+          not present, the default is "Network Working Group", which is used by the RFC Editor as
+          a nod to the history of the RFC Series. -->
+
+    <keyword>usv</keyword>
+    <keyword>data</keyword>
+    <keyword>format</keyword>
+    <!-- Multiple keywords are allowed.  Keywords are incorporated into HTML output files for
+         use by search engines. -->
+
+    <abstract>
+      <t>Unicode Separated Values (USV) is a data format that uses Unicode separator characters.</t>
+    </abstract>
+
+  </front>
+
+  <middle>
+
+    <section>
+    <!-- The default attributes for <section> are numbered="true" and toc="default" -->
+      <name>Introduction</name>
+
+      <t>
+        Unicode Separated Values (USV) is a data format useful for exchanging
+        and converting data between various spreadsheet programs, databases,
+        and streaming data services. This RFC explains USV.
+      </t>
+
+      <t>
+        Additionally, we propose a new media type "text/usv", to be registered
+        with IANA.
+      </t>
+      <t>
+        We provide information references for a 
+        USV git repository <xref target="usv-git-repository"/> 
+        and a programming implementation as a 
+        USV Rust crate <xref target="usv-rust-crate"/>.
+      </t>
+      <section anchor="requirements">
+      <!-- anchor is an optional attribute -->
+        <name>Requirements Language</name>
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+          "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT
+          RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+          interpreted as described in BCP 14 <xref target="RFC2119"/>
+          <xref target="RFC8174"/> when, and only when, they appear in
+          all capitals, as shown here.</t>
+      </section>
+      <!-- The 'Requirements Language' section is optional -->
+    </section>
+
+    <section>
+      <name>Unicode symbols in use</name>
+
+      <t>Separators:</t>
+
+      <ul>
+        <li>␟ U+241F Symbol for Unit Separator (US)</li>
+        <li>␞ U+241E Symbol for Record Separator (RS)</li>
+        <li>␝ U+241D Symbol for Group Separator (GS)</li>
+        <li>␜ U+241C Symbol for File Separator (FS)</li>
+      </ul>
+
+      <t>Modifiers:</t>
+
+      <ul>
+        <li>␛ U+241B Symbol for Escape (ESC)</li>
+        <li>␗ U+2417 Symbol for End of Transmission Block (ETB)</li>
+      </ul>
+
+    </section>
+
+    <section>
+      <name>Definition of the USV Format</name>
+
+      <section>
+        <name>Data</name>
+        <t>
+          Data is comprised of units, records, groups, and files.
+        </t>
+      </section>
+
+      <section>
+        <name>Unit</name>
+        <t>
+          A unit is comprised of content characters.
+          It runs until a unit separator.
+        </t>
+        <t>
+          Example unit and unit separator:
+        </t>
+        <sourcecode name="unit-and-unit-separator.usv" type="usv" markers="true">
+<![CDATA[
+aaa␟
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>Record</name>
+        <t>
+          A record is comprised of units.
+          It runs until a record separator.
+        </t>
+        <t>
+          Example record and record separator:
+        </t>
+        <sourcecode name="record-and-record-separator.usv" type="usv" markers="true">
+<![CDATA[
+aaa␟bbb␟␞
+]]>
+        </sourcecode>
+
+      </section>
+
+      <section>
+        <name>Group</name>
+        <t>
+          A group is comprised of records.
+          It runs until a group separator.
+        </t>
+        <t>
+          Example group and group separator:
+        </t>
+        <sourcecode name="group-and-group-separator.usv" type="usv" markers="true">
+<![CDATA[
+aaa␟bbb␟␞ccc␟ddd␟␞␝
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>File</name>
+        <t>
+          A file is comprised of groups.
+          It runs until a file separator.
+        </t>
+        <t>
+          Example file and file separator:
+        </t>
+        <sourcecode name="file-and-file-separator.usv" type="usv" markers="true">
+<![CDATA[
+aaa␟bbb␟␞ccc␟ddd␟␞␝eee␟fff␟␞ggg␟hhh␟␞␝␜
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>Header</name>
+        <t>
+          There may be an optional header appearing as the first item and with
+          the same format as normal items.  This header will contain names
+          corresponding to the fields in the data, and should contain the same
+          number of fields as the rest of data. The presence or absence of the
+          header line should be indicated via the optional "header" parameter
+          of this media type.
+        </t>
+        <t>
+          For example:
+        </t>
+        <sourcecode name="header.usv" type="usv" markers="true">
+<![CDATA[
+name␟name␟␞aaa␟bbb␟␞
+]]>
+        </sourcecode>
+      </section>
+
+    </section>
+
+    <section>
+      <name>ABNF grammar</name>
+
+      <section>
+
+        <name>Semantics</name>
+
+        <t>usv = *files</t>
+
+        <t>file = *groups</t>
+
+        <t>group = *records</t>
+
+        <t>record = *units</t>
+
+        <t>unit = *content-characters</t>
+
+      </section>
+
+      <section>
+
+        <name>Syntax</name>
+
+        <t>usv = 0*1( header ) body 0*1( ETB ); anything after is chaff</t>
+
+        <t>header = 1( unit_run / record_run / group_run / file_run )</t>
+
+        <t>body = *( unit_run / record_run / group_run / file_run )</t>
+
+        <t>file_run = *( file FS ) file ; next MUST be ( FS / ETB )</t>
+
+        <t>group_run = *( group GS ) group ; next MUST be ( GS / FS / ETB )</t>
+
+        <t>record_run = *( record RS ) record ; next MUST be ( RS / GS / FS / ETB )</t>
+
+        <t>unit_run = *( unit US ) unit ; next MUST be ( US / RS / GS / FS / ETB )</t>
+
+      </section>
+
+      <section>
+
+        <name>Character classes</name>
+
+        <t>content-character = *( typical-character / ESC '*' )</t>
+
+        <t>typical-character = '*' - special-character</t>
+
+        <t>special-character = US / RS / GS / FS / ESC / ETB</t>
+
+        <t>escape-character = ESC ( special-character / typical-character )</t>
+
+      </section>
+
+      <section>
+
+        <name>Unicode symbols</name>
+
+        <t>US = U+241F Symbol for Unit Separator (US)</t>
+
+        <t>RS = U+241E Symbol for Record Separator (RS)</t>
+
+        <t>GS = U+241D Symbol for Group Separator (GS)</t>
+
+        <t>FS = U+241C Symbol for File Separator (FS)</t>
+
+        <t>ESC = U+241B Symbol for Escape (ESC)</t>
+
+        <t>ETB = U+2417 Symbol for End of Transmission Block (ETB)</t>
+
+      </section>
+
+    </section>
+
+    <section>
+      <name>Examples</name>
+
+      <section>
+        <name>Hello World</name>
+        <t>
+          This kind of data …
+        </t>
+        <sourcecode name="hello-world.txt" type="txt" markers="true">
+<![CDATA[
+hello, world
+]]>
+        </sourcecode>
+        <t>
+          … is represented in USV as two units:
+        </t>
+        <sourcecode name="hello-world.usv" type="usv" markers="true">
+<![CDATA[
+hello␟world␟
+]]>
+        </sourcecode>
+        <t>
+          Optional: if you prefer to see one unit per line, then end each line with a USV escape:
+        </t>
+        <sourcecode name="hello-world-with-lines.usv" type="usv" markers="true">
+<![CDATA[
+hello␟␛
+world␟␛
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>Hello World Goodnight Moon</name>
+        <t>
+          This kind of data …
+        </t>
+        <sourcecode name="hello-world-goodnight-moon.txt" type="txt" markers="true">
+<![CDATA[
+[ hello, world ], [ goodnight, moon ]
+]]>
+        </sourcecode>
+        <t>
+          … is represented in USV as two records, each with two units:
+        </t>
+        <sourcecode name="hello-world-goodnight-moon.usv" type="usv" markers="true">
+<![CDATA[
+hello␟world␞goodnight␟moon␞
+]]>
+        </sourcecode>
+        <t>
+          Optional: if you prefer to see one record per line, then end each line with a USV escape:
+        </t>
+        <sourcecode name="hello-world-goodnight-moon-with-lines.usv" type="usv" markers="true">
+<![CDATA[
+hello␟world␞␛
+goodnight␟moon␞␛
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>Units, Records, Groups, Files</name>
+        <t>
+          USV with 2 units by 2 records by 2 groups by 2 files:
+        </t>
+        <sourcecode name="units-records-groups-files.usv" type="usv" markers="true">
+<![CDATA[
+a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p␜
+]]>
+        </sourcecode>
+        <t>
+          This is what the USV can look like when you display it with a simple display tool:
+        </t>
+        <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
+<![CDATA[
+a,b
+c,d
+-
+e,f
+g,h
+=
+i,j
+k,l
+-
+m,n
+o,p
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>Articles</name>
+        <t>
+          USV can format paragraphs, such as in this example data stream of articles:
+        </t>
+        <sourcecode name="articles.usv" type="usv" markers="true">
+<![CDATA[
+Title One
+␟
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+␞
+Title Two
+␟
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+sunt in culpa qui officia deserunt mollit anim id est laborum.
+␞
+Title Three
+␟
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+␞
+]]>
+        </sourcecode>
+      </section>
+    </section>
+
+
+    <section>
+      <name>Source Code Examples</name>
+      <t>Hello World using Rust and the USV crate</t>
+      <sourcecode name="usv-rust-crate-units.rs" type="rust" markers="true">
+<![CDATA[
+use usv::*;
+let input = "hello␟world␟";
+let records = input.units().collect();
+]]>
+      </sourcecode>
+      <!-- markers="true" means that the rendered file will have <CODE BEGINS> and <CODE ENDS> added. -->
+      <!-- The CDATA wrapper is optional but is strongly recommended to avoid any unexpected processing
+            or issues with angle brackets.
+            <sourcecode></sourcecode> can optionally be wrapped in <figure></figure> -->
+      <t>Hello World Goodnight Moon using Rust and the USV crate</t>
+      <sourcecode name="usv-rust-crate-records.rs" type="rust" markers="true">
+<![CDATA[
+use usv::*;
+let input = "hello␟world␞goodnight␟moon␞";
+let records = input.records().collect();
+]]>
+      </sourcecode>
+    </section>
+
+    <section>
+    <!-- All drafts are required to have an IANA considerations section. See RFC 8126 for a guide.-->
+      <name>MIME media type registration for text/usv</name>
+      <t>
+        This section provides the MIME media type registration application information.
+      </t>
+      <t>
+        To: ietf-types@iana.org
+      </t>
+      <t>
+        Subject: Registration of MIME media type text/usv
+      </t>
+      <t>
+        MIME media type name: text
+      </t>
+      <t>
+        MIME subtype name: usv
+      </t>
+      <t>
+        Required parameters: none
+      </t>
+
+      <section>
+        <name>Optional parameters: charset, header</name>
+        <t>
+          Common usage of USV is UTF-8, but other character sets defined by IANA
+          for the "text" tree may be used in conjunction with the "charset"
+          parameter.
+        </t>
+        <t>
+          The "header" parameter indicates the presence or absence of the
+          header line.  Valid values are "present" or "absent".
+          Implementors choosing not to use this parameter must make their
+          own decisions as to whether the header line is present or absent.
+        </t>
+      </section>
+      <section>
+        <name>Encoding considerations</name>
+        <t>
+          This media type uses LF to denote line breaks.  However, implementors
+          should be aware that some implementations may not conform i.e. may
+          incorrectly use other values.
+        </t>
+      </section>
+      <section>
+        <name>Security considerations</name>
+        <t>
+          USV files contain passive text data that should not pose any
+          risks.  However, it is possible in theory that malicious binary
+          data may be included in order to exploit potential buffer overruns
+          in the program processing USV data.  Additionally, private data
+          may be shared via this format (which of course applies to any text
+          data).
+        </t>
+      </section>
+      <section>
+        <name>Interoperability considerations</name>
+        <t>
+          Implementors should "be conservative in what you do, be liberal in
+          what you accept from others" (RFC 793 [8]) when processing USV data.
+        </t>
+        <t>
+          Implementations deciding not to use the optional "header"
+          parameter must make their own decision as to whether the header is
+          absent or present.
+        </t>
+      </section>
+      <section>
+        <name>Published specification</name>
+        <t>
+          https://github.com/sixarm/usv
+        </t>
+      </section>
+      <section>
+        <name>Applications that use this media type</name>
+        <t>
+          Spreadsheet programs, such as with import/export.
+          Database programs, such as with loading/saving text.
+          Data conversion utilities.
+        </t>
+      </section>
+      <section>
+        <name>Additional information</name>
+        <t>
+          Magic number(s): none
+        </t>
+        <t>
+          File extension(s): usv
+        </t>
+        <t>
+          Apple macOS File Type Code(s): TEXT
+        </t>
+        <t>
+          Intended usage: COMMON
+        </t>
+        <t>
+          Author/Change controller: IESG
+        </t>
+        <t>Contact: Joel Parker Henderson &lt;joel@joelparkerhenderson.com&gt;
+        </t>
+      </section>
+    </section>
+
+    <section anchor="IANA">
+    <!-- All drafts are required to have an IANA considerations section. See RFC 8126 for a guide.-->
+      <name>IANA Considerations</name>
+      <t>We are requesting IANA to create a standard MIME media type "text/usv".</t>
+      <t>We have filed an IANA request for this, with same contact information.</t>
+
+    </section>
+
+    <section anchor="Security">
+      <!-- All drafts are required to have a security considerations section. See RFC 3552 for a guide. -->
+      <name>Security Considerations</name>
+      <t>This document should not affect the security of the Internet.</t>
+    </section>
+
+    <!-- NOTE: The Acknowledgements and Contributors sections are at the end of this template -->
+  </middle>
+
+  <back>
+    <references>
+      <name>References</name>
+      <references>
+        <name>Normative References</name>
+
+        <!-- "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words" -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+
+        <!-- "Augmented BNF for Syntax Specifications: ABNF"-->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2234.xml"/>
+
+        <!-- "Multipurpose Internet Mail Extensions (MIME) Part Four: Registration Procedures" -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2048.xml"/>
+
+        <!-- ""Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types" -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2046.xml"/>
+
+      </references>
+
+      <references>
+        <name>Informative References</name>
+
+        <reference anchor="usv-git-repository">
+        <!-- Example minimum reference -->
+          <front>
+            <title>USV repository at https://github.com/sixarm/usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2022"/>
+          </front>
+        </reference>
+
+        <reference anchor="usv-rust-crate">
+        <!-- Example minimum reference -->
+          <front>
+            <title>USV rust crate at https://crates.io/crates/usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
+          <!-- Manually added reference -->
+          <front>
+            <title>Key words for use in RFCs to Indicate Requirement Levels</title>
+            <author initials="S." surname="Bradner" fullname="S. Bradner">
+              <organization/>
+            </author>
+            <date year="1997" month="March"/>
+            <abstract>
+              <t>In many standards track documents several words are used to signify the requirements in the specification. These words are often capitalized. This document defines these words as they should be interpreted in IETF documents. This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.
+              </t>
+            </abstract>
+          </front>
+          <seriesInfo name="BCP" value="14"/>
+          <seriesInfo name="RFC" value="2119"/>
+          <seriesInfo name="DOI" value="10.17487/RFC2119"/>
+        </reference>
+
+      </references>
+    </references>
+
+    <section>
+      <name>Appendix 1</name>
+      <t>This becomes an Appendix</t>
+    </section>
+
+    <section anchor="Acknowledgements" numbered="false">
+      <!-- an Acknowledgements section is optional -->
+      <name>Acknowledgements</name>
+      <t>
+        The author would like to thank Y. Shafranovich, author of the CSV RFC,
+        which provided guidance for this USV RFC.
+      </t>
+      <t>
+        A special thank you goes to P.X.V.
+      </t>
+    </section>
+
+    <section anchor="Contributors" numbered="false">
+      <!-- a Contributors section is optional -->
+      <name>Contributors</name>
+      <t>Thanks to all of the contributors.</t>
+      <contact fullname="Joel Parker Henderson" initials="J" surname="Henderson"><!-- https://authors.ietf.org/en/rfcxml-vocabulary#contact-->
+        <!-- including contact information for contributors is optional -->
+        <address>
+          <email>joel@joelparkerhenderson.com</email>
+        </address>
+      </contact>
+    </section>
+
+ </back>
+</rfc>
