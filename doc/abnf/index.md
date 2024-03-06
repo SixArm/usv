@@ -19,10 +19,12 @@ ESC = U+241B Symbol for Escape (ESC)
 
 ETB = U+2417 Symbol for End of Transmission Block (ETB)
 
+SYN = U+2416 Symbol For Synchronous Idle (SYN).
+
 
 ## USV characters
 
-special-character = US / RS / GS / FS / ESC / ETB
+special-character = US / RS / GS / FS / ESC / ETB / SYN
 
 typical-character = '*' - special-character
 

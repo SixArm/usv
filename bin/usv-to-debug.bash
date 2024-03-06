@@ -39,6 +39,10 @@ while IFS= read -N1 -r c; do
             printf "\nend of transmission block\n"
             break
             ;;
+        "␖")
+            printf "\synchronous idle\n"
+            break
+            ;;
         *)
             printf %s "$c"
             ;;

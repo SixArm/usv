@@ -36,6 +36,8 @@ while IFS= read -N1 -r c; do
         "␗")
             break
             ;;
+        "␖")
+            ;;
         *)
             printf %s "$c"
             ;;

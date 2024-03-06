@@ -118,9 +118,9 @@
         with IANA.
       </t>
       <t>
-        We provide information references for a 
-        USV git repository <xref target="usv-git-repository"/> 
-        and a programming implementation as a 
+        We provide information references for a
+        USV git repository <xref target="usv-git-repository"/>
+        and a programming implementation as a
         USV Rust crate <xref target="usv-rust-crate"/>.
       </t>
       <section anchor="requirements">
