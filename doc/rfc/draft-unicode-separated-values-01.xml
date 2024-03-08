@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    draft-rfcxml-general-template-annotated-00
 
-    This template includes examples of most of the features of RFCXML with comments explaining
-    how to customise them, and examples of how to achieve specific formatting.
+  draft-unicode-separated-values-01
 
-    Documentation is at https://authors.ietf.org/en/templates-and-schemas
+  Based on draft-rfcxml-general-template-annotated-00
 
-    To parse this XML, such as to create a PDF:
-    https://author-tools.ietf.org/
+  This template includes examples of most of the features of RFCXML with comments explaining
+  how to customise them, and examples of how to achieve specific formatting.
 
-    RFCXML vocabulary:
-    https://authors.ietf.org/rfcxml-vocabulary
+  Documentation:
+  https://authors.ietf.org/en/templates-and-schemas
+
+  To parse this XML, such as to create a PDF:
+  https://author-tools.ietf.org/
+
+  RFCXML vocabulary:
+  https://authors.ietf.org/rfcxml-vocabulary
+
+  Output:
+
+  * URL: https://www.ietf.org/archive/id/draft-unicode-separated-values-01.txt
+  * Status: https://datatracker.ietf.org/doc/draft-unicode-separated-values/
+  * HTML: https://www.ietf.org/archive/id/draft-unicode-separated-values-01.html
+  * HTMLized: https://datatracker.ietf.org/doc/html/draft-unicode-separated-values
 
 -->
 <?xml-model href="rfc7991bis.rnc"?>  <!-- Required for schema validation and schema-aware editing -->
@@ -30,7 +41,7 @@
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
   category="exp"
-  docName="draft-unicode-separated-values-00"
+  docName="draft-unicode-separated-values-01"
   ipr="trust200902"
   obsoletes=""
   updates=""
@@ -75,7 +86,7 @@
       </address>
     </author>
 
-    <date year="2024" month="3" day="1"/> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#date -->
+    <date year="2024" month="3" day="8"/> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#date -->
     <!-- On draft subbmission:
          * If only the current year is specified, the current day and month will be used.
          * If the month and year are both specified and are the current ones, the current day will
@@ -118,22 +129,35 @@
         with IANA.
       </t>
       <t>
-        We provide information references for a
-        USV git repository <xref target="usv-git-repository"/>
-        and a programming implementation as a
-        USV Rust crate <xref target="usv-rust-crate"/>.
+        We provide information references for a USV git repository <xref
+        target="usv-git-repository"/> and a programming implementation as a USV
+        Rust crate <xref target="usv-rust-crate"/>.
       </t>
-      <section anchor="requirements">
-      <!-- anchor is an optional attribute -->
+      <section anchor="requirements-language">
         <name>Requirements Language</name>
-        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
-          "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT
-          RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-          interpreted as described in BCP 14 <xref target="RFC2119"/>
-          <xref target="RFC8174"/> when, and only when, they appear in
-          all capitals, as shown here.</t>
+        <t>
+          The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+          "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+          "OPTIONAL" in this document are to be interpreted as described in BCP
+          14 <xref target="RFC2119"/>
+          <xref target="RFC8174"/> when, and only when, they appear in all
+          capitals, as shown here.
+        </t>
       </section>
-      <!-- The 'Requirements Language' section is optional -->
+      <section anchor="media-type-language">
+        <name>Media Type Language</name>
+        <t>
+          The media type normative references are RFC 6838 <xref
+          target="RFC6838"/>, RFC 2046 <xref target="RFC2046"/>, and RFC 4289
+          <xref target="RFC4289"/>.
+        </t>
+      </section>
+      <section anchor="abnf-language">
+        <name>ABNF Language</name>
+        <t>
+          The ABNF normative reference is RFC 5234 <xref target="RFC5234"/>.
+        </t>
+      </section>
     </section>
 
     <section>
@@ -153,6 +177,7 @@
       <ul>
         <li>␛ U+241B Symbol for Escape (ESC)</li>
         <li>␗ U+2417 Symbol for End of Transmission Block (ETB)</li>
+        <li>␖ U+2416 Symbol For Synchronous Idle (SYN)</li>
       </ul>
 
     </section>
@@ -252,6 +277,61 @@ name␟name␟␞aaa␟bbb␟␞
         </sourcecode>
       </section>
 
+      <section>
+        <name>Escape</name>
+        <t>
+          The Escape symbol flips the purpose of the subsequent character:
+        </t>
+
+        <ul>
+          <li>
+            Escape + USV special character: the character is treated as content.
+          </li>
+          <li>
+            Escape + USV typical character: the character is ignored.
+          </li>
+        </ul>
+        <t>
+          USV with a unit that contains an Escape + End of Transmission Block, which is treated as content:
+        </t>
+        <sourcecode name="header.usv" type="usv" markers="true">
+  <![CDATA[
+  a␛␗b␟
+  ]]>
+        </sourcecode>
+        <t>
+          Escape + newline can be helpful for typical text editor line continuations:
+        </t>
+        <sourcecode name="header.usv" type="usv" markers="true">
+          <![CDATA[
+          a␛␗b␟
+          ]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>Synchronous Idle</name>
+        <t>
+          The Synchronous Idle is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
+        </t>
+        <ul>
+          <li>
+            It tells the data reader that data streaming is still in progress.
+          </li>
+          <li>
+            It has no effect on the output content.
+          </li>
+        </ul>
+        <t>
+          Example of a unit that contains a Synchronous Idle:
+        </t>
+        <sourcecode name="header.usv" type="usv" markers="true">
+<![CDATA[
+a␖b␞
+]]>
+        </sourcecode>
+      </section>
+
     </section>
 
     <section>
@@ -277,19 +357,19 @@ name␟name␟␞aaa␟bbb␟␞
 
         <name>Syntax</name>
 
-        <t>usv = 0*1( header ) body 0*1( ETB ); anything after is chaff</t>
+        <t>usv = ( header-and-body / body ) '*' ; anything after the body is chaff</t>
 
-        <t>header = 1( unit_run / record_run / group_run / file_run )</t>
+        <t>header-and-body = 1*unit-run / 1*record-run / 1*group-run / 1*file-run</t>
 
-        <t>body = *( unit_run / record_run / group_run / file_run )</t>
+        <t>body = *unit-run / *record-run / *group-run / *file-run</t>
 
-        <t>file_run = *( file FS ) file ; next MUST be ( FS / ETB )</t>
+        <t>file-run = *( file FS )</t>
 
-        <t>group_run = *( group GS ) group ; next MUST be ( GS / FS / ETB )</t>
+        <t>group-run = *( group GS )</t>
 
-        <t>record_run = *( record RS ) record ; next MUST be ( RS / GS / FS / ETB )</t>
+        <t>record-run = *( record RS )</t>
 
-        <t>unit_run = *( unit US ) unit ; next MUST be ( US / RS / GS / FS / ETB )</t>
+        <t>unit-run = *( unit US )</t>
 
       </section>
 
@@ -297,11 +377,11 @@ name␟name␟␞aaa␟bbb␟␞
 
         <name>Character classes</name>
 
-        <t>content-character = *( typical-character / ESC '*' )</t>
+        <t>content-character = typical-character / ESC '*'</t>
 
         <t>typical-character = '*' - special-character</t>
 
-        <t>special-character = US / RS / GS / FS / ESC / ETB</t>
+        <t>special-character = US / RS / GS / FS / ESC / ETB / SYN</t>
 
         <t>escape-character = ESC ( special-character / typical-character )</t>
 
@@ -322,6 +402,8 @@ name␟name␟␞aaa␟bbb␟␞
         <t>ESC = U+241B Symbol for Escape (ESC)</t>
 
         <t>ETB = U+2417 Symbol for End of Transmission Block (ETB)</t>
+
+        <t>SYN = U+2416 Symbol For Synchronous Idle (SYN)</t>
 
       </section>
 
@@ -374,7 +456,7 @@ world␟␛
         </t>
         <sourcecode name="hello-world-goodnight-moon.usv" type="usv" markers="true">
 <![CDATA[
-hello␟world␞goodnight␟moon␞
+hello␟world␟␞goodnight␟moon␟␞
 ]]>
         </sourcecode>
         <t>
@@ -382,8 +464,8 @@ hello␟world␞goodnight␟moon␞
         </t>
         <sourcecode name="hello-world-goodnight-moon-with-lines.usv" type="usv" markers="true">
 <![CDATA[
-hello␟world␞␛
-goodnight␟moon␞␛
+hello␟world␟␞␛
+goodnight␟moon␟␞␛
 ]]>
         </sourcecode>
       </section>
@@ -395,25 +477,28 @@ goodnight␟moon␞␛
         </t>
         <sourcecode name="units-records-groups-files.usv" type="usv" markers="true">
 <![CDATA[
-a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p␜
+a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ]]>
         </sourcecode>
         <t>
-          This is what the USV can look like when you display it with a simple display tool:
+          Optional: if you prefer to see one record per line, then end each line with a USV escape:
         </t>
         <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
 <![CDATA[
-a,b
-c,d
--
-e,f
-g,h
-=
-i,j
-k,l
--
-m,n
-o,p
+a␟b␟␞␛
+c␟d␟␞␛
+␝␛
+e␟f␟␞␛
+g␟h␟␞␛
+␝␛
+␜␛
+i␟j␟␞␛
+k␟l␟␞␛
+␝␛
+m␟n␟␞␛
+o␟p␟␞␛
+␝␛
+␜␛
 ]]>
         </sourcecode>
       </section>
@@ -421,7 +506,9 @@ o,p
       <section>
         <name>Articles</name>
         <t>
-          USV can format paragraphs, such as in this example data stream of articles:
+          USV can format paragraphs, such as in this example data stream of
+          articles; note the units contain leading whitespace and trailing
+          whitespace.
         </t>
         <sourcecode name="articles.usv" type="usv" markers="true">
 <![CDATA[
@@ -430,19 +517,19 @@ Title One
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-␞
+␟␞
 Title Two
 ␟
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
 eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
 sunt in culpa qui officia deserunt mollit anim id est laborum.
-␞
+␟␞
 Title Three
 ␟
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
 doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
 veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-␞
+␟␞
 ]]>
         </sourcecode>
       </section>
@@ -467,7 +554,7 @@ let records = input.units().collect();
       <sourcecode name="usv-rust-crate-records.rs" type="rust" markers="true">
 <![CDATA[
 use usv::*;
-let input = "hello␟world␞goodnight␟moon␞";
+let input = "hello␟world␟␞goodnight␟moon␟␞";
 let records = input.records().collect();
 ]]>
       </sourcecode>
@@ -603,14 +690,17 @@ let records = input.records().collect();
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
 
         <!-- "Augmented BNF for Syntax Specifications: ABNF"-->
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2234.xml"/>
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
 
-        <!-- "Multipurpose Internet Mail Extensions (MIME) Part Four: Registration Procedures" -->
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2048.xml"/>
+        <!-- "Media Type Specifications and Registration Procedures" -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6838.xml"/>
 
         <!-- ""Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types" -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2046.xml"/>
 
+        <!-- "Multipurpose Internet Mail Extensions (MIME) Part Four: Registration Procedures" -->
+        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4289.xml"/>
+       
       </references>
 
       <references>
@@ -638,6 +728,28 @@ let records = input.records().collect();
           </front>
         </reference>
 
+        <reference anchor="usv-to-csv-rust-crate">
+        <!-- Example minimum reference -->
+          <front>
+            <title>usv-to-csv command line tool at https://crates.io/crates/usv-to-csv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="csv-to-usv-rust-crate">
+        <!-- Example minimum reference -->
+          <front>
+            <title>csv-to-usv command line tool at https://crates.io/crates/csv-to-usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+  
         <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
           <!-- Manually added reference -->
           <front>

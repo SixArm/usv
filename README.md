@@ -15,21 +15,21 @@ The USV media type is "text/usv". We have applied for IANA registration.
 
 Separators:
 
-* ␟ U+241F Symbol for Unit Separator (US).
+* ␟ U+241F Symbol for Unit Separator (US)
 
-* ␞ U+241E Symbol for Record Separator (RS).
+* ␞ U+241E Symbol for Record Separator (RS)
 
-* ␝ U+241D Symbol for Group Separator (GS).
+* ␝ U+241D Symbol for Group Separator (GS)
 
-* ␜ U+241C Symbol for File Separator (FS).
+* ␜ U+241C Symbol for File Separator (FS)
 
 Modifiers:
 
-* ␛ U+241B Symbol for Escape (ESC).
+* ␛ U+241B Symbol for Escape (ESC)
 
-* ␗ U+2417 Symbol for End of Transmission Block (ETB).
+* ␗ U+2417 Symbol for End of Transmission Block (ETB)
 
-* ␖ U+2416 Symbol For Synchronous Idle (SYN).
+* ␖ U+2416 Symbol For Synchronous Idle (SYN)
 
 
 ## Hello World
@@ -73,14 +73,14 @@ This kind of data …
 … is represented in USV as two records, each with two units:
 
 ```usv
-hello␟world␞goodnight␟moon␞
+hello␟world␟␞goodnight␟moon␟␞
 ```
 
 Optional: if you prefer to see one record per line, then end each line with a USV escape:
 
 ```usv
-hello␟world␞␛
-goodnight␟moon␞␛
+hello␟world␟␞␛
+goodnight␟moon␟␞␛
 ```
 
 Optional: you can use the [USV Rust crate](https://crates.io/crates/usv/):
@@ -97,19 +97,25 @@ Documentation links:
 
 * [Frequently asked questions](doc/faq/)
 
+* [Request for Comments (RFC)](doc/rfc/)
+
+* [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
+
+* [TODO list](doc/todo/)
+
+Context help:
+
 * [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons/)
 
 * [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
-* [TODO list](doc/todo/)
+Commands to convert between formats:
 
-Standardization work in progress:
+* [usv-to-csv](https://crates.io/crates/usv-to-csv)
 
-* [Request for Comments (RFC)](doc/rfc/)
-
-* [Augmented Backus–Naur form (ABNF)](doc/abnf/)
+* [csv-to-usv](https://crates.io/crates/csv-to-usv)
 
 Example files:
 
@@ -127,35 +133,38 @@ Example files:
 USV with 2 units by 2 records by 2 groups by 2 files:
 
 ```usv
-a␟b␞c␟d␝e␟f␞g␟h␜i␟j␞k␟l␝m␟n␞o␟p␜
+a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-This is what the USV looks like when you display it with a simple display script included in this repository:
+Optional: if you prefer to see one record per line, then end each line with a USV escape:
 
-```txt
-a,b
-c,d
--
-e,f
-g,h
-=
-i,j
-k,l
--
-m,n
-o,p
+```usv
+a␟b␟␞␛
+c␟d␟␞␛
+␝␛
+e␟f␟␞␛
+g␟h␟␞␛
+␝␛
+␜␛
+i␟j␟␞␛
+k␟l␟␞␛
+␝␛
+m␟n␟␞␛
+o␟p␟␞␛
+␝␛
+␜␛
 ```
 
 
 ## Escape
 
-The escape symbol flips the purpose of the subsequent character:
+The Escape symbol flips the purpose of the subsequent character:
 
 * Escape + USV special character: the character is treated as content.
 
 * Escape + USV typical character: the character is ignored.
 
-USV with a unit that contains an Escape + End of Transmission Block (ETB), which is treated as content:
+USV with a unit that contains an Escape + End of Transmission Block, which is treated as content:
 
 ```usv
 a␛␗b␟
@@ -171,13 +180,13 @@ c␟d␞␛
 
 ## Synchronous Idle
 
-The synchronous idle symbol is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
+The Synchronous Idle is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
 
 * It tells the data reader that data streaming is still in progress.
- 
+
 * It has no effect on the output content.
 
-Example of a unit that contains a synchronous idle symbol:
+Example of a unit that contains a Synchronous Idle:
 
 ```usv
 a␖b␞

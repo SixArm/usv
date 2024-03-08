@@ -1,61 +1,61 @@
-# Augmented Backus–Naur form (ABNF)
+# Augmented Backus–Naur Form (ABNF)
 
-https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form
+Augmented Backus–Naur Form (ABNF) grammar-- work in progress.
 
-This page is a work in progress. Constructive feedback welcome.
+
+## Semantics
+
+* usv = *files
+
+* file = *groups
+
+* group = *records
+
+* record = *units
+
+* unit = *content-characters
+
+
+## Syntax
+
+* usv = ( header-and-body / body ) '*' ; anything after the body is chaff
+
+* header-and-body = 1*unit-run / 1*record-run / 1*group-run / 1*file-run
+
+* body = *unit-run / *record-run / *group-run / *file-run
+
+* file-run = *( file FS )
+
+* group-run = *( group GS )
+
+* record-run = *( record RS )
+
+* unit-run = *( unit US )
+
+
+## Character classes
+
+* content-character = typical-character / ESC '*'
+
+* typical-character = '*' - special-character
+
+* special-character = US / RS / GS / FS / ESC / ETB / SYN
+
+* escape-character = ESC ( special-character / typical-character )
 
 
 ## Unicode symbols
 
-US = U+241F Symbol for Unit Separator (US)
+* US = U+241F Symbol for Unit Separator (US)
 
-RS = U+241E Symbol for Record Separator (RS)
+* RS = U+241E Symbol for Record Separator (RS)
 
-GS = U+241D Symbol for Group Separator (GS)
+* GS = U+241D Symbol for Group Separator (GS)
 
-FS = U+241C Symbol for File Separator (FS)
+* FS = U+241C Symbol for File Separator (FS)
 
-ESC = U+241B Symbol for Escape (ESC)
+* ESC = U+241B Symbol for Escape (ESC)
 
-ETB = U+2417 Symbol for End of Transmission Block (ETB)
+* ETB = U+2417 Symbol for End of Transmission Block (ETB)
 
-SYN = U+2416 Symbol For Synchronous Idle (SYN).
-
-
-## USV characters
-
-special-character = US / RS / GS / FS / ESC / ETB / SYN
-
-typical-character = '*' - special-character
-
-content-character = typical-character / ESC special-character
-
-
-## USV basics
-
-usv = \A ( *file-run / *group-run / *record-run / *unit-run ) *ETB *'*' \Z
-
-file_run = *( file FS ) file *FS ^[ ETB ]
-
-group_run = *( group GS ) group *GS ^[ FS / ETB ]
-
-record_run = *( record RS ) record *RS ^[ GS / FS / ETB ]
-
-unit_run = *( unit US ) unit *US ^[ RS / GS / FS / ETB ]
-
-file = group_run
-
-group = record_run
-
-record = unit_run
-
-unit = *content-character
-
-
-## USV work in progress
-
-data = [header] [body] *ETB *'*'
-
-header = [ unit_run / record_run / group_run / file_run ]
-
-body = *( unit_run / record_run / group_run / file_run )
+* SYN = U+2416 Symbol For Synchronous Idle (SYN)

@@ -1,4 +1,4 @@
-a␟b␟c␗
+a␟b␟c␟␗
 
 The End Of Transmission Block (ETB) stops parsing.
 For example, this text comes after the ETB character.
