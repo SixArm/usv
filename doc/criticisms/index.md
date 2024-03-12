@@ -14,6 +14,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Editors work with invisible characters](#editors-work-with-invisible-characters)
 - [Doesn't work with Excel](#doesnt-work-with-excel)
 - [Not trivially splittable](#not-trivially-splittable)
+- [No need for an escape character](#no-need-for-an-escape-character)
 - [Nobody needs USV, and nobody should use it.](#nobody-needs-usv-and-nobody-should-use-it)
 
 
@@ -73,6 +74,7 @@ Can you provide an example of data that is not representable, or an explanation 
 
 It turns out it is hard, in practice. I tried using invisible characters first, and found ongoing hard problems such as with copy/paste, search/replace, import/export, pattern matching, font display, and zero-width rendering.
 
+In fact, the difficulties with invisible characters seems to be the reason CSV happened.
 
 ## Doesn't work with Excel
 
@@ -90,6 +92,13 @@ If you have experience with writing Excel import/export capabilities, I welcome 
 Yes I tried that, and it worked well when the data was grid-oriented, like a spreadsheet with rows and columns, but didn't work well when the data was unit-oriented (such as a list of numbers), or group-oriented (such as a collection of spreadsheet sheets or database tables), or file-oriented (such as a collection of spreadsheet folios or database schemas).
 
 Broadly speaking, USV does not have a goal of naive split-based parsing.
+
+
+## No need for an escape character
+
+"I am not convinced about the need for an escape character."
+
+I tried USV without an escape character for a year to get real-world feedback. The feedback was that the escape was needed, because otherwise there could be data that couldn't be represented without an extra out-of-band reformatting/rewriting step.
 
 
 ## Nobody needs USV, and nobody should use it.
