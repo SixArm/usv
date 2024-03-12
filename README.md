@@ -61,9 +61,9 @@ let units = input.units().collect();
 
 USV can represent units, records, groups, files. 
 
-* These work well with spreadsheet cells, rows, sheets, and folios.
+* For spreadsheets, think of these as cells, rows, sheets, folios. 
 
-* These work well with database fields, records, tables, and schemas. 
+* For databases, think of these as fields, records, tables, schemas. 
 
 
 ## Documentation
@@ -74,9 +74,19 @@ Documentation links:
 
 * [Request For Comments (RFC)](doc/rfc/)
 
+* [Code examples and production crates](doc/code/)
+  
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
 
 * [TODO list](doc/todo/)
+
+Symbol specifics:
+
+* [Escape (ESC)](doc/symbols/escape/)
+
+* [Synchronous Idle (SYN)](doc/symbols/syncronous-idle/)
+
+* [End of Transmission Block (ETB)](doc/symbols/end-of-transmission-block/)
 
 Context help:
 
@@ -87,12 +97,6 @@ Context help:
 * [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
-
-Commands to convert between formats:
-
-* [usv-to-csv](https://crates.io/crates/usv-to-csv)
-
-* [csv-to-usv](https://crates.io/crates/csv-to-usv)
 
 Example files:
 
@@ -130,58 +134,6 @@ m␟n␟␞␛
 o␟p␟␞␛
 ␝␛
 ␜␛
-```
-
-
-## Escape (ESC)
-
-The Escape (ESC) symbol flips the purpose of the subsequent character:
-
-* Escape + USV special character: the character is treated as content.
-
-* Escape + USV typical character: the character is ignored.
-
-USV with a unit that contains an Escape + End of Transmission Block, which is treated as content:
-
-```usv
-a␛␗b␟
-```
-
-Escape + newline can be helpful for typical text editor line continuations:
-
-```usv
-a␟b␞␛
-c␟d␞␛
-```
-
-
-## Synchronous Idle (SYN)
-
-The Synchronous Idle (SYN) symbol is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
-
-* SYN tells the data reader that data streaming is still in progress.
-
-* SYN has no effect on the output content.
-
-Example of a unit that contains a Synchronous Idle:
-
-```usv
-a␖b␞
-```
-
-
-## End of Transmission Block (ETB)
-
-The End of Transmission Block (ETB) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection. ETB can also be useful for providing data files that contain USV data, then ETB, then extra non-USV information such as comments, images, attachments, etc.
-
-* ETB tells the data reader that data streaming is done.
-
-* ETB has no effect on the output content.
-
-Example of a unit then an End of Transmission Block:
-
-```usv
-abc␞␗
 ```
 
 
