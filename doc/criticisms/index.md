@@ -17,6 +17,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [No need for an escape character](#no-need-for-an-escape-character)
 - [Can't encode as a single byte](#cant-encode-as-a-single-byte)
 - [Wrong implementations](#wrong-implementations)
+- [Better off advocating for editor support](#better-off-advocating-for-editor-support)
 - [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
 - [This is kinda stupid](#this-is-kinda-stupid)
 - [Nobody needs USV, and nobody should use it.](#nobody-needs-usv-and-nobody-should-use-it)
@@ -118,6 +119,15 @@ If single byte encoding is very important, and you don't care about visible symb
 "My bet is that this will lead to implementations that wrongly treats "␞␛\n" (RS ESC \m) as the real record separator, the same way lots of "CSV" implementations just split on comma and LF."
 
 I agree. I believe the best way to stop wrong implementations is before they happen. I believe the best paths are the [RFC](../rfc/)standardization with IETF, and free open source production-quality reference [code](../code/).
+
+
+## Better off advocating for editor support
+
+"Just because a glyph is "invisible" doesn't mean it has to actually be invisible. The symbols for the separators are hard to read, like you're pointing out, which means someone would eventually replace them with some other graphical display, in which case you were just as well off with the actual separators themselves. They would have been better off advocating for editor support for actual separator display."
+
+You're correct. Programmers have been advocating for editor support for actual separator display since the 1980's ASCII Separated Values. That path hasn't succeeded. USV is a compromise for the present. 
+
+If the future offers editor support as you describe, then it will be great to use that instead of USV, and in fact USV will have been very useful for getting people using group separators, file separators, escapes, end of transmission blocks, synchronous idle, and other ASV features that are more extensive than CSV.
 
 
 ## Cleverness for cleverness’s sake
