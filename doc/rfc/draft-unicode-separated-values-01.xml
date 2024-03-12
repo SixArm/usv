@@ -188,14 +188,14 @@
       <section>
         <name>Data</name>
         <t>
-          Data is comprised of units, records, groups, and files.
+          Data is comprises units, records, groups, and files.
         </t>
       </section>
 
       <section>
         <name>Unit</name>
         <t>
-          A unit is comprised of content characters.
+          A unit is comprises content characters.
           It runs until a unit separator.
         </t>
         <t>
@@ -211,7 +211,7 @@ aaa␟
       <section>
         <name>Record</name>
         <t>
-          A record is comprised of units.
+          A record is comprises units.
           It runs until a record separator.
         </t>
         <t>
@@ -228,7 +228,7 @@ aaa␟bbb␟␞
       <section>
         <name>Group</name>
         <t>
-          A group is comprised of records.
+          A group is comprises records.
           It runs until a group separator.
         </t>
         <t>
@@ -244,7 +244,7 @@ aaa␟bbb␟␞ccc␟ddd␟␞␝
       <section>
         <name>File</name>
         <t>
-          A file is comprised of groups.
+          A file is comprises groups.
           It runs until a file separator.
         </t>
         <t>
