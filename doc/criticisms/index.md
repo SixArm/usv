@@ -16,6 +16,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Not trivially splittable](#not-trivially-splittable)
 - [No need for an escape character](#no-need-for-an-escape-character)
 - [Can't encode as a single byte](#cant-encode-as-a-single-byte)
+- [Arbitrarily many ways of writing semantically-same documents](#arbitrarily-many-ways-of-writing-semantically-same-documents)
 - [Wrong implementations](#wrong-implementations)
 - [Better off advocating for editor support](#better-off-advocating-for-editor-support)
 - [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
@@ -114,6 +115,13 @@ I tried USV without an escape character for a year to get real-world feedback. T
 If single byte encoding is very important, and you don't care about visible symbols, then yes ASCII Separated Values is better for you. USV doesn't have a goal of single byte separators.
 
 
+## Arbitrarily many ways of writing semantically-same documents
+
+"If you download the same document twice, and the second time the server is heavily loaded (or it's waiting on some dependency, or whatever), presumably the server will helpfully generate some SYNs in the middle of the document to keep the connection alive (?), but now you've got the same document "spelled" two different ways, that won't checksum alike."
+
+You're correct the streams will checksum differently. The content will checksum alike. What you're describing is similar to CSV, where a field may use surrounding quotes or not: the data will checksum differently, and the content will checksum alike. 
+
+
 ## Wrong implementations
 
 "My bet is that this will lead to implementations that wrongly treats "␞␛\n" (RS ESC \m) as the real record separator, the same way lots of "CSV" implementations just split on comma and LF."
@@ -134,7 +142,7 @@ If the future offers editor support as you describe, then it will be great to us
 
 "USV would have the disadvantage of using multi-byte characters as delimiters, so you have to decode the file in order to separate records. And you still can’t type the characters directly or be guaranteed to display them without font support. This honestly seems like cleverness for cleverness’s sake."
 
-You're correct mostly on your technical points. To decode one record, you have to read that one record until you reach its record separator; in other words, you can't just use split on one byte value as you can with CSV. That said, you can decode one unit at a time, or one record at a time, or one gorup at a time, or one file at a time; you don't have to decode the whole file.
+You're correct mostly on your technical points. To decode one record, you have to read that one record until you reach its record separator; in other words, you can't just use split on one byte value as you can with CSV. That said, you can decode one unit at a time, or one record at a time, or one group at a time, or one file at a time; you don't have to decode the whole file.
 
 As for cleverness, it's not especially clever; it's just ASCII DSV plus visible symbols. The core ideas are all from the 1970's.
 
@@ -143,7 +151,7 @@ As for cleverness, it's not especially clever; it's just ASCII DSV plus visible 
 
 "I've long wanted a successor to CSV, but this is kinda stupid. People like CSVs because they look good, feel natural even in plaintext. This is the same reason that Markdown in successful. As for including commas in your data, it could just have been managed with a simple escape character like a \, for when there's actually a comma in your data. That's it."
 
-If you want a successor to CSV, do you have suggestions for what you want? What I learned is that when you escape with a backslash, then you have to also provide for escaping a backslash, such as two in a row, and then it causes headaches for use cases such as Windows paths, regular expressions, backslash as used in a typical backslash-t for tab or backslash-n for newline, and so on. This is why I prefer to use the simple escape character U+241B Symbol for Escape (ESC).
+If you want a successor to CSV, do you have suggestions for what you want? What I learned is that when you escape with a backslash, then you have to also provide for escaping a backslash, such as two in a row, and then it causes issues for use cases such as Windows paths, regular expressions, backslash as used in a typical backslash-t for tab or backslash-n for newline, and so on. This is why I prefer to use the escape character as U+241B Symbol for Escape (ESC).
 
 More broadly, CSV handles units and records (such as one spreadsheet sheet), but not groups (such as multiple spreadsheet sheets) or files (such as multiple spreadsheet folios). USV handles all of these.
 

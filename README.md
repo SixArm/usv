@@ -2,9 +2,9 @@
 
 Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. 
 
-USV is a text format that is similar to comma separated values (CSV), tab separated values (TSV), ASCII separated values (ASV), etc. USV is most like ASV, which gives better hierarchy than CSV, plus visible symbols for separators and modifiers.
+USV is a text format that is similar to comma separated values (CSV), tab separated values (TSV), ASCII separated values (ASV), etc. USV is most like ASV plus visible symbols.
 
-USV offers more capabilities for UTF-8 characters, spreadsheet collections, database collections, and live streaming.
+USV offers capabilities for spreadsheet collections, database collections, streaming options, and UTF-8 encoding by default.
 
 [FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
 
@@ -45,26 +45,13 @@ Modifiers:
 
 ## Hello World
 
-This kind of data …
-
-```txt
-hello, world
-```
-
-… is represented in USV as two units:
+This is the unit "hello" and the unit "world":
 
 ```usv
 hello␟world␟
 ```
 
-Optional: if you prefer to see one unit per line, then end each line with a USV escape:
-
-```usv
-hello␟␛
-world␟␛
-```
-
-Optional: you can use the [USV Rust crate](https://crates.io/crates/usv/):
+USV can be parsed using e.g. the USV Rust crate:
 
 ```rust
 use usv::*;
