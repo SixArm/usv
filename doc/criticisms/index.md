@@ -16,6 +16,8 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Not trivially splittable](#not-trivially-splittable)
 - [No need for an escape character](#no-need-for-an-escape-character)
 - [Wrong implementations](#wrong-implementations)
+- [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
+- [This is kinda stupid](#this-is-kinda-stupid)
 - [Nobody needs USV, and nobody should use it.](#nobody-needs-usv-and-nobody-should-use-it)
 
 
@@ -39,7 +41,7 @@ USV aims just for use cases that CSV doesn't seem to handle well, such as text t
 
 "You cannot edit it in regular editor, like csv/tsv/jsonlines."
 
-I edit it in regular editors, every day. I personally use vi, emacs, VS Code, JetBrains IDEs, all often. I've also tried USV on many more editors, and so far it works 100% of the time. If you have a specific editor that doesn't seem to be working well with USV, can you please contact me?
+I edit it in regular editors, every day. I use vi, emacs, VS Code, JetBrains IDEs, and more. I've also tried USV on many more editors, and so far it works 100% of the time. If you have a specific editor that doesn't seem to be working well with USV, can you please contact me?
 
 
 ## No efficient storage
@@ -77,6 +79,7 @@ It turns out it is hard, in practice. I tried using invisible characters first, 
 
 In fact, the difficulties with invisible characters seems to be the reason CSV happened.
 
+
 ## Doesn't work with Excel
 
 "The adoptability challenge remains here to be Excel support."
@@ -107,6 +110,24 @@ I tried USV without an escape character for a year to get real-world feedback. T
 "My bet is that this will lead to implementations that wrongly treats "␞␛\n" (RS ESC \m) as the real record separator, the same way lots of "CSV" implementations just split on comma and LF."
 
 I agree. I believe the best way to stop wrong implementations is before they happen. I believe the best paths are the [RFC](../rfc/)standardization with IETF, and free open source production-quality reference [code](../code/).
+
+
+## Cleverness for cleverness’s sake
+
+"USV would have the disadvantage of using multi-byte characters as delimiters, so you have to decode the file in order to separate records. And you still can’t type the characters directly or be guaranteed to display them without font support. This honestly seems like cleverness for cleverness’s sake."
+
+You're correct mostly on your technical points. To decode one record, you have to read that one record until you reach its record separator; in other words, you can't just use split on one byte value as you can with CSV. That said, you can decode one unit at a time, or one record at a time, or one gorup at a time, or one file at a time; you don't have to decode the whole file.
+
+As for cleverness, it's not especially clever; it's just ASCII DSV plus visible symbols. The core ideas are all from the 1970's.
+
+
+## This is kinda stupid
+
+"I've long wanted a successor to CSV, but this is kinda stupid. People like CSVs because they look good, feel natural even in plaintext. This is the same reason that Markdown in successful. As for including commas in your data, it could just have been managed with a simple escape character like a \, for when there's actually a comma in your data. That's it."
+
+If you want a successor to CSV, do you have suggestions for what you want? What I learned is that when you escape with a backslash, then you have to also provide for escaping a backslash, such as two in a row, and then it causes headaches for use cases such as Windows paths, regular expressions, backslash as used in a typical backslash-t for tab or backslash-n for newline, and so on.
+
+More broadly, CSV handles units and records (such as one spreadsheet sheet), but not groups (such as multiple spreadsheet sheets) or files (such as multiple spreadsheet folios). USV handles all of these.
 
 
 ## Nobody needs USV, and nobody should use it.
