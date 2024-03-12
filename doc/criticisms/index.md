@@ -81,6 +81,8 @@ If you have experience with writing Excel import/export capabilities, I welcome 
 
 Yes I tried that, and it worked well when the data was grid-oriented, like a spreadsheet with rows and columns, but didn't work well when the data was unit-oriented (such as a list of numbers), or group-oriented (such as a collection of spreadsheet sheets or database tables), or file-oriented (such as a collection of spreadsheet folios or database schemas).
 
+Broadly speaking, USV does not have a goal of naive split-based parsing.
+
 
 ## Nobody needs USV, and nobody should use it.
 

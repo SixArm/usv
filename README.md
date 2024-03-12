@@ -1,16 +1,12 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. USV is similar in kind to comma separated values (CSV), tab separated values (TSV), ASCII separated values (ASV), and similar systems. USV offers more capabilities for Unicode characters, deeper-nested data, optional streaming, and clearer escaping.
+Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. USV is similar in kind to comma separated values (CSV), tab separated values (TSV), ASCII separated values (ASV), and similar systems. USV offers more capabilities for Unicode characters, spreadsheet folios of sheets, database schemas of tables, streaming, and escaping.
 
 The USV repo is <https://github.com/sixarm/usv>.
 
-The USV file name extension is "usv".
+The USV file name extension is "usv" and media type is "text/usv".
 
-The USV media type is "text/usv". We have applied with [IETF](https://ietf.org) and [IANA](https://www.iana.org/) for standardization.
-
-[Frequently asked questions](doc/faq/)
-
-[Obligatory XKCD cartoon](https://xkcd.com/927/)
+[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [XKCD](https://xkcd.com/927/)
 
 
 ## USV characters
@@ -63,43 +59,20 @@ let input = "hello␟world␟";
 let units = input.units().collect();
 ```
 
+USV can represent units, records, groups, files. 
 
-## Hello World Goodnight Moon
+* These work well with spreadsheet cells, rows, sheets, and folios.
 
-This kind of data …
+* These work well with database fields, records, tables, and schemas. 
 
-```txt
-[ hello, world ], [ goodnight, moon ]
-```
-
-… is represented in USV as two records, each with two units:
-
-```usv
-hello␟world␟␞goodnight␟moon␟␞
-```
-
-Optional: if you prefer to see one record per line, then end each line with a USV escape:
-
-```usv
-hello␟world␟␞␛
-goodnight␟moon␟␞␛
-```
-
-Optional: you can use the [USV Rust crate](https://crates.io/crates/usv/):
-
-```rust
-use usv::*;
-let input = "hello␟world␞goodnight␟moon␞";
-let records = input.records().collect();
-```
 
 ## Documentation
 
 Documentation links:
 
-* [Frequently asked questions](doc/faq/)
+* [Frequently Asked Questions (FAQ)](doc/faq/)
 
-* [Request for Comments (RFC)](doc/rfc/)
+* [Request For Comments (RFC)](doc/rfc/)
 
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
 
@@ -108,6 +81,8 @@ Documentation links:
 Context help:
 
 * [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons/)
+
+* [Criticisms and replies](doc/criticisms/)
 
 * [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
@@ -229,7 +204,7 @@ USV can handle data that contains commas, semicolons, quotes, tabs, newlines, an
 
 USV can format units/columns/cells and records/rows/lines (similar to CSV) and groups/tables/grids and files/schemas/folios (similar to ASV).
 
-USV aims to be an international standard and has a official IETF RFCXML Internet Draft submitted.
+USV aims to be an international standard, and has a official IETF RFCXML Internet Draft submitted.
 
 USV uses Unicode characters that are semantically meaningful.
 
@@ -261,9 +236,9 @@ USV is available as a Rust crate:
 
 ## Legal protection for standardization
 
-The USV project aims to become a free open source IANA standard, much like the IANA standard for CSV.
+The USV project aims to become a free open source IETF standard and IANA standard, much like the standards for CSV and TDF.
 
-Until the standardization happens, the terms "USV" and "Unicode Separated Values" are trademarks of this project, and this repository is copyright 2022-2024. When IANA approves the standard, then the trademarks and copyrights become public domain.
+Until the standardization happens, the terms "USV" and "Unicode Separated Values" are trademarks of this project, and this repository is copyright 2022-2024. When IETF and IANA approve the submissions as a standard, then the trademarks and copyrights become public domain.
 
 
 ## Conclusion
