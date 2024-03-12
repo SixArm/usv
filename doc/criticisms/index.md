@@ -84,7 +84,7 @@ In fact, the difficulties with invisible characters seems to be the reason CSV h
 
 "The adoptability challenge remains here to be Excel support."
 
-Yes you're right. USV is brand-new on the standards track in 2024. Excel support is a long-term goal. 
+Yes you're right. USV is brand-new on the standards track in 2024. Excel support is a long-term goal. Submitting to the IETF is to help programs like Excel to start supporting it. 
 
 If you have experience with writing Excel import/export capabilities, I welcome your help.
 
@@ -125,7 +125,7 @@ As for cleverness, it's not especially clever; it's just ASCII DSV plus visible 
 
 "I've long wanted a successor to CSV, but this is kinda stupid. People like CSVs because they look good, feel natural even in plaintext. This is the same reason that Markdown in successful. As for including commas in your data, it could just have been managed with a simple escape character like a \, for when there's actually a comma in your data. That's it."
 
-If you want a successor to CSV, do you have suggestions for what you want? What I learned is that when you escape with a backslash, then you have to also provide for escaping a backslash, such as two in a row, and then it causes headaches for use cases such as Windows paths, regular expressions, backslash as used in a typical backslash-t for tab or backslash-n for newline, and so on.
+If you want a successor to CSV, do you have suggestions for what you want? What I learned is that when you escape with a backslash, then you have to also provide for escaping a backslash, such as two in a row, and then it causes headaches for use cases such as Windows paths, regular expressions, backslash as used in a typical backslash-t for tab or backslash-n for newline, and so on. This is why I prefer to use the simple escape character U+241B Symbol for Escape (ESC).
 
 More broadly, CSV handles units and records (such as one spreadsheet sheet), but not groups (such as multiple spreadsheet sheets) or files (such as multiple spreadsheet folios). USV handles all of these.
 
