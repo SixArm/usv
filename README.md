@@ -30,6 +30,19 @@ Modifiers:
 * ␖ U+2416 Symbol For Synchronous Idle (SYN)
 
 
+## Comparisons
+
+| Capability               | USV | CSV | TSV | ASV |
+| ------------------------ | --- | --- | --- | --- |
+| Units / cells / fields   | ✅ | ✅ | ✅ | ✅ |
+| Records / lines / rows   | ✅ | ✅ | ✅ | ✅ |
+| Groups / sheets / tables | ✅ | 🚫 | 🚫 | ✅ |
+| Files / folios / schemas | ✅ | 🚫 | 🚫 | ✅ |
+| All visible separators   | ✅ | ✅ | 🚫 | 🚫 |
+| Streaming options        | ✅ | 🚫 | 🚫 | ✅ |
+| Unicode UTF-8 default    | ✅ | 🚫 | 🚫 | 🚫 |
+
+
 ## Hello World
 
 This kind of data …
@@ -61,9 +74,9 @@ let units = input.units().collect();
 
 USV can represent units, records, groups, files. 
 
-* For spreadsheets, think of these as cells, rows, sheets, folios. 
+* For spreadsheets, think of these as cells, lines, sheets, folios. 
 
-* For databases, think of these as fields, records, tables, schemas. 
+* For databases, think of these as fields, rows, tables, schemas. 
 
 
 ## Documentation

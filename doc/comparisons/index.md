@@ -2,6 +2,30 @@
 
 Unicode separated values (USV) is similar to these formats, plus offers more capabilities, editor-friendly markup, and standards-track syntax.
 
+- [Summary table](#summary-table)
+- [comma separated values (CSV)](#comma-separated-values-csv)
+  - [Commas](#commas)
+  - [Quotes](#quotes)
+  - [Newlines](#newlines)
+- [tab separated values (TSV) a.k.a. tab delimited format (TDF)](#tab-separated-values-tsv-aka-tab-delimited-format-tdf)
+- [ASCII separated values (ASV) a.k.a. DEL (Delimited ASCII)](#ascii-separated-values-asv-aka-del-delimited-ascii)
+- [Rows of String Values (RSV)](#rows-of-string-values-rsv)
+
+
+## Summary table
+
+| Capability               | USV | CSV | TSV | ASV | RSV |
+| ------------------------ | --- | --- | --- | --- | --- |
+| Units / cells / fields   | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Records / lines / rows   | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Groups / sheets / tables | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
+| Files / folios / schemas | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
+| Text, not binary         | ✅ | ✅ | ✅ | ✅ | 🚫 |
+| All visible separators   | ✅ | ✅ | 🚫 | 🚫 | 🚫 |
+| Escaping                 | ✅ | ✅ | 🚫 | ✅ | 🚫 |
+| Streaming options        | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
+| Unicode UTF-8 default    | ✅ | 🚫 | 🚫 | 🚫 | 🚫 |
+
 
 ## comma separated values (CSV)
 
@@ -64,7 +88,7 @@ CSV implementations may need quoting and escaping:
 
 TSV format uses a tab to separate values, and a newline to separate records.
 
-TSV handles data units/columns/cells and data records/rows/lines, but does not intend to handle data groups/tables/grids or data files/schemas/folios.</dd>
+TSV handles data units/columns/cells and data records/rows/lines, but does not intend to handle data groups/tables/grids or data files/schemas/folios.
 
 In our experience, the TSV format can be difficult to edit with some editors, because the tab character can be invisible, or can take up a varying number of character widths such as 4 spaces or 8 spaces, or as many spaces as it takes to get to the next tab stop.
 
@@ -77,4 +101,11 @@ ASV format uses ASCII character 28 as file separator, 29 as group separator, 30 
 
 ASV handles the same data separator concepts: file, group, record, unit.
 
-In our experience, these ASCII characters tend to be hard to edit manually, because many editors treat the characters as invisible zero-width characters. USV uses the same semantics, yet with visible letter-width characters.
+In our experience, these ASCII characters tend to be hard to edit manually, because many editors treat the characters as invisible zero-width characters. USV uses the same semantics, plus visible letter-width characters.
+
+
+## Rows of String Values (RSV)
+
+https://github.com/Stenway/RSV-Specification
+
+The RSV data file format is a simple binary alternative to CSV. An RSV document represents an array of arrays of nullable string values, also called a jagged array. It's main purpose is to store tabular data. But because it's a jagged array, it's not limited to that. So, rows can contain the same number of values, but don't have to.
