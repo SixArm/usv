@@ -11,6 +11,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [No efficient storage](#no-efficient-storage)
 - [There is no wide library support](#there-is-no-wide-library-support)
 - [Not all data is representable](#not-all-data-is-representable)
+- [Editors work with invisible characters](#editors-work-with-invisible-characters)
 - [Doesn't work with Excel](#doesnt-work-with-excel)
 - [Not trivially splittable](#not-trivially-splittable)
 - [Nobody needs USV, and nobody should use it.](#nobody-needs-usv-and-nobody-should-use-it)
@@ -64,6 +65,13 @@ If you want library support, I welcome help from anyone who wants to develop it.
 I don't believe that to be true. USV aims to be able to represent all UTF-8 encoded text. USV provides an escape character, so you can escape any of the USV special characters as you wish. 
 
 Can you provide an example of data that is not representable, or an explanation of what the data could be?
+
+
+## Editors work with invisible characters
+
+"We already have editors that can work with invisible characters. It’s not hard."
+
+It turns out it is hard, in practice. I tried using invisible characters first, and found ongoing hard problems such as with copy/paste, search/replace, import/export, pattern matching, font display, and zero-width rendering.
 
 
 ## Doesn't work with Excel
