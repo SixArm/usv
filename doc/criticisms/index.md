@@ -15,6 +15,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Doesn't work with Excel](#doesnt-work-with-excel)
 - [Not trivially splittable](#not-trivially-splittable)
 - [No need for an escape character](#no-need-for-an-escape-character)
+- [Wrong implementations](#wrong-implementations)
 - [Nobody needs USV, and nobody should use it.](#nobody-needs-usv-and-nobody-should-use-it)
 
 
@@ -99,6 +100,13 @@ Broadly speaking, USV does not have a goal of naive split-based parsing.
 "I am not convinced about the need for an escape character."
 
 I tried USV without an escape character for a year to get real-world feedback. The feedback was that the escape was needed, because otherwise there could be data that couldn't be represented without an extra out-of-band reformatting/rewriting step.
+
+
+## Wrong implementations
+
+"My bet is that this will lead to implementations that wrongly treats "␞␛\n" (RS ESC \m) as the real record separator, the same way lots of "CSV" implementations just split on comma and LF."
+
+I agree. I believe the best way to stop wrong implementations is before they happen. I believe the best paths are the [RFC](../rfc/)standardization with IETF, and free open source production-quality reference [code](../code/).
 
 
 ## Nobody needs USV, and nobody should use it.
