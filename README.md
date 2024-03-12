@@ -6,7 +6,7 @@ The USV repo is <https://github.com/sixarm/usv>.
 
 The USV file name extension is "usv" and media type is "text/usv".
 
-[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [XKCD](https://xkcd.com/927/)
+[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [XKCD](https://xkcd.com/927/)
 
 
 ## USV characters
@@ -214,34 +214,6 @@ USV uses visible letter-width characters, and these are easy to view, select, co
 
 [Frequently asked questions](doc/faq/)
 
-
-## USV source code
-
-This repository includes example USV scripts with character parsing. 
-
-Bash examples:
-
-* [usv-to-display.bash](bin/bash/usv-to-display.bash)
-
-* [usv-to-debug.bash](bin/bash/usv-to-debug.bash)
-
-* [usv-to-csv.bash](bin/bash/usv-to-csv.bash)
-
-Python examples:
-
-* [usv-to-display.py](bin/python/usv-to-display.py)
-
-* [usv-to-debug.py](bin/python/usv-to-debug.py)
-
-* [usv-to-csv.py](bin/python/usv-to-csv.py)
-
-Rust has a crate in its own repo suitable for production use:
-
-* `cargo install usv`
-
-* [https://crates.io/crate/usv](https://crates.io/crate/usv)
-
-* [https://github.com/sixarm/usv-rust-crate](https://github.com/sixarm/usv-rust-crate) (GitHub repository)
 
 
 ## Legal protection for standardization
