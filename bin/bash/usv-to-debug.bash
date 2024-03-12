@@ -13,6 +13,9 @@ while IFS= read -N1 -r c; do
         "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
             printf %s "\nescaped special character: " "$c"
             ;;
+        "\n")
+            printf %s "\nescaped newline character" "$c"
+            ;;
         *)
             printf %s "\nescaped typical character: " "$c"
             ;;
@@ -41,7 +44,6 @@ while IFS= read -N1 -r c; do
             ;;
         "␖")
             printf "\synchronous idle\n"
-            break
             ;;
         *)
             printf %s "$c"

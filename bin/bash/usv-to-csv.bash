@@ -7,6 +7,7 @@ set -euf -o pipefail
 # such as create a double-quoted unit to protect an embedded comma or newline.
 
 escape=false
+comma=''
 
 while IFS= read -N1 -r c; do
     if [ "$escape" = true ]; then
@@ -22,10 +23,11 @@ while IFS= read -N1 -r c; do
             escape=true
             ;;
         "␟")
-            printf ","
+            comma=','
             ;;
         "␞")
             printf "\n"
+            comma=''
             ;;
         "␝")
             >&2 printf "\nerror: group separator\n"
@@ -39,10 +41,9 @@ while IFS= read -N1 -r c; do
         "␖")
             ;;
         *)
-            printf %s "$c"
+            printf %s%s "$comma" "$c"
+            comma=''
             ;;
         esac
     fi
 done
-printf "\n"
-
