@@ -278,9 +278,9 @@ name␟name␟␞aaa␟bbb␟␞
       </section>
 
       <section>
-        <name>Escape</name>
+        <name>Escape (ESC)</name>
         <t>
-          The Escape symbol flips the purpose of the subsequent character:
+          The Escape (ESC) symbol flips the purpose of the subsequent character:
         </t>
 
         <ul>
@@ -310,9 +310,9 @@ name␟name␟␞aaa␟bbb␟␞
       </section>
 
       <section>
-        <name>Synchronous Idle</name>
+        <name>Synchronous Idle (SYN)</name>
         <t>
-          The Synchronous Idle is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
+          The Synchronous Idle (SYN) symbol is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
         </t>
         <ul>
           <li>
@@ -328,6 +328,29 @@ name␟name␟␞aaa␟bbb␟␞
         <sourcecode name="header.usv" type="usv" markers="true">
 <![CDATA[
 a␖b␞
+]]>
+        </sourcecode>
+      </section>
+
+      <section>
+        <name>End of Transmission Block (ETB)</name>
+        <t>
+          The End of Transmission Block (ETB) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection.  ETB can also be useful for providing data files that contain USV data, then ETB, then extra non-USV information such as comments, images, attachments, etc.
+        </t>
+        <ul>
+          <li>
+            ETB tells the data reader that data streaming is done.
+          </li>
+          <li>
+            ETB has no effect on the output content.
+          </li>
+        </ul>
+        <t>
+          Example of a unit then an End of Transmission Block:
+        </t>
+        <sourcecode name="header.usv" type="usv" markers="true">
+<![CDATA[
+abc␞␗
 ]]>
         </sourcecode>
       </section>

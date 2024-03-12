@@ -156,9 +156,9 @@ o␟p␟␞␛
 ```
 
 
-## Escape
+## Escape (ESC)
 
-The Escape symbol flips the purpose of the subsequent character:
+The Escape (ESC) symbol flips the purpose of the subsequent character:
 
 * Escape + USV special character: the character is treated as content.
 
@@ -178,18 +178,33 @@ c␟d␞␛
 ```
 
 
-## Synchronous Idle
+## Synchronous Idle (SYN)
 
-The Synchronous Idle is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
+The Synchronous Idle (SYN) symbol is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
 
-* It tells the data reader that data streaming is still in progress.
+* SYN tells the data reader that data streaming is still in progress.
 
-* It has no effect on the output content.
+* SYN has no effect on the output content.
 
 Example of a unit that contains a Synchronous Idle:
 
 ```usv
 a␖b␞
+```
+
+
+## End of Transmission Block (ETB)
+
+The End of Transmission Block (ETB) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection. ETB can also be useful for providing data files that contain USV data, then ETB, then extra non-USV information such as comments, images, attachments, etc.
+
+* ETB tells the data reader that data streaming is done.
+
+* ETB has no effect on the output content.
+
+Example of a unit then an End of Transmission Block:
+
+```usv
+abc␞␗
 ```
 
 
