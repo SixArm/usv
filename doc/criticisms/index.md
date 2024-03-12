@@ -15,6 +15,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Doesn't work with Excel](#doesnt-work-with-excel)
 - [Not trivially splittable](#not-trivially-splittable)
 - [No need for an escape character](#no-need-for-an-escape-character)
+- [Can't encode as a single byte](#cant-encode-as-a-single-byte)
 - [Wrong implementations](#wrong-implementations)
 - [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
 - [This is kinda stupid](#this-is-kinda-stupid)
@@ -103,6 +104,13 @@ Broadly speaking, USV does not have a goal of naive split-based parsing.
 "I am not convinced about the need for an escape character."
 
 I tried USV without an escape character for a year to get real-world feedback. The feedback was that the escape was needed, because otherwise there could be data that couldn't be represented without an extra out-of-band reformatting/rewriting step.
+
+
+## Can't encode as a single byte
+
+"ASCII Separated Values is better because it can encode each separator as a single byte."
+
+If single byte encoding is very important, and you don't care about visible symbols, then yes ASCII Separated Values is better for you. USV doesn't have a goal of single byte separators.
 
 
 ## Wrong implementations

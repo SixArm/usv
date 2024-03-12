@@ -35,13 +35,13 @@ Add USV handling to statistics systems:
 
 Create USV libraries for programming languages:
 
-* [ ] Node npm package
+* [x] Rust crate
 
 * [ ] Python pip package
 
-* [ ] Ruby gem
+* [ ] Node npm package
 
-* [x] Rust crate
+* [ ] Ruby gem
 
 * Etc.
 
@@ -50,13 +50,16 @@ Create USV libraries for programming languages:
 
 Extend USV capabilities for command line interface tools:
 
-* [x] Miller <https://github.com/johnkerl/miller/issues/245>
+* [ ] Miller <https://github.com/johnkerl/miller/issues/245>
 
 * [ ] TextQL <https://github.com/dinedal/textql/issues/115>
 
 * [ ] Q <https://github.com/harelba/q/issues/201>
 
 * [ ] jq
+
+* [ ] xsv by BurntSushi
+
 
 * Etc.
 
@@ -73,6 +76,8 @@ Add comparisons to other data formats:
 
 * [ ] [KYLI](https://shkspr.mobi/blog/2017/03/kyli-because-it-is-superior-to-json/)
 
+* [ ] [Rows of String Values (RSV)](https://github.com/Stenway/RSV-Specification)
+
 
 ## Improve converters 
 
@@ -81,4 +86,3 @@ Improve converters: csv-to-usv and usv-to-csv
 * [ ] Add support for CSV delimiters, especially semi-colon instead of comma.
 
 * [ ] Add CLAP option for USV output with RS+ESC+LF.
-

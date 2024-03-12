@@ -6,7 +6,7 @@ USV is a text format that is similar to comma separated values (CSV), tab separa
 
 USV offers more capabilities for UTF-8 characters, spreadsheet collections, database collections, and live streaming.
 
-[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [XKCD](https://xkcd.com/927/)
+[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
 
 
 ## USV characters
