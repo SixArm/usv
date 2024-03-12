@@ -212,15 +212,15 @@ abc␞␗
 
 ## USV is easy and friendly
 
-USV is intended to be easy to use and friendly to try:
+USV is intended to be easy to use and friendly to try.
 
-USV works with many kinds of data. Any data can contain any characters except the five USV characters.
-
-USV works with many kinds of editors. Any editor that can render the USV characters will work. We use vi, emacs, Coda, Notepad++, TextMate, Sublime, VS Code, etc.
+USV works with many kinds of data, and many kinds of editors. Any editor that can render the USV characters will work. We use vi, emacs, Coda, Notepad++, TextMate, Sublime, VS Code, etc.
 
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 
 USV works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, C++, C#, Elixir, Erlang, Go, Java, JavaScript, Julia, Kotlin, Perl, PHP, Python, R, Ruby, Rust, Swift, TypeScript, etc.
+
+[Frequently asked questions](doc/faq/) and [criticisms](doc/criticisms/)
 
 
 ## Why use USV?
@@ -229,13 +229,15 @@ USV can handle data that contains commas, semicolons, quotes, tabs, newlines, an
 
 USV can format units/columns/cells and records/rows/lines (similar to CSV) and groups/tables/grids and files/schemas/folios (similar to ASV).
 
-USV aims to be an international standard.
+USV aims to be an international standard and has a official IETF RFCXML Internet Draft submitted.
 
 USV uses Unicode characters that are semantically meaningful.
 
 USV works well with any typical modern editor, font, terminal, shell, search, and language.
 
 USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
+
+[Frequently asked questions](doc/faq/)
 
 
 ## USV source code

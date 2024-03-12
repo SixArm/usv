@@ -2,7 +2,17 @@
 
 USV is led by Joel Parker Henderson (joel@joelparkerhenderson.com).
 
-Constructive feedback is welcome.
+Constructive feedback is welcome. See also [criticisms](../criticisms/).
+
+- [Is USV easy?](#is-usv-easy)
+- [IS USV aiming to be a standard?](#is-usv-aiming-to-be-a-standard)
+- [Why choose USV over CSV or TSV?](#why-choose-usv-over-csv-or-tsv)
+- [Why choose USV over ASV?](#why-choose-usv-over-asv)
+- [Why choose USV over ASV for machine-only data?](#why-choose-usv-over-asv-for-machine-only-data)
+- [What if I want special whitespace handling?](#what-if-i-want-special-whitespace-handling)
+- [Why use control picture characters rather than the control characters themselves?](#why-use-control-picture-characters-rather-than-the-control-characters-themselves)
+- [Why are the symbols so small on my screen?](#why-are-the-symbols-so-small-on-my-screen)
+
 
 
 ## Is USV easy?
@@ -12,16 +22,22 @@ Yes. If you know about comma separated values (CSV), or tab separated values
 then you already know much about USV.
 
 
-## IS USV a standard?
+## IS USV aiming to be a standard?
 
-USV is aiming to become an IANA standard similar to <a
+Yes, USV is aiming to become an IETF standard similar to <a
+href="https://www.ietf.org/rfc/rfc4180.txt">IETF RCF 4180 for CSV</a>.
+We have submitted the first IETF Internet Draft.
+
+Yes, USV is aiming to become an IANA standard similar to <a
 href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA
-TSV</a>.
+TSV</a>. We have submitted the request for the "text/usv" media type.
 
 
 ## Why choose USV over CSV or TSV?
 
-You want your data content to be able to contain commas, or tabs, or newlines.
+You want your data content to be able to contain commas, or tabs, or newlines,
+without special escaping or different quoting rules than other data such as
+numbers.
 
 You want your data content to be able to use data groups, or database tables, or
 spreadsheet grids.
@@ -37,6 +53,8 @@ provide.
 
 You want a consistent compatible standardized file name extension, which
 CSV/TSV/TDF can't always provide.
+
+You want options for streaming capabilties, such as Synchronous Idle (SYN) and End of Transmission Block (ETB).
 
 
 ## Why choose USV over ASV?
@@ -80,3 +98,9 @@ First, we encountered many difficulties with editor configurations, attempting t
 Second, we encountered problems with copy/paste functionality, where it often didn't work because the editor implementations and terminal implementations copied visible letter-width characters, not the underlying invisible zero-width characters.
 
 Third, users were unable to distinguish between the rendered control picture characters (e.g. the editor saw ASCII 31 and rendered Unicode Unit Separator) versus the control picture characters being in the data content (e.g. someone actually typed Unicode Unit Separator into the data content).
+
+
+## Why are the symbols so small on my screen?
+
+USV renders on your system by using your local font. If your local font has small Unicode symbols for specific characters, then you'll see these. On many systems we've tried, the characters render with the letters "US", "RS", "GS", "FS", etc. We are open to suggestions for fonts that work especially with with USV, and we are open to funding the creation of specialized fonts for these specific characters.
+
