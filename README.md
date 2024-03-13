@@ -98,6 +98,8 @@ Context help:
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
+* [Emacs notes](doc/editors/emacs/)
+  
 Example files:
 
 * [hello-world.usv](examples/hello-world.usv) versus [hello-world.csv](examples/hello-world.csv)
