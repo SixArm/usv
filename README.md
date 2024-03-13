@@ -34,11 +34,12 @@ Modifiers:
 | ------------------------- | --- | --- | --- | --- |
 | Units / cells / fields    | ✅ | ✅ | ✅ | ✅ |
 | Records / lines / rows    | ✅ | ✅ | ✅ | ✅ |
-| Groups / sheets / tables  | ✅ | 🚫 | 🚫 | ✅ |
-| Files / folios / schemas  | ✅ | 🚫 | 🚫 | ✅ |
-| All visible separators    | ✅ | ✅ | 🚫 | 🚫 |
-| End of Transmission Block | ✅ | 🚫 | 🚫 | ✅ |
-| Unicode UTF-8 default     | ✅ | 🚫 | 🚫 | 🚫 |
+| Groups / sheets / tables  | ✅ | ⛔ | ⛔ | ✅ |
+| Files / folios / schemas  | ✅ | ⛔ | ⛔ | ✅ |
+| All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
+| Separators then *(CR/LF)  | ✅ | 🟡 | 🟡 | ⛔ |
+| End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ |
+| Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
 
 
 ## Hello World
@@ -62,6 +63,39 @@ USV can represent units, records, groups, files.
 * For spreadsheets, think of these as cells, lines, sheets, folios. 
 
 * For databases, think of these as fields, rows, tables, schemas. 
+
+
+## Lines
+
+Any USV separator may be followed by any number of carriage returns and/or newlines. This helps with visual display.
+
+Example:
+
+```usv
+a␟b␟c␟d␟␞e␟f␟g␟h␟␞
+```
+
+Example with each record separator + newline:
+
+```usv
+a␟b␟c␟d␟␞
+e␟f␟g␟h␟␞
+```
+
+Example with each unit separator + newline, and each record separator + newline:
+
+```usv
+a␟
+b␟
+c␟
+d␟
+␞
+e␟
+f␟
+g␟
+h␟
+␞
+```  
 
 
 ## Documentation
@@ -119,23 +153,23 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-Optional: if you prefer to see one record per line, then end each line with a USV escape:
+Same content with lines:
 
 ```usv
-a␟b␟␞␛
-c␟d␟␞␛
-␝␛
-e␟f␟␞␛
-g␟h␟␞␛
-␝␛
-␜␛
-i␟j␟␞␛
-k␟l␟␞␛
-␝␛
-m␟n␟␞␛
-o␟p␟␞␛
-␝␛
-␜␛
+a␟b␟␞
+c␟d␟␞
+␝
+e␟f␟␞
+g␟h␟␞
+␝
+␜
+i␟j␟␞
+k␟l␟␞
+␝
+m␟n␟␞
+o␟p␟␞
+␝
+␜
 ```
 
 

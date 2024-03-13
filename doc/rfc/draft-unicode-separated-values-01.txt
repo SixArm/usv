@@ -63,19 +63,18 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
      1.3.  ABNF Language . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Unicode symbols in use  . . . . . . . . . . . . . . . . . . .   3
    3.  Definition of the USV Format  . . . . . . . . . . . . . . . .   3
-     3.1.  Data  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.1.  Data  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.2.  Unit  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
      3.3.  Record  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      3.4.  Group . . . . . . . . . . . . . . . . . . . . . . . . . .   4
      3.5.  File  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
      3.6.  Header  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      3.7.  Escape (ESC)  . . . . . . . . . . . . . . . . . . . . . .   5
-     3.8.  Synchronous Idle (SYN)  . . . . . . . . . . . . . . . . .   5
-     3.9.  End of Transmission Block (ETB) . . . . . . . . . . . . .   6
+     3.8.  End of Transmission Block (ETB) . . . . . . . . . . . . .   5
    4.  ABNF grammar  . . . . . . . . . . . . . . . . . . . . . . . .   6
      4.1.  Semantics . . . . . . . . . . . . . . . . . . . . . . . .   6
      4.2.  Syntax  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     4.3.  Character classes . . . . . . . . . . . . . . . . . . . .   7
+     4.3.  Character classes . . . . . . . . . . . . . . . . . . . .   6
      4.4.  Unicode symbols . . . . . . . . . . . . . . . . . . . . .   7
    5.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  Hello World . . . . . . . . . . . . . . . . . . . . . . .   7
@@ -86,18 +85,18 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    7.  MIME media type registration for text/usv . . . . . . . . . .  10
      7.1.  Optional parameters: charset, header  . . . . . . . . . .  10
      7.2.  Encoding considerations . . . . . . . . . . . . . . . . .  10
-     7.3.  Security considerations . . . . . . . . . . . . . . . . .  11
-     7.4.  Interoperability considerations . . . . . . . . . . . . .  11
+     7.3.  Security considerations . . . . . . . . . . . . . . . . .  10
+     7.4.  Interoperability considerations . . . . . . . . . . . . .  10
      7.5.  Published specification . . . . . . . . . . . . . . . . .  11
      7.6.  Applications that use this media type . . . . . . . . . .  11
      7.7.  Additional information  . . . . . . . . . . . . . . . . .  11
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  12
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  12
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  11
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  11
      10.2.  Informative References . . . . . . . . . . . . . . . . .  12
-   Appendix A.  Appendix 1 . . . . . . . . . . . . . . . . . . . . .  13
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  13
+   Appendix A.  Appendix 1 . . . . . . . . . . . . . . . . . . . . .  12
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  12
    Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  13
 
@@ -106,6 +105,7 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    Unicode Separated Values (USV) is a data format useful for exchanging
    and converting data between various spreadsheet programs, databases,
    and streaming data services.  This RFC explains USV.
+
 
 
 
@@ -156,11 +156,11 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
    *  ␗ U+2417 Symbol for End of Transmission Block (ETB)
 
-   *  ␖ U+2416 Symbol For Synchronous Idle (SYN)
-
 3.  Definition of the USV Format
 
+3.1.  Data
 
+   Data is comprises units, records, groups, and files.
 
 
 
@@ -169,10 +169,6 @@ Henderson               Expires 9 September 2024                [Page 3]
 
 Internet-Draft       Unicode Separated Values (USV)           March 2024
 
-
-3.1.  Data
-
-   Data is comprises units, records, groups, and files.
 
 3.2.  Unit
 
@@ -214,6 +210,10 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    <CODE BEGINS> file "file-and-file-separator.usv"
    aaa␟bbb␟␞ccc␟ddd␟␞␝eee␟fff␟␞ggg␟hhh␟␞␝␜
    <CODE ENDS>
+
+
+
+
 
 
 
@@ -265,30 +265,7 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
              a␛␗b␟
    <CODE ENDS>
 
-3.8.  Synchronous Idle (SYN)
-
-   The Synchronous Idle (SYN) symbol is a heartbeat, and is especially
-   useful for streaming data, such as to keep a connection alive.
-
-   *  It tells the data reader that data streaming is still in progress.
-
-   *  It has no effect on the output content.
-
-
-
-
-Henderson               Expires 9 September 2024                [Page 5]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
-   Example of a unit that contains a Synchronous Idle:
-
-   <CODE BEGINS> file "header.usv"
-   a␖b␞
-   <CODE ENDS>
-
-3.9.  End of Transmission Block (ETB)
+3.8.  End of Transmission Block (ETB)
 
    The End of Transmission Block (ETB) symbol tells any reader that it
    can stop reading, and is especially useful for streaming data, such
@@ -297,6 +274,13 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    such as comments, images, attachments, etc.
 
    *  ETB tells the data reader that data streaming is done.
+
+
+
+Henderson               Expires 9 September 2024                [Page 5]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
 
    *  ETB has no effect on the output content.
 
@@ -330,6 +314,22 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
    body = *unit-run / *record-run / *group-run / *file-run
 
+   file-run = *( file FS *liner-character )
+
+   group-run = *( group GS *liner-character )
+
+   record-run = *( record RS *liner-character )
+
+   unit-run = *( unit US *liner-character )
+
+4.3.  Character classes
+
+   content-character = typical-character / ESC '*'
+
+   typical-character = '*' - special-character
+
+   special-character = US / RS / GS / FS / ESC / ETB
+
 
 
 
@@ -338,23 +338,9 @@ Henderson               Expires 9 September 2024                [Page 6]
 Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 
-   file-run = *( file FS )
-
-   group-run = *( group GS )
-
-   record-run = *( record RS )
-
-   unit-run = *( unit US )
-
-4.3.  Character classes
-
-   content-character = typical-character / ESC '*'
-
-   typical-character = '*' - special-character
-
-   special-character = US / RS / GS / FS / ESC / ETB / SYN
-
    escape-character = ESC ( special-character / typical-character )
+
+   liner-character = CR / LF
 
 4.4.  Unicode symbols
 
@@ -370,7 +356,9 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
    ETB = U+2417 Symbol for End of Transmission Block (ETB)
 
-   SYN = U+2416 Symbol For Synchronous Idle (SYN)
+   CR = U+000D Carriage Return (CR)
+
+   LF = U+000A End of Line (EOL, LF, NL)
 
 5.  Examples
 
@@ -384,6 +372,18 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
    … is represented in USV as two units:
 
+   <CODE BEGINS> file "hello-world.usv"
+   hello␟world␟
+   <CODE ENDS>
+
+   If you prefer to see one unit per line:
+
+   <CODE BEGINS> file "hello-world-with-lines.usv"
+   hello␟
+   world␟
+   <CODE ENDS>
+
+
 
 
 
@@ -393,18 +393,6 @@ Henderson               Expires 9 September 2024                [Page 7]
 
 Internet-Draft       Unicode Separated Values (USV)           March 2024
 
-
-   <CODE BEGINS> file "hello-world.usv"
-   hello␟world␟
-   <CODE ENDS>
-
-   Optional: if you prefer to see one unit per line, then end each line
-   with a USV escape:
-
-   <CODE BEGINS> file "hello-world-with-lines.usv"
-   hello␟␛
-   world␟␛
-   <CODE ENDS>
 
 5.2.  Hello World Goodnight Moon
 
@@ -420,12 +408,11 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    hello␟world␟␞goodnight␟moon␟␞
    <CODE ENDS>
 
-   Optional: if you prefer to see one record per line, then end each
-   line with a USV escape:
+   If you prefer to see one record per line:
 
    <CODE BEGINS> file "hello-world-goodnight-moon-with-lines.usv"
-   hello␟world␟␞␛
-   goodnight␟moon␟␞␛
+   hello␟world␟␞
+   goodnight␟moon␟␞
    <CODE ENDS>
 
 5.3.  Units, Records, Groups, Files
@@ -436,11 +423,24 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
    <CODE ENDS>
 
-   Optional: if you prefer to see one record per line, then end each
-   line with a USV escape:
+   If you prefer to see one record per line:
 
-
-
+   <CODE BEGINS> file "units-records-groups-files-with-lines.usv"
+   a␟b␟␞
+   c␟d␟␞
+   ␝
+   e␟f␟␞
+   g␟h␟␞
+   ␝
+   ␜
+   i␟j␟␞
+   k␟l␟␞
+   ␝
+   m␟n␟␞
+   o␟p␟␞
+   ␝
+   ␜
+   <CODE ENDS>
 
 
 
@@ -449,23 +449,6 @@ Henderson               Expires 9 September 2024                [Page 8]
 
 Internet-Draft       Unicode Separated Values (USV)           March 2024
 
-
-   <CODE BEGINS> file "units-records-groups-files-with-lines.usv"
-   a␟b␟␞␛
-   c␟d␟␞␛
-   ␝␛
-   e␟f␟␞␛
-   g␟h␟␞␛
-   ␝␛
-   ␜␛
-   i␟j␟␞␛
-   k␟l␟␞␛
-   ␝␛
-   m␟n␟␞␛
-   o␟p␟␞␛
-   ␝␛
-   ␜␛
-   <CODE ENDS>
 
 5.4.  Articles
 
@@ -498,14 +481,6 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
    Hello World using Rust and the USV crate
 
-
-
-
-Henderson               Expires 9 September 2024                [Page 9]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
    <CODE BEGINS> file "usv-rust-crate-units.rs"
    use usv::*;
    let input = "hello␟world␟";
@@ -519,6 +494,17 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    let input = "hello␟world␟␞goodnight␟moon␟␞";
    let records = input.records().collect();
    <CODE ENDS>
+
+
+
+
+
+
+
+Henderson               Expires 9 September 2024                [Page 9]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
 
 7.  MIME media type registration for text/usv
 
@@ -552,16 +538,6 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    should be aware that some implementations may not conform i.e. may
    incorrectly use other values.
 
-
-
-
-
-
-Henderson               Expires 9 September 2024               [Page 10]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
 7.3.  Security considerations
 
    USV files contain passive text data that should not pose any risks.
@@ -578,6 +554,13 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    Implementations deciding not to use the optional "header" parameter
    must make their own decision as to whether the header is absent or
    present.
+
+
+
+Henderson               Expires 9 September 2024               [Page 10]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
 
 7.5.  Published specification
 
@@ -610,14 +593,6 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    We have filed an IANA request for this, with same contact
    information.
 
-
-
-
-Henderson               Expires 9 September 2024               [Page 11]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
 9.  Security Considerations
 
    This document should not affect the security of the Internet.
@@ -634,6 +609,14 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
+
+
+
+
+Henderson               Expires 9 September 2024               [Page 11]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
 
    [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
               Specifications and Registration Procedures", BCP 13,
@@ -664,16 +647,6 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
               Henderson, J., "usv-to-csv command line tool at
               https://crates.io/crates/usv-to-csv", 2024.
 
-
-
-
-
-
-Henderson               Expires 9 September 2024               [Page 12]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
    [csv-to-usv-rust-crate]
               Henderson, J., "csv-to-usv command line tool at
               https://crates.io/crates/csv-to-usv", 2024.
@@ -694,6 +667,13 @@ Acknowledgements
 
    A special thank you goes to P.X.V.
 
+
+
+Henderson               Expires 9 September 2024               [Page 12]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
+
 Contributors
 
    Thanks to all of the contributors.
@@ -711,6 +691,26 @@ Author's Address
    Phone: 1-415-317-2700
    Email: joel@joelparkerhenderson.com
    URI:   https://linkedin.com/in/joelparkerhenderson
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

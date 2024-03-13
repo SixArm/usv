@@ -4,7 +4,6 @@ USV is led by Joel Parker Henderson (joel@joelparkerhenderson.com).
 
 Constructive feedback is welcome. See also [frequently asked questions](../faq/).
 
-
 - [Fundamentally wrong](#fundamentally-wrong)
 - [XKCD one universal standard](#xkcd-one-universal-standard)
 - [You cannot edit it](#you-cannot-edit-it)
@@ -16,7 +15,6 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Not trivially splittable](#not-trivially-splittable)
 - [No need for an escape character](#no-need-for-an-escape-character)
 - [Can't encode as a single byte](#cant-encode-as-a-single-byte)
-- [Wrong implementations](#wrong-implementations)
 - [Better off advocating for editor support](#better-off-advocating-for-editor-support)
 - [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
 - [This is kinda stupid](#this-is-kinda-stupid)
@@ -112,13 +110,6 @@ I tried USV without an escape character for a year to get real-world feedback. T
 "ASCII Separated Values is better because it can encode each separator as a single byte."
 
 If single byte encoding is very important, and you don't care about visible symbols, then yes ASCII Separated Values is better for you. USV doesn't have a goal of single byte separators.
-
-
-## Wrong implementations
-
-"My bet is that this will lead to implementations that wrongly treats "␞␛\n" (RS ESC \m) as the real record separator, the same way lots of "CSV" implementations just split on comma and LF."
-
-I agree. I believe the best way to stop wrong implementations is before they happen. I believe the best paths are the [RFC](../rfc/)standardization with IETF, and free open source production-quality reference [code](../code/).
 
 
 ## Better off advocating for editor support

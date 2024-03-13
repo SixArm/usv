@@ -12,9 +12,5 @@ USV with a unit that contains an Escape + End of Transmission Block, which is tr
 a␛␗b␟
 ```
 
-Escape + newline can be helpful for typical text editor line continuations:
-
-```usv
-a␟b␞␛
-c␟d␞␛
+In the rare case that you happen to have a separator then content that starts with a carriage return or newline, then you must escape the carriage return or newline. This is because separators may be optionally be followed by any number of carriage returns and/or newlines, which is to help with visual display.
 ```

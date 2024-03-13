@@ -362,13 +362,13 @@ abc␞␗
 
         <t>body = *unit-run / *record-run / *group-run / *file-run</t>
 
-        <t>file-run = *( file FS )</t>
+        <t>file-run = *( file FS *liner-character )</t>
 
-        <t>group-run = *( group GS )</t>
+        <t>group-run = *( group GS *liner-character )</t>
 
-        <t>record-run = *( record RS )</t>
+        <t>record-run = *( record RS *liner-character )</t>
 
-        <t>unit-run = *( unit US )</t>
+        <t>unit-run = *( unit US *liner-character )</t>
 
       </section>
 
@@ -383,6 +383,8 @@ abc␞␗
         <t>special-character = US / RS / GS / FS / ESC / ETB</t>
 
         <t>escape-character = ESC ( special-character / typical-character )</t>
+
+        <t>liner-character = CR / LF</t>
 
       </section>
 
@@ -401,6 +403,10 @@ abc␞␗
         <t>ESC = U+241B Symbol for Escape (ESC)</t>
 
         <t>ETB = U+2417 Symbol for End of Transmission Block (ETB)</t>
+
+        <t>CR = U+000D Carriage Return (CR)</t>
+
+        <t>LF = U+000A End of Line (EOL, LF, NL)</t>
 
       </section>
 
@@ -428,12 +434,12 @@ hello␟world␟
 ]]>
         </sourcecode>
         <t>
-          Optional: if you prefer to see one unit per line, then end each line with a USV escape:
+          If you prefer to see one unit per line:
         </t>
         <sourcecode name="hello-world-with-lines.usv" type="usv" markers="true">
 <![CDATA[
-hello␟␛
-world␟␛
+hello␟
+world␟
 ]]>
         </sourcecode>
       </section>
@@ -457,12 +463,12 @@ hello␟world␟␞goodnight␟moon␟␞
 ]]>
         </sourcecode>
         <t>
-          Optional: if you prefer to see one record per line, then end each line with a USV escape:
+          If you prefer to see one record per line:
         </t>
         <sourcecode name="hello-world-goodnight-moon-with-lines.usv" type="usv" markers="true">
 <![CDATA[
-hello␟world␟␞␛
-goodnight␟moon␟␞␛
+hello␟world␟␞
+goodnight␟moon␟␞
 ]]>
         </sourcecode>
       </section>
@@ -478,24 +484,24 @@ a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m�
 ]]>
         </sourcecode>
         <t>
-          Optional: if you prefer to see one record per line, then end each line with a USV escape:
+          If you prefer to see one record per line:
         </t>
         <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
 <![CDATA[
-a␟b␟␞␛
-c␟d␟␞␛
-␝␛
-e␟f␟␞␛
-g␟h␟␞␛
-␝␛
-␜␛
-i␟j␟␞␛
-k␟l␟␞␛
-␝␛
-m␟n␟␞␛
-o␟p␟␞␛
-␝␛
-␜␛
+a␟b␟␞
+c␟d␟␞
+␝
+e␟f␟␞
+g␟h␟␞
+␝
+␜
+i␟j␟␞
+k␟l␟␞
+␝
+m␟n␟␞
+o␟p␟␞
+␝
+␜
 ]]>
         </sourcecode>
       </section>

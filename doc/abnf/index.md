@@ -18,22 +18,25 @@ Augmented Backus–Naur Form (ABNF) grammar-- work in progress.
 
 ## Syntax
 
+Sections:
+
 * usv = ( header-and-body / body ) '*' ; anything after the body is chaff
 
 * header-and-body = 1*unit-run / 1*record-run / 1*group-run / 1*file-run
 
 * body = *unit-run / *record-run / *group-run / *file-run
 
-* file-run = *( file FS )
+Runs:
 
-* group-run = *( group GS )
+* file-run = *( file FS *liner-character )
 
-* record-run = *( record RS )
+* group-run = *( group GS *liner-character )
 
-* unit-run = *( unit US )
+* record-run = *( record RS *liner-character )
 
+* unit-run = *( unit US *liner-character )
 
-## Character classes
+Character classes:
 
 * content-character = typical-character / ESC '*'
 
@@ -43,8 +46,12 @@ Augmented Backus–Naur Form (ABNF) grammar-- work in progress.
 
 * escape-character = ESC ( special-character / typical-character )
 
+* liner-character = CR / LF
 
-## Unicode symbols
+
+## Unicode characters
+
+Separators:
 
 * US = U+241F Symbol for Unit Separator (US)
 
@@ -54,6 +61,14 @@ Augmented Backus–Naur Form (ABNF) grammar-- work in progress.
 
 * FS = U+241C Symbol for File Separator (FS)
 
+Modifiers:
+
 * ESC = U+241B Symbol for Escape (ESC)
 
 * ETB = U+2417 Symbol for End of Transmission Block (ETB)
+
+Liners:
+
+* CR = U+000D Carriage Return (CR)
+
+* LF = U+000A End of Line (EOL, LF, NL)
