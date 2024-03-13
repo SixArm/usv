@@ -19,6 +19,7 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
 - [This is kinda stupid](#this-is-kinda-stupid)
 - [Nobody needs USV, and nobody should use it.](#nobody-needs-usv-and-nobody-should-use-it)
+- [Kill it with fire](#kill-it-with-fire)
 
 
 ## Fundamentally wrong
@@ -160,3 +161,14 @@ Thanks for your specific feedback and conclusion. :-)
 For me, what's best for my data model is text (not binary), that handles many human languages using UTF-8 (not ASCII), that is easy to read and edit in many editors (not a specialized row-column editor), and works especially well with content that is paragraphs of natural language with commas, quotes, newlines, indentations, and the like.
 
 For example I've tried binary formats (e.g. ASN.1, Protobuf), row-column tabular formats (e.g. CSV, TDF), web data formats (e.g. JSON, YAML), web markup formats (e.g. HTML, XML). 
+
+
+## Kill it with fire
+
+"Y'know, I greatly dislike this. It's an actual emotional reaction. This should not be standardized. No one should use this. This is a bad idea and deserves to die in obscurity.
+
+I'll tell you why, it's pretty simple. The characters this... thing is stealing, exist to represent invisible control sequences. That is their use. The fact that they can be mentioned by direct input is inevitable, but not to be encouraged.
+
+I will be greatly disappointed if this is accepted as a standard. The fact that a USV file looks like a rendered ASV file is a show stopping bug, an anti-feature, an insult to life itself. Kill it with fire."
+
+That's great feedback! The previous time I heard that kind of feedback it was about emoji being terrible. Luckily representations evolve. 😀
