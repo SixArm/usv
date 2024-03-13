@@ -14,17 +14,17 @@ Unicode separated values (USV) is similar to these formats, plus offers more cap
 
 ## Summary table
 
-| Capability               | USV | CSV | TSV | ASV | RSV |
-| ------------------------ | --- | --- | --- | --- | --- |
-| Units / cells / fields   | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Records / lines / rows   | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Groups / sheets / tables | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
-| Files / folios / schemas | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
-| Text, not binary         | ✅ | ✅ | ✅ | ✅ | 🚫 |
-| All visible separators   | ✅ | ✅ | 🚫 | 🚫 | 🚫 |
-| Escaping                 | ✅ | ✅ | 🚫 | ✅ | 🚫 |
-| Streaming options        | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
-| Unicode UTF-8 default    | ✅ | 🚫 | 🚫 | 🚫 | 🚫 |
+| Capability                | USV | CSV | TSV | ASV | RSV |
+| --------------------------| --- | --- | --- | --- | --- |
+| Units / cells / fields    | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Records / lines / rows    | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Groups / sheets / tables  | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
+| Files / folios / schemas  | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
+| Text, not binary          | ✅ | ✅ | ✅ | ✅ | 🚫 |
+| All visible separators    | ✅ | ✅ | 🚫 | 🚫 | 🚫 |
+| Escaping                  | ✅ | ✅ | 🚫 | ✅ | 🚫 |
+| End of Transmission Block | ✅ | 🚫 | 🚫 | ✅ | 🚫 |
+| Unicode UTF-8 default     | ✅ | 🚫 | 🚫 | 🚫 | 🚫 |
 
 
 ## comma separated values (CSV)

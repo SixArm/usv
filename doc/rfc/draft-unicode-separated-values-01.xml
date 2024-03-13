@@ -177,7 +177,6 @@
       <ul>
         <li>␛ U+241B Symbol for Escape (ESC)</li>
         <li>␗ U+2417 Symbol for End of Transmission Block (ETB)</li>
-        <li>␖ U+2416 Symbol For Synchronous Idle (SYN)</li>
       </ul>
 
     </section>
@@ -310,29 +309,6 @@ name␟name␟␞aaa␟bbb␟␞
       </section>
 
       <section>
-        <name>Synchronous Idle (SYN)</name>
-        <t>
-          The Synchronous Idle (SYN) symbol is a heartbeat, and is especially useful for streaming data, such as to keep a connection alive.
-        </t>
-        <ul>
-          <li>
-            It tells the data reader that data streaming is still in progress.
-          </li>
-          <li>
-            It has no effect on the output content.
-          </li>
-        </ul>
-        <t>
-          Example of a unit that contains a Synchronous Idle:
-        </t>
-        <sourcecode name="header.usv" type="usv" markers="true">
-<![CDATA[
-a␖b␞
-]]>
-        </sourcecode>
-      </section>
-
-      <section>
         <name>End of Transmission Block (ETB)</name>
         <t>
           The End of Transmission Block (ETB) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection.  ETB can also be useful for providing data files that contain USV data, then ETB, then extra non-USV information such as comments, images, attachments, etc.
@@ -404,7 +380,7 @@ abc␞␗
 
         <t>typical-character = '*' - special-character</t>
 
-        <t>special-character = US / RS / GS / FS / ESC / ETB / SYN</t>
+        <t>special-character = US / RS / GS / FS / ESC / ETB</t>
 
         <t>escape-character = ESC ( special-character / typical-character )</t>
 
@@ -425,8 +401,6 @@ abc␞␗
         <t>ESC = U+241B Symbol for Escape (ESC)</t>
 
         <t>ETB = U+2417 Symbol for End of Transmission Block (ETB)</t>
-
-        <t>SYN = U+2416 Symbol For Synchronous Idle (SYN)</t>
 
       </section>
 

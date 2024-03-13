@@ -39,7 +39,7 @@ Augmented Backus–Naur Form (ABNF) grammar-- work in progress.
 
 * typical-character = '*' - special-character
 
-* special-character = US / RS / GS / FS / ESC / ETB / SYN
+* special-character = US / RS / GS / FS / ESC / ETB
 
 * escape-character = ESC ( special-character / typical-character )
 
@@ -57,5 +57,3 @@ Augmented Backus–Naur Form (ABNF) grammar-- work in progress.
 * ESC = U+241B Symbol for Escape (ESC)
 
 * ETB = U+2417 Symbol for End of Transmission Block (ETB)
-
-* SYN = U+2416 Symbol For Synchronous Idle (SYN)

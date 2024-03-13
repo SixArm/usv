@@ -27,20 +27,18 @@ Modifiers:
 
 * ␗ U+2417 Symbol for End of Transmission Block (ETB)
 
-* ␖ U+2416 Symbol For Synchronous Idle (SYN)
-
 
 ## Comparisons
 
-| Capability               | USV | CSV | TSV | ASV |
-| ------------------------ | --- | --- | --- | --- |
-| Units / cells / fields   | ✅ | ✅ | ✅ | ✅ |
-| Records / lines / rows   | ✅ | ✅ | ✅ | ✅ |
-| Groups / sheets / tables | ✅ | 🚫 | 🚫 | ✅ |
-| Files / folios / schemas | ✅ | 🚫 | 🚫 | ✅ |
-| All visible separators   | ✅ | ✅ | 🚫 | 🚫 |
-| Streaming options        | ✅ | 🚫 | 🚫 | ✅ |
-| Unicode UTF-8 default    | ✅ | 🚫 | 🚫 | 🚫 |
+| Capability                | USV | CSV | TSV | ASV |
+| ------------------------- | --- | --- | --- | --- |
+| Units / cells / fields    | ✅ | ✅ | ✅ | ✅ |
+| Records / lines / rows    | ✅ | ✅ | ✅ | ✅ |
+| Groups / sheets / tables  | ✅ | 🚫 | 🚫 | ✅ |
+| Files / folios / schemas  | ✅ | 🚫 | 🚫 | ✅ |
+| All visible separators    | ✅ | ✅ | 🚫 | 🚫 |
+| End of Transmission Block | ✅ | 🚫 | 🚫 | ✅ |
+| Unicode UTF-8 default     | ✅ | 🚫 | 🚫 | 🚫 |
 
 
 ## Hello World
@@ -82,11 +80,9 @@ Documentation links:
 
 Symbol specifics:
 
-* [Escape (ESC)](doc/symbols/escape/)
+* [Escape (ESC)](doc/escape/)
 
-* [Synchronous Idle (SYN)](doc/symbols/syncronous-idle/)
-
-* [End of Transmission Block (ETB)](doc/symbols/end-of-transmission-block/)
+* [End of Transmission Block (ETB)](doc/end-of-transmission-block/)
 
 Context help:
 

@@ -16,7 +16,6 @@ Constructive feedback is welcome. See also [frequently asked questions](../faq/)
 - [Not trivially splittable](#not-trivially-splittable)
 - [No need for an escape character](#no-need-for-an-escape-character)
 - [Can't encode as a single byte](#cant-encode-as-a-single-byte)
-- [Arbitrarily many ways of writing semantically-same documents](#arbitrarily-many-ways-of-writing-semantically-same-documents)
 - [Wrong implementations](#wrong-implementations)
 - [Better off advocating for editor support](#better-off-advocating-for-editor-support)
 - [Cleverness for cleverness’s sake](#cleverness-for-clevernesss-sake)
@@ -113,13 +112,6 @@ I tried USV without an escape character for a year to get real-world feedback. T
 "ASCII Separated Values is better because it can encode each separator as a single byte."
 
 If single byte encoding is very important, and you don't care about visible symbols, then yes ASCII Separated Values is better for you. USV doesn't have a goal of single byte separators.
-
-
-## Arbitrarily many ways of writing semantically-same documents
-
-"If you download the same document twice, and the second time the server is heavily loaded (or it's waiting on some dependency, or whatever), presumably the server will helpfully generate some SYNs in the middle of the document to keep the connection alive (?), but now you've got the same document "spelled" two different ways, that won't checksum alike."
-
-You're correct the streams will checksum differently. The content will checksum alike. What you're describing is similar to CSV, where a field may use surrounding quotes or not: the data will checksum differently, and the content will checksum alike. 
 
 
 ## Wrong implementations

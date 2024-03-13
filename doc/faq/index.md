@@ -54,7 +54,8 @@ provide.
 You want a consistent compatible standardized file name extension, which
 CSV/TSV/TDF can't always provide.
 
-You want options for streaming capabilties, such as Synchronous Idle (SYN) and End of Transmission Block (ETB).
+You want to use End of Transmission Block (ETB), so you can guarantee a reader
+has read data until the end.
 
 
 ## Why choose USV over ASV?
