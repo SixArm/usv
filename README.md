@@ -37,7 +37,7 @@ Modifiers:
 | Groups / sheets / tables  | ✅ | ⛔ | ⛔ | ✅ |
 | Files / folios / schemas  | ✅ | ⛔ | ⛔ | ✅ |
 | All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
-| Separators then *(CR/LF)  | ✅ | 🟡 | 🟡 | ⛔ |
+| Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ |
 | End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ |
 | Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
 
@@ -65,24 +65,24 @@ USV can represent units, records, groups, files.
 * For databases, think of these as fields, rows, tables, schemas. 
 
 
-## Lines
+## Line spacing
 
-Any USV separator may be followed by any number of carriage returns and/or newlines. This helps with visual display.
+Before each separator, USV skips all carriage returns and/or newlines. This helps with visual display.
 
-Example:
+Example without line spacing:
 
 ```usv
 a␟b␟c␟d␟␞e␟f␟g␟h␟␞
 ```
 
-Example with each record separator + newline:
+Same content with line spacing suitable for display of a record per line:
 
 ```usv
 a␟b␟c␟d␟␞
 e␟f␟g␟h␟␞
 ```
 
-Example with each unit separator + newline, and each record separator + newline:
+Same content with line spacing suitable for display of a unit per line:
 
 ```usv
 a␟
@@ -153,7 +153,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-Same content with lines:
+Same content with line line spacing for records, groups, and files:
 
 ```usv
 a␟b␟␞

@@ -20,7 +20,7 @@ Unicode separated values (USV) is similar to these formats, plus offers more cap
 | Files / folios / schemas  | ✅ | ⛔ | ⛔ | ✅ | ⛔ |
 | Text, not binary          | ✅ | ✅ | ✅ | ✅ | ⛔ |
 | All visible separators    | ✅ | ✅ | 🟡 | ⛔ | ⛔ |
-| Separators then *(CR/LF)  | ✅ | 🟡 | 🟡 | ⛔ | ⛔ |
+| Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ | ⛔ |
 | Escaping                  | ✅ | ✅ | ⛔ | ✅ | ⛔ |
 | End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ | ⛔ |
 | Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ | ⛔ |

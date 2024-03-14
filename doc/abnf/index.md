@@ -28,13 +28,13 @@ Sections:
 
 Runs:
 
-* file-run = *( file FS *liner-character )
+* file-run = *( *liner-character file FS )
 
-* group-run = *( group GS *liner-character )
+* group-run = *( *liner-character group GS )
 
-* record-run = *( record RS *liner-character )
+* record-run = *( *liner-character record RS )
 
-* unit-run = *( unit US *liner-character )
+* unit-run = *( *liner-character unit US )
 
 Character classes:
 
