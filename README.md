@@ -30,12 +30,19 @@ Modifiers:
 
 ## Comparisons
 
+| USV    | Spreadsheets | Databases |
+| ------ | ------------ | --------- |
+| Unit   | Cell         | Field     |
+| Record | Line         | Row       |
+| Group  | Sheet        | Table     |
+| File   | Folio        | Schema    |
+
 | Capability                | [USV](./) | [CSV](doc/comparisons/csv) | [TSV](doc/comparisons/tsv) | [ASV](doc/comparisons/asv) |
 | ------------------------- | --- | --- | --- | --- |
-| Units / cells / fields    | ✅ | ✅ | ✅ | ✅ |
-| Records / lines / rows    | ✅ | ✅ | ✅ | ✅ |
-| Groups / sheets / tables  | ✅ | ⛔ | ⛔ | ✅ |
-| Files / folios / schemas  | ✅ | ⛔ | ⛔ | ✅ |
+| Units / Cells / Fields    | ✅ | ✅ | ✅ | ✅ |
+| Records / Lines / Rows    | ✅ | ✅ | ✅ | ✅ |
+| Groups / Sheets / Tables  | ✅ | ⛔ | ⛔ | ✅ |
+| Files / Folios / Schemas  | ✅ | ⛔ | ⛔ | ✅ |
 | All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
 | Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ |
 | End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ |
