@@ -208,7 +208,7 @@ USV uses visible letter-width characters, and these are easy to view, select, co
 
 The USV project aims to become a free open source IETF standard and IANA standard, much like the standards for CSV and TDF.
 
-Until the standardization happens, the terms "USV" and "Unicode Separated Values" are trademarks of this project, and this repository is copyright 2022-2024. When IETF and IANA approve the submissions as a standard, then the trademarks and copyrights become public domain.
+Until the standardization happens, the terms "USV" and "Unicode Separated Values" are trademarks of this project, and this repository is copyright 2022-2024. When IETF and IANA approve the submissions as a standard, then the trademarks and copyrights will go to a free libre open source software advocacy foundation.
 
 
 ## Conclusion
