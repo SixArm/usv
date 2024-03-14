@@ -30,13 +30,6 @@ Modifiers:
 
 ## Comparisons
 
-| USV    | Spreadsheets | Databases |
-| ------ | ------------ | --------- |
-| Unit   | Cell         | Field     |
-| Record | Line         | Row       |
-| Group  | Sheet        | Table     |
-| File   | Folio        | Schema    |
-
 | Capability                | [USV](./) | [CSV](doc/comparisons/csv) | [TSV](doc/comparisons/tsv) | [ASV](doc/comparisons/asv) |
 | ------------------------- | --- | --- | --- | --- |
 | Units / Cells / Fields    | ✅ | ✅ | ✅ | ✅ |
@@ -160,7 +153,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-Same content with line line spacing for records, groups, and files:
+Same content with line spacing for records, groups, and files:
 
 ```usv
 a␟b␟␞
