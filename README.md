@@ -30,7 +30,7 @@ Modifiers:
 
 ## Comparisons
 
-| Capability                | USV | CSV | TSV | ASV |
+| Capability                | [USV](./) | [CSV](doc/comparisons/csv) | [TSV](doc/comparisons/tsv) | [ASV](doc/comparisons/asv) |
 | ------------------------- | --- | --- | --- | --- |
 | Units / cells / fields    | ✅ | ✅ | ✅ | ✅ |
 | Records / lines / rows    | ✅ | ✅ | ✅ | ✅ |

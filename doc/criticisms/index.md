@@ -35,7 +35,7 @@ If you like those, use those; I tried those first, and they didn't work well in 
 
 Ha! That's funny. It turns out USV isn't trying to be one universal standard. CSV works really well for many use cases, and is well-supported everywhere, so keep using it where it works well.
 
-USV aims just for use cases that CSV doesn't seem to handle well, such as text that contains paragraphs of natural language, or data that involves spreadsheet collections (e.g. folios comprising sheets comprising rows and columns) and database collections (e.g. schemas comprising tables comprising records and fields), or data that needs optional streaming capabilities (e.g. synchronous idle heartbeats, end of transmission block terminators).
+USV aims just for use cases that CSV doesn't seem to handle well, such as text that contains paragraphs of natural language, or displays better with newlines between units, or data that involves spreadsheet collections (e.g. folios comprising sheets comprising rows and columns) and database collections (e.g. schemas comprising tables comprising records and fields), or data that needs an end of transmission block.
 
 
 ## You cannot edit it
