@@ -18,26 +18,22 @@ while True:
         break
     if escape:
         escape = False
-        match c:
-            case "␛" | "␟" | "␞" | "␝" | "␜" | "␗":
-                print(f"{c}", end='', flush=True)
+        print(f"{c}", end='', flush=True)
     else:
         match c:
-            case "␛":
+            case "\u001B" | "␛":
                 escape = True
-            case "␟":
+            case "\u001F" | "␟":
                 comma=','
-            case "␞":
+            case "\u001E" | "␞":
                 print(f"\n", end='', flush=True)
                 comma = ''
-            case "␝":
+            case "\u001D" | "␝":
                 raise Exception("error: group separator") 
-            case "␜":
+            case "\u001C" | "␜":
                 raise Exception("error: file separator") 
-            case "␗":
+            case "\u0004" | "␄":
                 break
-            case "␖":
-                pass
             case (c):
                 print(f"{comma}{c}", end='', flush=True)
                 comma = ''

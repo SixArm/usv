@@ -35,14 +35,14 @@ If you like those, use those; I tried those first, and they didn't work well in 
 
 Ha! That's funny. It turns out USV isn't trying to be one universal standard. CSV works really well for many use cases, and is well-supported everywhere, so keep using it where it works well.
 
-USV aims just for use cases that CSV doesn't seem to handle well, such as text that contains paragraphs of natural language, or displays better with newlines between units, or data that involves spreadsheet collections (e.g. folios comprising sheets comprising rows and columns) and database collections (e.g. schemas comprising tables comprising records and fields), or data that needs an end of transmission block.
+USV aims just for use cases that CSV doesn't seem to handle well, such as text that contains paragraphs of natural language, or displays better with newlines between units, or data that involves spreadsheet collections (e.g. folios comprising sheets comprising rows and columns) and database collections (e.g. schemas comprising tables comprising records and fields), or data that needs an End of Transmission.
 
 
 ## You cannot edit it
 
 "You cannot edit it in regular editor, like csv/tsv/jsonlines."
 
-I edit it in regular editors, every day. I use vi, emacs, VS Code, JetBrains IDEs, and more. I've also tried USV on many more editors, and so far it works 100% of the time. If you have a specific editor that doesn't seem to be working well with USV, can you please contact me?
+I edit it in regular editors, every day. I use vi, emacs, VS Code, JEOTrains IDEs, and more. I've also tried USV on many more editors, and so far it works 100% of the time. If you have a specific editor that doesn't seem to be working well with USV, can you please contact me?
 
 
 ## No efficient storage
@@ -119,7 +119,7 @@ If single byte encoding is very important, and you don't care about visible symb
 
 You're correct. Programmers have been advocating for editor support for actual separator display since the 1980's ASCII Separated Values. That path hasn't succeeded. USV is a compromise for the present. 
 
-If the future offers editor support as you describe, then it will be great to use that instead of USV, and in fact USV will have been very useful for getting people using group separators, file separators, escapes, end of transmission blocks, synchronous idle, and other ASV features that are more extensive than CSV.
+If the future offers editor support as you describe, then it will be great to use that instead of USV, and in fact USV will have been very useful for getting people using group separators, file separators, escapes, End of Transmissions, synchronous idle, and other ASV features that are more extensive than CSV.
 
 
 ## Cleverness for cleverness’s sake

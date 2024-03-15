@@ -15,31 +15,23 @@ while True:
         break
     if escape:
         escape = False
-        match c:
-            case "␛" | "␟" | "␞" | "␝" | "␜" | "␗":
-                print(f"\nescaped special character: {c}\n", end='', flush=True)
-            case "\n":
-                print(f"\nescaped newline character\n", end='', flush=True)
-            case (c):
-                print(f"\nescaped typical character: {c}\n", end='', flush=True)
+        print(f"\nescape character: {c}\n", end='', flush=True)
     else:
         match c:
-            case "␛":
+            case "\u001B" | "␛":
                 print("\nescape\n", end='', flush=True)
                 escape = True
-            case "␟":
+            case "\u001F" | "␟":
                 print(f"\nunit separator\n", end='', flush=True)
-            case "␞":
+            case "\u001E" | "␞":
                 print(f"\nrecord separator\n", end='', flush=True)
-            case "␝":
+            case "\u001D" | "␝":
                 print(f"\ngroup separator\n", end='', flush=True)
-            case "␜":
+            case "\u001C" | "␜":
                 print(f"\nfile separator\n", end='', flush=True)
-            case "␗":
-                print(f"\nend of transmission block\n", end='', flush=True)
+            case "\u0004" | "␄":
+                print(f"\nend of transmission\n", end='', flush=True)
                 break
-            case "␖":
-                print(f"\nsynchronous idle\n", end='', flush=True)
             case (c):
                 print(f"{c}", end='', flush=True)
 print()

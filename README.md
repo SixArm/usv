@@ -1,37 +1,45 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a text data format that uses Unicode symbol characters between data parts. 
+Unicode Separated Values (USV) is a data format that uses Unicode characters to mark parts. 
 
-USV is similar to ASCII separated values (ASV), comma separated values (CSV), tab separated values (TSV), etc.
+USV builds on ASCII separated values (ASV) and contrasts with comma separated values (CSV).
 
-USV offers capabilities for spreadsheet folios that contain sheets, databases schemas that contain tables, and more.
+USV offers pragmatic ways to edit data in text editors by using visual symbols and line breaks.
 
-[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
+USV has capabilities for spreadsheet folios and sheets, databases schemas and tables, and more.
+
+[FAQ](doc/faq/) &bull; 
+[RFC](doc/rfc/) &bull; 
+[Code](doc/code/) &bull; 
+[Comparisons](doc/comparisons/) &bull; 
+[Criticisms](doc/criticisms/) &bull; 
+[TODO](doc/todo/) &bull; 
+[XKCD](https://xkcd.com/927/)
 
 
 ## USV characters
 
 Separators:
 
-* ␟ U+241F Symbol for Unit Separator (US)
+* File Separator (FS) is U+001C or U+241C ␜
 
-* ␞ U+241E Symbol for Record Separator (RS)
+* Group Separator (GS) is U+001D or U+241D ␝
 
-* ␝ U+241D Symbol for Group Separator (GS)
+* Record Separator (RS) is U+001E or U+241E ␞
 
-* ␜ U+241C Symbol for File Separator (FS)
+* Unit Separator (US) is U+001F or U+241F ␟
 
 Modifiers:
 
-* ␛ U+241B Symbol for Escape (ESC)
+* Escape (ESC) is U+001B or U+241B ␛
 
-* ␗ U+2417 Symbol for End of Transmission Block (ETB)
+* End of Transmission (EOT) is U+0004 or U+2404 ␄
 
 Liners:
 
-* '\r' U+000D Carriage Return (CR)
+* Carriage Return (CR) is U+000D
 
-* '\n' U+000A Line Feed (LF)
+* Line Feed (LF) is U+000A
 
 
 ## Hello World
@@ -60,16 +68,16 @@ let units = input.units().collect();
 
 ## Comparisons to text data formats
 
-| Capability                | [USV](./) | [CSV](doc/comparisons/csv) | [TSV](doc/comparisons/tsv) | [ASV](doc/comparisons/asv) |
-| ------------------------- | --- | --- | --- | --- |
-| Units / Cells / Fields    | ✅ | ✅ | ✅ | ✅ |
-| Records / Lines / Rows    | ✅ | ✅ | ✅ | ✅ |
-| Groups / Sheets / Tables  | ✅ | ⛔ | ⛔ | ✅ |
-| Files / Folios / Schemas  | ✅ | ⛔ | ⛔ | ✅ |
-| All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
-| Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ |
-| IETF.org standards-track  | ✅ | 🟡 | 🟡 | ⛔ |
-| Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
+| Capability                | [USV](./) | [ASV](doc/comparisons/asv) | [CSV](doc/comparisons/csv)  |
+| ------------------------- | --- | --- | --- |
+| Units / Cells / Fields    | ✅ | ✅ | ✅ |
+| Records / Lines / Rows    | ✅ | ✅ | ✅ |
+| Groups / Sheets / Tables  | ✅ | ✅ | ⛔ |
+| Files / Folios / Schemas  | ✅ | ✅ | ⛔ |
+| Visible separators        | ✅ | ⛔ | ✅ |
+| Separator line spacing    | ✅ | ⛔ | 🟡 |
+| IETF.org standards-track  | ✅ | ⛔ | 🟡 |
+| Unicode UTF-8 default     | ✅ | ⛔ | ⛔ |
 
 
 ## Comparisons to spreadsheets and databases
@@ -103,7 +111,7 @@ Character details:
 
 * [Escape (ESC)](doc/escape/)
 
-* [End of Transmission Block (ETB)](doc/end-of-transmission-block/)
+* [End of Transmission (EOT)](doc/end-of-transmission/)
 
 * [Liners (CR|LF)](doc/liners/)
 
@@ -133,7 +141,7 @@ Example files:
 
 * [blog-posts.usv](examples/blog-posts.usv) versus [blog-posts.csv](examples/blog-posts.csv)
 
-* [end-of-transmission-block.usv](examples/end-of-transmission-block.usv)
+* [end-of-transmission.usv](examples/end-of-transmission.usv)
 
 
 ## Examples
@@ -197,7 +205,7 @@ USV uses visible letter-width characters, and these are easy to view, select, co
 
 USV is intended to be easy to use and friendly to try.
 
-USV works with many kinds of data, and many kinds of editors. Any editor that can render the USV characters will work. We use vi, emacs, helix, Zed, VS Code, JetBrains IDEs, Nova, TextMate, Sublime, Notepad++, etc.
+USV works with many kinds of data, and many kinds of editors. Any editor that can render the USV characters will work. We use vi, emacs, helix, Zed, VS Code, JEOTrains IDEs, Nova, TextMate, Sublime, Notepad++, etc.
 
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 
@@ -217,4 +225,10 @@ USV is helping us with data projects. We hope USV may help you too.
 
 We welcome constructive feedback about USV, as well as git issues, pull requests, and standardization help.
 
-[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
+[FAQ](doc/faq/) &bull; 
+[RFC](doc/rfc/) &bull; 
+[Code](doc/code/) &bull; 
+[Comparisons](doc/comparisons/) &bull; 
+[Criticisms](doc/criticisms/) &bull; 
+[TODO](doc/todo/) &bull; 
+[XKCD](https://xkcd.com/927/)

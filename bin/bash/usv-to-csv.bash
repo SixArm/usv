@@ -12,33 +12,27 @@ comma=''
 while IFS= read -N1 -r c; do
     if [ "$escape" = true ]; then
         escape=false
-        case "$c" in
-        "␛"|"␟"|"␞"|"␝"|"␜"|"␗")
-            printf %s "$c"
-            ;;
-        esac
+        printf %s "$c"
     else
         case  "$c" in
-        "␛")
+        "\u001B" | "␛")
             escape=true
             ;;
-        "␟")
+        "\u001F" | "␟")
             comma=','
             ;;
-        "␞")
+        "\u001E" | "␞")
             printf "\n"
             comma=''
             ;;
-        "␝")
+        "\u001D" | "␝")
             >&2 printf "\nerror: group separator\n"
             ;;
-        "␜")
+        "\u001C" | "␜")
             >&2 printf "\nerror: file separator\n"
             ;;
-        "␗")
+        "\u0004" | "␄")
             break
-            ;;
-        "␖")
             ;;
         *)
             printf %s%s "$comma" "$c"

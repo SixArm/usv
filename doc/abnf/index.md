@@ -42,7 +42,7 @@ Character classes:
 
 * typical-character = '*' - special-character
 
-* special-character = US / RS / GS / FS / ESC / ETB
+* special-character = US / RS / GS / FS / ESC / EOT
 
 * escape-character = ESC ( special-character / typical-character )
 
@@ -65,7 +65,7 @@ Modifiers:
 
 * ESC = U+241B Symbol for Escape (ESC)
 
-* ETB = U+2417 Symbol for End of Transmission Block (ETB)
+* EOT = U+2404 Symbol for End of Transmission (EOT)
 
 Liners:
 

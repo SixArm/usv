@@ -1,0 +1,4 @@
+a␟b␟c␟␄
+
+The End of Transmission (EOT) stops parsing.
+For example, this text comes after the EOT character.

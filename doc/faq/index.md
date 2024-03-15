@@ -54,7 +54,7 @@ provide.
 You want a consistent compatible standardized file name extension, which
 CSV/TSV/TDF can't always provide.
 
-You want to use End of Transmission Block (ETB), so you can guarantee a reader
+You want to use End of Transmission (EOT), so you can guarantee a reader
 has read data until the end.
 
 

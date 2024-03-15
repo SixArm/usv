@@ -176,7 +176,7 @@
 
       <ul>
         <li>␛ U+241B Symbol for Escape (ESC)</li>
-        <li>␗ U+2417 Symbol for End of Transmission Block (ETB)</li>
+        <li>␄ U+2404 Symbol for End of Transmission (EOT)</li>
       </ul>
 
     </section>
@@ -291,11 +291,11 @@ name␟name␟␞aaa␟bbb␟␞
           </li>
         </ul>
         <t>
-          USV with a unit that contains an Escape + End of Transmission Block, which is treated as content:
+          USV with a unit that contains an Escape + End of Transmission, which is treated as content:
         </t>
         <sourcecode name="header.usv" type="usv" markers="true">
   <![CDATA[
-  a␛␗b␟
+  a␛␄b␟
   ]]>
         </sourcecode>
         <t>
@@ -303,30 +303,30 @@ name␟name␟␞aaa␟bbb␟␞
         </t>
         <sourcecode name="header.usv" type="usv" markers="true">
           <![CDATA[
-          a␛␗b␟
+          a␛␄b␟
           ]]>
         </sourcecode>
       </section>
 
       <section>
-        <name>End of Transmission Block (ETB)</name>
+        <name>End of Transmission (EOT)</name>
         <t>
-          The End of Transmission Block (ETB) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection.  ETB can also be useful for providing data files that contain USV data, then ETB, then extra non-USV information such as comments, images, attachments, etc.
+          The End of Transmission (EOT) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection.  EOT can also be useful for providing data files that contain USV data, then EOT, then extra non-USV information such as comments, images, attachments, etc.
         </t>
         <ul>
           <li>
-            ETB tells the data reader that data streaming is done.
+            EOT tells the data reader that data streaming is done.
           </li>
           <li>
-            ETB has no effect on the output content.
+            EOT has no effect on the output content.
           </li>
         </ul>
         <t>
-          Example of a unit then an End of Transmission Block:
+          Example of a unit then an End of Transmission:
         </t>
         <sourcecode name="header.usv" type="usv" markers="true">
 <![CDATA[
-abc␞␗
+abc␞␄
 ]]>
         </sourcecode>
       </section>
@@ -380,7 +380,7 @@ abc␞␗
 
         <t>typical-character = '*' - special-character</t>
 
-        <t>special-character = US / RS / GS / FS / ESC / ETB</t>
+        <t>special-character = US / RS / GS / FS / ESC / EOT</t>
 
         <t>escape-character = ESC ( special-character / typical-character )</t>
 
@@ -402,7 +402,7 @@ abc␞␗
 
         <t>ESC = U+241B Symbol for Escape (ESC)</t>
 
-        <t>ETB = U+2417 Symbol for End of Transmission Block (ETB)</t>
+        <t>EOT = U+2404 Symbol for End of Transmission (EOT)</t>
 
         <t>CR = U+000D Carriage Return (CR)</t>
 
@@ -773,11 +773,6 @@ let records = input.records().collect();
 
       </references>
     </references>
-
-    <section>
-      <name>Appendix 1</name>
-      <t>This becomes an Appendix</t>
-    </section>
 
     <section anchor="Acknowledgements" numbered="false">
       <!-- an Acknowledgements section is optional -->

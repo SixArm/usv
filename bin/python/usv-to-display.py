@@ -15,25 +15,21 @@ while True:
         break
     if escape:
         escape = False
-        match c:
-            case "␛" | "␟" | "␞" | "␝" | "␜" | "␗":
-                print(f"{c}", end='', flush=True)
+        print(f"{c}", end='', flush=True)
     else:
         match c:
-            case "␛":
+            case "\u001B" | "␛":
                 escape = True
-            case "␟":
+            case "\u001F" | "␟":
                 print(f",", end='', flush=True)
-            case "␞":
+            case "\u001E" | "␞":
                 print(f"\n", end='', flush=True)
-            case "␝":
+            case "\u001D" | "␝":
                 print(f"\n-\n", end='', flush=True)
-            case "␜":
+            case "\u001C" | "␜":
                 print(f"\n=\n", end='', flush=True)
-            case "␗":
+            case "\u0004" | "␄":
                 break
-            case "␖":
-                pass
             case (c):
                 print(f"{c}", end='', flush=True)
 print()
