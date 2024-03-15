@@ -1,10 +1,10 @@
 # Unicode Separated Values (USV)
 
-Unicode separated values (USV) is a data format that uses Unicode symbol characters between data parts. 
+Unicode separated values (USV) is a text data format that uses Unicode symbol characters between data parts. 
 
-USV is a text format that is similar to comma separated values (CSV), tab separated values (TSV), ASCII separated values (ASV), etc. USV is most like ASV plus visible symbols.
+USV is a text format that is similar to ASCII separated values (ASV), comma separated values (CSV), tab separated values (TSV), etc. USV is most like ASV plus Unicode visible symbols.
 
-USV offers capabilities for spreadsheet collections, database collections, streaming options, and UTF-8 encoding by default.
+USV offers capabilities for spreadsheet collections such as multiple sheets and folios, database collections such as multiple tables and schemas, and UTF-8 encoding by default.
 
 [FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
 
@@ -38,6 +38,7 @@ Modifiers:
 | Files / Folios / Schemas  | ✅ | ⛔ | ⛔ | ✅ |
 | All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
 | Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ |
+| IETF.org standards-track  | ✅ | 🟡 | 🟡 | ⛔ |
 | End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ |
 | Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
 
@@ -65,24 +66,24 @@ USV can represent units, records, groups, files.
 * For databases, think of these as fields, rows, tables, schemas. 
 
 
-## Line spacing
+## Liners
 
-Before each separator, USV skips all carriage returns and/or newlines. This helps with visual display.
+Liners are any newline characters and/or return characters, that come at the start or end of any USV content. USV parsing omits liners because this greatly helps typical displays.
 
-Example without line spacing:
+Content without liners:
 
 ```usv
 a␟b␟c␟d␟␞e␟f␟g␟h␟␞
 ```
 
-Same content with line spacing suitable for display of a record per line:
+Content with liners to display one record per line:
 
 ```usv
 a␟b␟c␟d␟␞
 e␟f␟g␟h␟␞
 ```
 
-Same content with line spacing suitable for display of a unit per line:
+Content with liners to display one unit per line:
 
 ```usv
 a␟

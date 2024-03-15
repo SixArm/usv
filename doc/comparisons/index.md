@@ -21,6 +21,7 @@ Unicode separated values (USV) is similar to these formats, plus offers more cap
 | Text, not binary          | ✅ | ✅ | ✅ | ✅ | ⛔ |
 | All visible separators    | ✅ | ✅ | 🟡 | ⛔ | ⛔ |
 | Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ | ⛔ |
+| IETF.org standards-track  | ✅ | 🟡 | 🟡 | ⛔ | ⛔ |
 | Escaping                  | ✅ | ✅ | ⛔ | ✅ | ⛔ |
 | End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ | ⛔ |
 | Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ | ⛔ |

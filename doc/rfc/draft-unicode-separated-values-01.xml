@@ -362,13 +362,13 @@ abc␞␗
 
         <t>body = *unit-run / *record-run / *group-run / *file-run</t>
 
-        <t>file-run = *( *liner-character file FS )</t>
+        <t>file-run = *( *liner-character file *liner-character FS )</t>
 
-        <t>group-run = *( *liner-character group GS )</t>
+        <t>group-run = *( *liner-character group *liner-character GS )</t>
 
-        <t>record-run = *( *liner-character record RS )</t>
+        <t>record-run = *( *liner-character record *liner-character RS )</t>
 
-        <t>unit-run = *( *liner-character unit US )</t>
+        <t>unit-run = *( *liner-character unit *liner-character US )</t>
 
       </section>
 
