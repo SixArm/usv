@@ -2,9 +2,9 @@
 
 Unicode separated values (USV) is a text data format that uses Unicode symbol characters between data parts. 
 
-USV is a text format that is similar to ASCII separated values (ASV), comma separated values (CSV), tab separated values (TSV), etc. USV is most like ASV plus Unicode visible symbols.
+USV is similar to ASCII separated values (ASV), comma separated values (CSV), tab separated values (TSV), etc.
 
-USV offers capabilities for spreadsheet collections such as multiple sheets and folios, database collections such as multiple tables and schemas, and UTF-8 encoding by default.
+USV offers capabilities for spreadsheet folios that contain sheets, databases schemas that contain tables, and more.
 
 [FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
 
@@ -34,31 +34,9 @@ Liners:
 * '\n' U+000A Line Feed (LF)
 
 
-## Comparisons
-
-| Capability                | [USV](./) | [CSV](doc/comparisons/csv) | [TSV](doc/comparisons/tsv) | [ASV](doc/comparisons/asv) |
-| ------------------------- | --- | --- | --- | --- |
-| Units / Cells / Fields    | ✅ | ✅ | ✅ | ✅ |
-| Records / Lines / Rows    | ✅ | ✅ | ✅ | ✅ |
-| Groups / Sheets / Tables  | ✅ | ⛔ | ⛔ | ✅ |
-| Files / Folios / Schemas  | ✅ | ⛔ | ⛔ | ✅ |
-| All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
-| Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ |
-| IETF.org standards-track  | ✅ | 🟡 | 🟡 | ⛔ |
-| End of Transmission Block | ✅ | ⛔ | ⛔ | ✅ |
-| Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
-
-
-USV semantics are for units, records, groups, files. 
-
-* Spreadsheet equivalents are cells, lines, sheets, folios. 
-
-* Databases equivalents are fields, rows, tables, schemas. 
-
-
 ## Hello World
 
-This is the unit "hello" and the unit "world":
+The USV unit "hello" and USV unit "world":
 
 ```usv
 hello␟world␟
@@ -71,7 +49,7 @@ hello␟
 world␟
 ```
 
-USV can be parsed using e.g. the USV Rust crate:
+Parsing can use libraries such as the USV Rust crate:
 
 ```rust
 use usv::*;
@@ -80,21 +58,48 @@ let units = input.units().collect();
 ```
 
 
+## Comparisons to text data formats
+
+| Capability                | [USV](./) | [CSV](doc/comparisons/csv) | [TSV](doc/comparisons/tsv) | [ASV](doc/comparisons/asv) |
+| ------------------------- | --- | --- | --- | --- |
+| Units / Cells / Fields    | ✅ | ✅ | ✅ | ✅ |
+| Records / Lines / Rows    | ✅ | ✅ | ✅ | ✅ |
+| Groups / Sheets / Tables  | ✅ | ⛔ | ⛔ | ✅ |
+| Files / Folios / Schemas  | ✅ | ⛔ | ⛔ | ✅ |
+| All visible separators    | ✅ | ✅ | 🟡 | ⛔ |
+| Separator line spacing    | ✅ | 🟡 | 🟡 | ⛔ |
+| IETF.org standards-track  | ✅ | 🟡 | 🟡 | ⛔ |
+| Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
+
+
+## Comparisons to spreadsheets and databases
+
+USV semantics are for units, records, groups, files. 
+
+* Spreadsheet equivalents are cells, lines, sheets, folios. 
+
+* Databases equivalents are fields, rows, tables, schemas. 
+
+
 ## Documentation
 
-Documentation links:
+Commentary:
 
 * [Frequently Asked Questions (FAQ)](doc/faq/)
 
-* [Request For Comments (RFC)](doc/rfc/)
-
-* [Code examples and production crates](doc/code/)
-  
-* [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
+* [Criticisms and replies](doc/criticisms/)
 
 * [TODO list](doc/todo/)
 
-Character specifics:
+Specification:
+
+* [Request For Comments (RFC)](doc/rfc/)
+
+* [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
+
+* [Code examples and production crates](doc/code/)
+  
+Character details:
 
 * [Escape (ESC)](doc/escape/)
 
@@ -106,13 +111,11 @@ How to:
 
 * [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
-* [How to use split and regex](doc/how-to-use-split-and-regex)
+* [How to use split and regex](doc/how-to-use-split-and-regex/)
 
-Context help:
+Context:
 
 * [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons/)
-
-* [Criticisms and replies](doc/criticisms/)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
@@ -141,7 +144,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-With liners:
+Liners can make the display prettier:
 
 ```usv
 a␟b␟␞
@@ -149,18 +152,16 @@ c␟d␟␞
 ␝
 e␟f␟␞
 g␟h␟␞
-␝
-␜
+␝␜
 i␟j␟␞
 k␟l␟␞
 ␝
 m␟n␟␞
 o␟p␟␞
-␝
-␜
+␝␜
 ```
 
-USV can be parsed using e.g. the USV Rust crate iterators:
+Parsing example with the USV Rust crate and its iterators:
 
 ```rust
 use usv::*;
@@ -177,6 +178,21 @@ for f in input.files() {
 ```
 
 
+## Why use USV?
+
+USV can handle data that contains commas, semicolons, quotes, tabs, newlines, and other special characters, all without escaping.
+
+USV can format units/columns/cells and records/rows/lines and groups/tables/grids and files/schemas/folios.
+
+USV aims to be an international standard, and has a official IETF RFCXML Internet Draft submitted.
+
+USV uses Unicode characters that are semantically meaningful.
+
+USV works well with any typical modern editor, font, terminal, shell, search, and language.
+
+USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
+
+
 ## USV is easy and friendly
 
 USV is intended to be easy to use and friendly to try.
@@ -186,21 +202,6 @@ USV works with many kinds of data, and many kinds of editors. Any editor that ca
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 
 USV works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, C++, C#, Elixir, Erlang, Go, Java, JavaScript, Julia, Kotlin, Perl, PHP, Python, R, Ruby, Rust, Swift, TypeScript, etc.
-
-
-## Why use USV?
-
-USV can handle data that contains commas, semicolons, quotes, tabs, newlines, and other special characters, all without escaping.
-
-USV can format units/columns/cells and records/rows/lines (similar to CSV) and groups/tables/grids and files/schemas/folios (similar to ASV).
-
-USV aims to be an international standard, and has a official IETF RFCXML Internet Draft submitted.
-
-USV uses Unicode characters that are semantically meaningful.
-
-USV works well with any typical modern editor, font, terminal, shell, search, and language.
-
-USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
 
 
 ## Legal protection for standardization
