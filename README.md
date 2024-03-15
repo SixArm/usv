@@ -27,6 +27,12 @@ Modifiers:
 
 * ␗ U+2417 Symbol for End of Transmission Block (ETB)
 
+Liners:
+
+* '\r' U+000D Carriage Return (CR)
+
+* '\n' U+000A Line Feed (LF)
+
 
 ## Comparisons
 
@@ -43,12 +49,26 @@ Modifiers:
 | Unicode UTF-8 default     | ✅ | ⛔ | ⛔ | ⛔ |
 
 
+USV semantics are for units, records, groups, files. 
+
+* Spreadsheet equivalents are cells, lines, sheets, folios. 
+
+* Databases equivalents are fields, rows, tables, schemas. 
+
+
 ## Hello World
 
 This is the unit "hello" and the unit "world":
 
 ```usv
 hello␟world␟
+```
+
+Liners can make the display prettier:
+
+```usv
+hello␟
+world␟
 ```
 
 USV can be parsed using e.g. the USV Rust crate:
@@ -58,45 +78,6 @@ use usv::*;
 let input = "hello␟world␟";
 let units = input.units().collect();
 ```
-
-USV can represent units, records, groups, files. 
-
-* For spreadsheets, think of these as cells, lines, sheets, folios. 
-
-* For databases, think of these as fields, rows, tables, schemas. 
-
-
-## Liners
-
-Liners are any newline characters and/or return characters, that come at the start or end of any USV content. USV parsing omits liners because this greatly helps typical displays.
-
-Content without liners:
-
-```usv
-a␟b␟c␟d␟␞e␟f␟g␟h␟␞
-```
-
-Content with liners to display one record per line:
-
-```usv
-a␟b␟c␟d␟␞
-e␟f␟g␟h␟␞
-```
-
-Content with liners to display one unit per line:
-
-```usv
-a␟
-b␟
-c␟
-d␟
-␞
-e␟
-f␟
-g␟
-h␟
-␞
-```  
 
 
 ## Documentation
@@ -111,13 +92,17 @@ Documentation links:
   
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
 
+* [Using split regex](doc/using-split-regex)
+
 * [TODO list](doc/todo/)
 
-Symbol specifics:
+Character specifics:
 
 * [Escape (ESC)](doc/escape/)
 
 * [End of Transmission Block (ETB)](doc/end-of-transmission-block/)
+
+* [Liners (CR|LF)](doc/liners/)
 
 Context help:
 
@@ -154,7 +139,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-Same content with line spacing for records, groups, and files:
+With liners:
 
 ```usv
 a␟b␟␞
@@ -173,6 +158,22 @@ o␟p␟␞
 ␜
 ```
 
+USV can be parsed using e.g. the USV Rust crate iterators:
+
+```rust
+use usv::*;
+let input = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜";
+for f in input.files() {
+    for g in file.groups() {
+        for r in group.records() {
+            for u in r.units() {
+                println!(&u);
+            }
+        }
+    }
+}
+```
+
 
 ## USV is easy and friendly
 
@@ -183,8 +184,6 @@ USV works with many kinds of data, and many kinds of editors. Any editor that ca
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 
 USV works with many kinds of languages. Any language that can handle UTF-8 character encoding and rendering should work. We use C, C++, C#, Elixir, Erlang, Go, Java, JavaScript, Julia, Kotlin, Perl, PHP, Python, R, Ruby, Rust, Swift, TypeScript, etc.
-
-[Frequently asked questions](doc/faq/) and [criticisms](doc/criticisms/)
 
 
 ## Why use USV?
@@ -201,9 +200,6 @@ USV works well with any typical modern editor, font, terminal, shell, search, an
 
 USV uses visible letter-width characters, and these are easy to view, select, copy, paste, search.
 
-[Frequently asked questions](doc/faq/)
-
-
 
 ## Legal protection for standardization
 
@@ -218,4 +214,4 @@ USV is helping us with data projects. We hope USV may help you too.
 
 We welcome constructive feedback about USV, as well as git issues, pull requests, and standardization help.
 
-<https://github.com/sixarm/usv>
+[FAQ](doc/faq/) &bull; [RFC](doc/rfc/) &bull; [Code](doc/code/) &bull; [Comparisons](doc/comparisons/) &bull; [Criticisms](doc/criticisms/) &bull; [TODO](doc/todo/) &bull; [XKCD](https://xkcd.com/927/)
