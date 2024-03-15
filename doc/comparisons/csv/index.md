@@ -107,3 +107,32 @@ second line
 In our experience, the CSV format has various kinds of implementations, some incompatible, some with escaping and some without.
 
 In our experience, some software programs use the file name extension ".csv" to mean other ways of separating data with other characters, such as using tabs, or semi-colons, or spaces.
+
+
+### CSV files
+
+We work with spreadsheets that are folios, that each contain sheets, that each contain grids.
+
+Suppose we work with 3 spreadsheets, and each spreadsheet contains 3 sheets. When we export the data, the export process needs multiple filesystem files, and needs some kind of ad hoc naming convention to show what's what:
+
+```txt
+my-folio-1-sheet-1.csv
+my-folio-1-sheet-2.csv
+my-folio-1-sheet-3.csv
+my-folio-2-sheet-1.csv
+my-folio-2-sheet-2.csv
+my-folio-2-sheet-3.csv
+my-folio-3-sheet-1.csv
+my-folio-3-sheet-2.csv
+my-folio-3-sheet-3.csv
+```
+
+To send all the data to another team, we have tried a variety of combiner tools, such as `tar` and `zip`.
+
+For comparison, USV can contain all the data, because a USV file is equivalent to a spreadsheet folio, and USV group is equivalent to a spreadsheet sheet.
+
+Thus our export uses one filesystem file:
+
+```txt
+my.usv
+```
