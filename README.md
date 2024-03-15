@@ -92,8 +92,6 @@ Documentation links:
   
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
 
-* [Using split regex](doc/using-split-regex)
-
 * [TODO list](doc/todo/)
 
 Character specifics:
@@ -104,13 +102,17 @@ Character specifics:
 
 * [Liners (CR|LF)](doc/liners/)
 
+How to:
+
+* [How to type Unicode characters](doc/how-to-type-unicode-characters/)
+
+* [How to use split and regex](doc/how-to-use-split-and-regex)
+
 Context help:
 
 * [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons/)
 
 * [Criticisms and replies](doc/criticisms/)
-
-* [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
