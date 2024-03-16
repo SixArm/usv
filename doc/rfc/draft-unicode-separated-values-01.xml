@@ -759,7 +759,7 @@ let records = input.records().collect();
         <reference anchor="usv-git-repository">
         <!-- Example minimum reference -->
           <front>
-            <title>USV repository at https://github.com/sixarm/usv</title>
+            <title>USV git repository at https://github.com/sixarm/usv</title>
             <author initials="J" surname="Henderson">
               <organization/>
             </author>
@@ -778,28 +778,6 @@ let records = input.records().collect();
           </front>
         </reference>
 
-        <reference anchor="usv-to-csv-rust-crate">
-        <!-- Example minimum reference -->
-          <front>
-            <title>usv-to-csv command line tool at https://crates.io/crates/usv-to-csv</title>
-            <author initials="J" surname="Henderson">
-              <organization/>
-            </author>
-            <date year="2024"/>
-          </front>
-        </reference>
-
-        <reference anchor="csv-to-usv-rust-crate">
-        <!-- Example minimum reference -->
-          <front>
-            <title>csv-to-usv command line tool at https://crates.io/crates/csv-to-usv</title>
-            <author initials="J" surname="Henderson">
-              <organization/>
-            </author>
-            <date year="2024"/>
-          </front>
-        </reference>
-  
         <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
           <!-- Manually added reference -->
           <front>

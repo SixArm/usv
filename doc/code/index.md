@@ -34,20 +34,10 @@ Rust has a crate in its own repo suitable for production use:
  
 * [https://github.com/sixarm/usv-rust-crate](https://github.com/sixarm/usv-rust-crate)
 
-Convert from CSV to USV:
+Command line converters:
 
-* `cargo install csv-to-usv`
+* [asv-to-usv](https://crates.io/crate/asv-to-usv) and [usv-to-asv](https://crates.io/crate/usv-to-asv)
 
-* [https://crates.io/crate/csv-to-usv](https://crates.io/crate/csv-to-usv)
-
-* [https://github.com/sixarm/csv-to-usv-rust-crate](https://github.com/sixarm/csv-to-usv-rust-crate)
-
-Convert from USV to CSV:
-
-* `cargo install usv-to-csv`
-
-* [https://crates.io/crate/usv-to-csv](https://crates.io/crate/usv-to-csv)
-  
-* [https://github.com/sixarm/usv-to-csv-rust-crate](https://github.com/sixarm/usv-to-csv-rust-crate)
+* [csv-to-usv](https://crates.io/crate/csv-to-usv) and [usv-to-csv](https://crates.io/crate/usv-to-csv)
 
 The Rust code includes tests and benchmarks. We welcome improvements.

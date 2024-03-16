@@ -682,20 +682,12 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 10.2.  Informative References
 
    [usv-git-repository]
-              Henderson, J., "USV repository at
+              Henderson, J., "USV git repository at
               https://github.com/sixarm/usv", 2022.
 
    [usv-rust-crate]
               Henderson, J., "USV rust crate at
               https://crates.io/crates/usv", 2024.
-
-   [usv-to-csv-rust-crate]
-              Henderson, J., "usv-to-csv command line tool at
-              https://crates.io/crates/usv-to-csv", 2024.
-
-   [csv-to-usv-rust-crate]
-              Henderson, J., "csv-to-usv command line tool at
-              https://crates.io/crates/csv-to-usv", 2024.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -719,17 +711,6 @@ Contributors
 
 Author's Address
 
-
-
-
-
-
-
-Henderson               Expires 17 September 2024              [Page 13]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
    Joel Parker Henderson (editor)
    601 Van Ness Ave #E3-359
    San Francisco, CA 94102
@@ -744,41 +725,4 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Henderson               Expires 17 September 2024              [Page 14]
+Henderson               Expires 17 September 2024              [Page 13]
