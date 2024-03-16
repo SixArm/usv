@@ -86,7 +86,7 @@
       </address>
     </author>
 
-    <date year="2024" month="3" day="8"/> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#date -->
+    <date year="2024" month="3" day="16"/> <!-- https://authors.ietf.org/en/rfcxml-vocabulary#date -->
     <!-- On draft subbmission:
          * If only the current year is specified, the current day and month will be used.
          * If the month and year are both specified and are the current ones, the current day will
@@ -103,11 +103,17 @@
     <keyword>usv</keyword>
     <keyword>data</keyword>
     <keyword>format</keyword>
+    <keyword>markup</keyword>
     <!-- Multiple keywords are allowed.  Keywords are incorporated into HTML output files for
          use by search engines. -->
 
     <abstract>
-      <t>Unicode Separated Values (USV) is a data format that uses Unicode separator characters.</t>
+      <t>
+        Unicode Separated Values (USV) is a data format that uses Unicode
+        characters to mark parts. USV builds on ASCII separated values (ASV),
+        and provides pragmatic ways to edit data in text editors by using visual
+        symbols and layouts.
+      </t>
     </abstract>
 
   </front>
@@ -161,22 +167,29 @@
     </section>
 
     <section>
-      <name>Unicode symbols in use</name>
+      <name>USV characters</name>
 
       <t>Separators:</t>
 
       <ul>
-        <li>␟ U+241F Symbol for Unit Separator (US)</li>
-        <li>␞ U+241E Symbol for Record Separator (RS)</li>
-        <li>␝ U+241D Symbol for Group Separator (GS)</li>
-        <li>␜ U+241C Symbol for File Separator (FS)</li>
+        <li>File Separator (FS) is U+001C or U+241C</li>
+        <li>Group Separator (GS) is U+001D or U+241D</li>
+        <li>Record Separator (RS) is U+001E or U+241E</li>
+        <li>Unit Separator (US) is U+001F or U+241F</li>
       </ul>
 
       <t>Modifiers:</t>
 
       <ul>
-        <li>␛ U+241B Symbol for Escape (ESC)</li>
-        <li>␄ U+2404 Symbol for End of Transmission (EOT)</li>
+        <li>Escape (ESC) is U+001B or U+241B</li>
+        <li>End of Transmission (EOT) is U+0004 or U+2404</li>
+      </ul>
+
+      <t>Liners:</t>
+
+      <ul>
+        <li>Carriage Return (CR) is U+000D</li>
+        <li>Line Feed (LF) is U+000A</li>
       </ul>
 
     </section>
@@ -187,15 +200,15 @@
       <section>
         <name>Data</name>
         <t>
-          Data is comprises units, records, groups, and files.
+          Data comprises units, records, groups, and files.
         </t>
       </section>
 
       <section>
         <name>Unit</name>
         <t>
-          A unit is comprises content characters.
-          It runs until a unit separator.
+          A unit comprises content characters.
+          It runs until a Unit Separator (US):
         </t>
         <t>
           Example unit and unit separator:
@@ -210,8 +223,8 @@ aaa␟
       <section>
         <name>Record</name>
         <t>
-          A record is comprises units.
-          It runs until a record separator.
+          A record comprises units.
+          It runs until a Record Separator (RS):
         </t>
         <t>
           Example record and record separator:
@@ -227,8 +240,8 @@ aaa␟bbb␟␞
       <section>
         <name>Group</name>
         <t>
-          A group is comprises records.
-          It runs until a group separator.
+          A group comprises records.
+          It runs until a Group Separator (GS):
         </t>
         <t>
           Example group and group separator:
@@ -243,7 +256,7 @@ aaa␟bbb␟␞ccc␟ddd␟␞␝
       <section>
         <name>File</name>
         <t>
-          A file is comprises groups.
+          A file comprises groups.
           It runs until a file separator.
         </t>
         <t>
@@ -279,43 +292,33 @@ name␟name␟␞aaa␟bbb␟␞
       <section>
         <name>Escape (ESC)</name>
         <t>
-          The Escape (ESC) symbol flips the purpose of the subsequent character:
+          Escape (ESC) makes the next character content. 
         </t>
 
-        <ul>
-          <li>
-            Escape + USV special character: the character is treated as content.
-          </li>
-          <li>
-            Escape + USV typical character: the character is ignored.
-          </li>
-        </ul>
         <t>
-          USV with a unit that contains an Escape + End of Transmission, which is treated as content:
+          Example: USV with a unit that contains an Escape + End of
+          Transmission; because of the Escape, the End of Transmission is
+          treated as content:
         </t>
         <sourcecode name="header.usv" type="usv" markers="true">
   <![CDATA[
   a␛␄b␟
   ]]>
         </sourcecode>
-        <t>
-          Escape + newline can be helpful for typical text editor line continuations:
-        </t>
-        <sourcecode name="header.usv" type="usv" markers="true">
-          <![CDATA[
-          a␛␄b␟
-          ]]>
-        </sourcecode>
       </section>
 
       <section>
         <name>End of Transmission (EOT)</name>
         <t>
-          The End of Transmission (EOT) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection.  EOT can also be useful for providing data files that contain USV data, then EOT, then extra non-USV information such as comments, images, attachments, etc.
+          End of Transmission (EOT) tells any reader that it can stop reading.
+          This is can be useful for streaming data, such as to end a connection.
+          This can also be useful for providing data files that contain USV
+          data, then EOT, then addition non-USV information such as comments,
+          images, attachments, etc.
         </t>
         <ul>
           <li>
-            EOT tells the data reader that data streaming is done.
+            EOT tells the data reader that it can stop.
           </li>
           <li>
             EOT has no effect on the output content.
@@ -326,7 +329,7 @@ name␟name␟␞aaa␟bbb␟␞
         </t>
         <sourcecode name="header.usv" type="usv" markers="true">
 <![CDATA[
-abc␞␄
+abc␞␄ignorable
 ]]>
         </sourcecode>
       </section>
@@ -362,6 +365,12 @@ abc␞␄
 
         <t>body = *unit-run / *record-run / *group-run / *file-run</t>
 
+      </section>
+
+      <section>
+
+        <name>Runs</name>
+  
         <t>file-run = *( *liner-character file *liner-character FS )</t>
 
         <t>group-run = *( *liner-character group *liner-character GS )</t>
@@ -382,8 +391,6 @@ abc␞␄
 
         <t>special-character = US / RS / GS / FS / ESC / EOT</t>
 
-        <t>escape-character = ESC ( special-character / typical-character )</t>
-
         <t>liner-character = CR / LF</t>
 
       </section>
@@ -392,21 +399,21 @@ abc␞␄
 
         <name>Unicode symbols</name>
 
-        <t>US = U+241F Symbol for Unit Separator (US)</t>
+        <t>FS = U+001C File Separator / U+241C Symbol for File Separator</t>
 
-        <t>RS = U+241E Symbol for Record Separator (RS)</t>
+        <t>GS = U+001D Group Separator / U+241D Symbol for Group Separator</t>
 
-        <t>GS = U+241D Symbol for Group Separator (GS)</t>
+        <t>RS = U+001E Record Separator / U+241E Symbol for Record Separator</t>
 
-        <t>FS = U+241C Symbol for File Separator (FS)</t>
+        <t>US = U+001F Unit Separator / U+241F Symbol for Unit Separator</t>
 
-        <t>ESC = U+241B Symbol for Escape (ESC)</t>
+        <t>ESC = U+001B Escape / U+241B Symbol for Escape</t>
 
-        <t>EOT = U+2404 Symbol for End of Transmission (EOT)</t>
+        <t>EOT = U+0004 End of Transmission / U+2404 Symbol for End of Transmission</t>
 
-        <t>CR = U+000D Carriage Return (CR)</t>
+        <t>CR = U+000D Carriage Return</t>
 
-        <t>LF = U+000A End of Line (EOL, LF, NL)</t>
+        <t>LF = U+000A Line Feed</t>
 
       </section>
 
@@ -434,7 +441,8 @@ hello␟world␟
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one unit per line:
+          If you prefer to see one unit per line, then you can add carriage
+          returns and/or newlines:
         </t>
         <sourcecode name="hello-world-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -463,7 +471,8 @@ hello␟world␟␞goodnight␟moon␟␞
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one record per line:
+          If you prefer to see one record per line, then you can add carriage
+          returns and/or newlines:
         </t>
         <sourcecode name="hello-world-goodnight-moon-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -484,7 +493,8 @@ a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m�
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one record per line:
+          If you prefer to see one record per line, then you can add carriage
+          returns and/or newlines:
         </t>
         <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -504,14 +514,51 @@ o␟p␟␞
 ␜
 ]]>
         </sourcecode>
+        <t>
+          If you prefer to see one unit per line, then you can add carriage
+          returns and/or newlines:
+        </t>
+        <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
+<![CDATA[
+a␟
+b␟
+␞
+c␟
+d␟
+␞
+␝
+e␟
+f␟
+␞
+g␟
+h␟
+␞
+␝
+␜
+i␟
+j␟
+␞
+k␟
+l␟
+␞
+␝
+m␟
+n␟
+␞
+o␟
+p␟
+␞
+␝
+␜
+]]>
+        </sourcecode>
       </section>
 
       <section>
         <name>Articles</name>
         <t>
           USV can format paragraphs, such as in this example data stream of
-          articles; note the units contain leading whitespace and trailing
-          whitespace.
+          articles; note the units contain leading liners and trailing liners.
         </t>
         <sourcecode name="articles.usv" type="usv" markers="true">
 <![CDATA[
@@ -546,7 +593,7 @@ veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 <![CDATA[
 use usv::*;
 let input = "hello␟world␟";
-let records = input.units().collect();
+let units = input.units().collect();
 ]]>
       </sourcecode>
       <!-- markers="true" means that the rendered file will have <CODE BEGINS> and <CODE ENDS> added. -->

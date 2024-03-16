@@ -50,7 +50,7 @@ The USV unit "hello" and USV unit "world":
 hello␟world␟
 ```
 
-Liners can make the display prettier:
+Liners can prettify the visual display layout:
 
 ```usv
 hello␟
@@ -152,7 +152,7 @@ USV with 2 units by 2 records by 2 groups by 2 files:
 a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
 ```
 
-Liners can make the display prettier:
+Liners can prettify the visual display layout:
 
 ```usv
 a␟b␟␞
