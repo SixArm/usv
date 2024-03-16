@@ -1,5 +1,11 @@
 # Request For Comments (RFC)
 
+USV is aiming to be an international standard with the IETF and IANA.
+
+Work in progress:
+
+* [https://datatracker.ietf.org/doc/draft-unicode-separated-values/01/](https://datatracker.ietf.org/doc/draft-unicode-separated-values/01/)
+  
 Files:
 
 * [draft-unicode-separated-values-01.xml](draft-unicode-separated-values-01.xml) - this is the official IETF RFCXML.
