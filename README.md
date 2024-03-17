@@ -106,7 +106,7 @@ Specification:
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
 
 * [Code examples and production crates](doc/code/)
-  
+
 Character details:
 
 * [Escape (ESC)](doc/escape/)
@@ -120,6 +120,14 @@ How to:
 * [How to type Unicode characters](doc/how-to-type-unicode-characters/)
 
 * [How to use split and regex](doc/how-to-use-split-and-regex/)
+
+Converters:
+
+* [asv-to-usv](https://crates.io/crate/asv-to-usv) and [usv-to-asv](https://crates.io/crate/usv-to-asv)
+
+* [csv-to-usv](https://crates.io/crate/csv-to-usv) and [usv-to-csv](https://crates.io/crate/usv-to-csv)
+
+* [json-to-usv](https://crates.io/crate/json-to-usv) and [usv-to-json](https://crates.io/crate/usv-to-json)
 
 Context:
 

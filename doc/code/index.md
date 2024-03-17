@@ -40,4 +40,6 @@ Command line converters:
 
 * [csv-to-usv](https://crates.io/crate/csv-to-usv) and [usv-to-csv](https://crates.io/crate/usv-to-csv)
 
+* [json-to-usv](https://crates.io/crate/json-to-usv) and [usv-to-json](https://crates.io/crate/usv-to-json)
+
 The Rust code includes tests and benchmarks. We welcome improvements.
