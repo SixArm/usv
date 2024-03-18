@@ -82,11 +82,11 @@ let units = input.units().collect();
 
 ## Comparisons to spreadsheets and databases
 
-USV semantics are for units, records, groups, files. 
+USV semantics are units, records, groups, files. 
 
-* Spreadsheet equivalents are cells, lines, sheets, folios. 
+Spreadsheet semantics are cells, lines, sheets, folios. 
 
-* Databases equivalents are fields, rows, tables, schemas. 
+Databases semantics are fields, rows, tables, schemas. 
 
 
 ## Documentation
@@ -121,19 +121,11 @@ How to:
 
 * [How to use split and regex](doc/how-to-use-split-and-regex/)
 
-Converters:
-
-* [asv-to-usv](https://crates.io/crate/asv-to-usv) + [usv-to-asv](https://crates.io/crate/usv-to-asv)
-
-* [csv-to-usv](https://crates.io/crate/csv-to-usv) + [usv-to-csv](https://crates.io/crate/usv-to-csv)
-
-* [json-to-usv](https://crates.io/crate/json-to-usv) + [usv-to-json](https://crates.io/crate/usv-to-json)
-
-* [xlsx-to-usv](https://crates.io/crate/xlsx-to-usv) + [usv-to-xlsx](https://crates.io/crate/usv-to-xlsx)
-
 Context:
 
-* [Comparisons with CSV, TSV, TDF, ASV, DEL](doc/comparisons/)
+* [Converters for ASV, CSV, JSON, XLSX](doc/converters/)
+
+* [Comparisons with ASV, CSV, TSV, RSV](doc/comparisons/)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 

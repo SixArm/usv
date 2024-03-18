@@ -1,4 +1,4 @@
-# Comparisons with CSV, TSV, TDF, ASV, DEL
+# Comparisons with ASV, CSV, TSV, RSV 
 
 Unicode separated values (USV) is similar to these formats, plus offers more capabilities, editor-friendly markup, and standards-track syntax.
 
