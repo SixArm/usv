@@ -123,11 +123,13 @@ How to:
 
 Converters:
 
-* [asv-to-usv](https://crates.io/crate/asv-to-usv) and [usv-to-asv](https://crates.io/crate/usv-to-asv)
+* [asv-to-usv](https://crates.io/crate/asv-to-usv) + [usv-to-asv](https://crates.io/crate/usv-to-asv)
 
-* [csv-to-usv](https://crates.io/crate/csv-to-usv) and [usv-to-csv](https://crates.io/crate/usv-to-csv)
+* [csv-to-usv](https://crates.io/crate/csv-to-usv) + [usv-to-csv](https://crates.io/crate/usv-to-csv)
 
-* [json-to-usv](https://crates.io/crate/json-to-usv) and [usv-to-json](https://crates.io/crate/usv-to-json)
+* [json-to-usv](https://crates.io/crate/json-to-usv) + [usv-to-json](https://crates.io/crate/usv-to-json)
+
+* [xlsx-to-usv](https://crates.io/crate/xlsx-to-usv) + [usv-to-xlsx](https://crates.io/crate/usv-to-xlsx)
 
 Context:
 
