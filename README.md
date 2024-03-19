@@ -127,7 +127,7 @@ Context:
 
 * [Converters for ASV, CSV, JSON, XLSX](doc/converters/)
 
-* [Comparisons with ASV, CSV, TSV, RSV](doc/comparisons/)
+* [Comparisons with ASV, CSV, TSV, RSV, JSON](doc/comparisons/)
 
 * [History of ASCII separated values (ASV)](history-of-ascii-separated-values/)
 
