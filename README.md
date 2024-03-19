@@ -21,13 +21,13 @@ USV has capabilities for spreadsheet folios and sheets, databases schemas and ta
 
 Separators:
 
-* File Separator (FS) is U+001C or U+241C ␜
-
-* Group Separator (GS) is U+001D or U+241D ␝
+* Unit Separator (US) is U+001F or U+241F ␟
 
 * Record Separator (RS) is U+001E or U+241E ␞
 
-* Unit Separator (US) is U+001F or U+241F ␟
+* Group Separator (GS) is U+001D or U+241D ␝
+
+* File Separator (FS) is U+001C or U+241C ␜
 
 Modifiers:
 
@@ -106,6 +106,8 @@ Specification:
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
 
 * [Code examples and production crates](doc/code/)
+
+* [Command line argument parsing](doc/clap/)
 
 Character details:
 
