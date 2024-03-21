@@ -50,21 +50,45 @@ The USV unit "hello" and USV unit "world":
 hello␟world␟
 ```
 
-Liners can prettify the visual display layout:
+USV tools have [converters](doc/converters/) for XLSX, JSON, ASV, etc.
+
+USV output can use [styles](doc/styles/) such as visible symbols, zero-width controls, workbook sheets, etc.
+
+USV parsing can use libraries such as the [USV Rust crate](https://crates.io/crates/usv/).
+
+
+## Hello World for spreadsheets
+
+Suppose you have spreadsheet data such as:
+
+```xlsx
+Sheet 1
+a,b
+c,d
+
+Sheet 2
+d,e
+f,g
+```
+
+USV tools can convert the data then style with braces such as:
+
+```sh
+cat example.xlsx | xlsx-to-usv --style-braces
+```
+
+Output:
 
 ```usv
-hello␟
-world␟
+Sheet 1{US}{RS}
+a{US}b{US}{RS}
+c{US}d{US}{RS}
+{GS}
+Sheet 2{US}{RS}
+e{US}f{US}{RS}
+g{US}h{US}{RS}
+{GS}
 ```
-
-Parsing can use libraries such as the USV Rust crate:
-
-```rust
-use usv::*;
-let input = "hello␟world␟";
-let units = input.units().collect();
-```
-
 
 ## Comparisons to text data formats
 
@@ -150,13 +174,7 @@ Example files:
 
 ## Examples
 
-USV with 2 units by 2 records by 2 groups by 2 files:
-
-```usv
-a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜
-```
-
-Liners can prettify the visual display layout:
+USV with 2 units by 2 records by 2 groups by 2 files, and the style as sheets:
 
 ```usv
 a␟b␟␞
@@ -164,13 +182,15 @@ c␟d␟␞
 ␝
 e␟f␟␞
 g␟h␟␞
-␝␜
+␝
+␜
 i␟j␟␞
 k␟l␟␞
 ␝
 m␟n␟␞
 o␟p␟␞
-␝␜
+␝
+␜
 ```
 
 Parsing example with the USV Rust crate and its iterators:
