@@ -133,7 +133,7 @@ Context:
 
 Editor notes:
 
-* [vi notes](doc/editors/vi/)
+* [vim notes](doc/editors/vi/)
 
 * [emacs notes](doc/editors/emacs/)
 
@@ -209,7 +209,7 @@ USV uses visible letter-width characters, and these are easy to view, select, co
 
 USV is intended to be easy to use and friendly to try.
 
-USV works with many kinds of data, and many kinds of editors. Any editor that can render the USV characters will work. We use vi, emacs, helix, Zed, VS Code, JEOTrains IDEs, Nova, TextMate, Sublime, Notepad++, etc.
+USV works with many kinds of data, and many kinds of editors. Any editor that can render the USV characters will work. We use vim, emacs, helix, Zed, VS Code, JEOTrains IDEs, Nova, TextMate, Sublime, Notepad++, etc.
 
 USV works with many kinds of tools. Any tool that can parse the USV characters will work. We use awk, sed, grep, rg, miller, etc.
 

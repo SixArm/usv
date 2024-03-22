@@ -1,7 +1,6 @@
-# vi notes
+# vim notes
 
-vi is the POSIX standard editor that comes on all modern POSIX operating systems, including most Linux distributions.
-
+vim comes with most modern Linux and BSD distributions.
 
 ## Digraph characters
 
@@ -27,5 +26,3 @@ Later:
 ```
 :set nolist
 ```
-
-
