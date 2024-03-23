@@ -44,22 +44,45 @@ Liners:
 
 ## Hello World
 
-The USV unit "hello" and USV unit "world":
+The USV unit "hello" and USV unit "world" with USV symbols:
 
 ```usv
 hello␟world␟
 ```
 
-USV tools have [converters](doc/converters/) for XLSX, JSON, ASV, etc.
+The USV unit "hello" and USV unit "world" with USV controls:
 
-USV output can use [styles](doc/styles/) such as visible symbols, zero-width controls, workbook sheets, etc.
+```usv
+hello\u{001F}world\u{001F}
+```
 
-USV parsing can use libraries such as the [USV Rust crate](https://crates.io/crates/usv/).
 
+## Hello World for Comma Separated Values (CSV)
 
-## Hello World for spreadsheets
+CSV example:
 
-Suppose you have spreadsheet data such as:
+```xlsx
+a,b
+c,d
+```
+
+USV with symbols:
+
+```usv
+a␟b␟␞
+c␟d␟␞
+```
+
+USV with controls:
+
+```usv
+a\u{001F}b\u{001F}\u{001E}
+c\u{001F}d\u{001F}\u{001E}
+```
+
+## Hello World for Microsoft Excel (XLSX)
+
+XLSX example:
 
 ```xlsx
 Sheet 1
@@ -71,23 +94,30 @@ d,e
 f,g
 ```
 
-USV tools can convert the data then style with braces such as:
-
-```sh
-cat example.xlsx | xlsx-to-usv --style-braces
-```
-
-Output:
+USV with symbols:
 
 ```usv
-Sheet 1{US}{RS}
-a{US}b{US}{RS}
-c{US}d{US}{RS}
-{GS}
-Sheet 2{US}{RS}
-e{US}f{US}{RS}
-g{US}h{US}{RS}
-{GS}
+Sheet 1␟␞
+a␟b␟␞
+c␟d␟␞
+␝
+Sheet 2␟␞
+e␟f␟␞
+g␟h␟␞
+␝
+```
+
+USV with controls:
+
+```usv
+Sheet 1\u{001F}\u{001E}
+a\u{001F}b\u{001F}\u{001E}
+c\u{001F}d\u{001F}\u{001E}
+\u{001D}
+Sheet 2\u{001F}\u{001E}
+e\u{001F}f\u{001F}\u{001E}
+g\u{001F}h\u{001F}\u{001E}
+\u{001D}
 ```
 
 ## Comparisons to text data formats
@@ -140,6 +170,12 @@ Character details:
 * [End of Transmission (EOT)](doc/end-of-transmission/)
 
 * [Liners (CR|LF)](doc/liners/)
+
+Extras:
+
+* [Style](doc/style/) with symbols, controls, braces
+
+* [Layout](doc/layout/) with lines for units, records, groups, files
 
 How to:
 
