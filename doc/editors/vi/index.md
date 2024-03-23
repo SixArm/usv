@@ -1,18 +1,18 @@
-# vi notes
+# vim notes
 
-vi is the POSIX standard editor that comes on all modern POSIX operating systems, including most Linux distributions.
-
+vim comes with most modern Linux and BSD distributions.
 
 ## Digraph characters
 
-To add digraph characters:
+To add digraphs for each USV character, add
 
 ```
-digraph rs 9246 us 9247
+digraph us 9247 rs 9246 gs 9245 fs 9244 es 9243 eo 9220
 ```
 
-This makes the characters easy to type directly in a .usv file, and easy to to type and read in source code.
+to your `~/.vimrc`
 
+Then when you want to type, for instance, the record separator character, in insert mode, type `<ctrl-k>rs`
 
 ## List hidden characters
 
@@ -27,5 +27,3 @@ Later:
 ```
 :set nolist
 ```
-
-
