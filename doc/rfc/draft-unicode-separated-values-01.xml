@@ -778,6 +778,72 @@ let records = input.records().collect();
           </front>
         </reference>
 
+        <reference anchor="usv-to-asv-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>USV to ASV rust crate at https://crates.io/crates/usv-to-asv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="asv-to-usv-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>ASV to USV rust crate at https://crates.io/crates/asv-to-usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="usv-to-csv-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>USV to CSV rust crate at https://crates.io/crates/usv-to-csv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="csv-to-usv-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>CSV to USV rust crate at https://crates.io/crates/csv-to-usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="usv-to-json-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>USV to JSON rust crate at https://crates.io/crates/usv-to-json</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="json-to-usv-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>JSON to USV rust crate at https://crates.io/crates/json-to-usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
         <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
           <!-- Manually added reference -->
           <front>
