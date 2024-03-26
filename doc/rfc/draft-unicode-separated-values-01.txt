@@ -86,23 +86,23 @@ Table of Contents
      5.3.  Units, Records, Groups, Files . . . . . . . . . . . . . .   8
      5.4.  Articles  . . . . . . . . . . . . . . . . . . . . . . . .   9
    6.  Source Code Examples  . . . . . . . . . . . . . . . . . . . .  10
-   7.  MIME media type registration for text/usv . . . . . . . . . .  10
+   7.  MIME media type registration for text/usv . . . . . . . . . .  11
      7.1.  Optional parameters: charset, header  . . . . . . . . . .  11
      7.2.  Encoding considerations . . . . . . . . . . . . . . . . .  11
-     7.3.  Security considerations . . . . . . . . . . . . . . . . .  11
-     7.4.  Interoperability considerations . . . . . . . . . . . . .  11
-     7.5.  Published specification . . . . . . . . . . . . . . . . .  11
-     7.6.  Applications that use this media type . . . . . . . . . .  11
+     7.3.  Security considerations . . . . . . . . . . . . . . . . .  12
+     7.4.  Interoperability considerations . . . . . . . . . . . . .  12
+     7.5.  Published specification . . . . . . . . . . . . . . . . .  12
+     7.6.  Applications that use this media type . . . . . . . . . .  12
      7.7.  Additional information  . . . . . . . . . . . . . . . . .  12
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
-   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  12
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  12
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  12
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  13
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  13
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  14
-
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
+   10. Converters  . . . . . . . . . . . . . . . . . . . . . . . . .  13
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .  13
+     11.2.  Informative References . . . . . . . . . . . . . . . . .  14
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  15
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
 
 
 
@@ -124,8 +124,8 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    registered with IANA.
 
    We provide information references for a USV git repository
-   [usv-git-repository] and a programming implementation as a USV Rust
-   crate [usv-rust-crate].
+   [usv-git-repository], a programming implementation as a USV Rust
+   crate [usv-rust-crate], and converter tools.
 
 1.1.  Requirements Language
 
@@ -357,13 +357,13 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 5.1.  Hello World
 
-   This kind of data …
+   This kind of data ...
 
    <CODE BEGINS> file "hello-world.txt"
    hello, world
    <CODE ENDS>
 
-   … is represented in USV as two units:
+   ... is represented in USV as two units:
 
    <CODE BEGINS> file "hello-world.usv"
    hello␟world␟
@@ -379,13 +379,13 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 5.2.  Hello World Goodnight Moon
 
-   This kind of data …
+   This kind of data ...
 
    <CODE BEGINS> file "hello-world-goodnight-moon.txt"
    [ hello, world ], [ goodnight, moon ]
    <CODE ENDS>
 
-   … is represented in USV as two records, each with two units:
+   ... is represented in USV as two records, each with two units:
 
 
 
@@ -529,20 +529,51 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 6.  Source Code Examples
 
-   Hello World using Rust and the USV crate
+   These source code examples demonstrate the Rust programming language
+   and the USV Rust crate.
+
+   Units:
 
    <CODE BEGINS> file "usv-rust-crate-units.rs"
    use usv::*;
-   let input = "hello␟world␟";
-   let units = input.units().collect();
+   let str = "a␟b␟";
+   let units: Units = str.units().collect();
    <CODE ENDS>
 
-   Hello World Goodnight Moon using Rust and the USV crate
+   Records:
 
    <CODE BEGINS> file "usv-rust-crate-records.rs"
    use usv::*;
-   let input = "hello␟world␟␞goodnight␟moon␟␞";
-   let records = input.records().collect();
+   let str = "a␟b␟␞c␟d␟␞";
+   let records: Records = str.records().collect();
+   <CODE ENDS>
+
+   Groups:
+
+
+
+
+
+
+
+
+Henderson               Expires 17 September 2024              [Page 10]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
+
+   <CODE BEGINS> file "usv-rust-crate-groups.rs"
+   use usv::*;
+   let str = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝";
+   let groups: Groups = str.groups().collect();
+   <CODE ENDS>
+
+   Files:
+
+   <CODE BEGINS> file "usv-rust-crate-groups.rs"
+   use usv::*;
+   let str = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜";
+   let files: Files = str.files().collect();
    <CODE ENDS>
 
 7.  MIME media type registration for text/usv
@@ -553,14 +584,6 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    To: ietf-types@iana.org
 
    Subject: Registration of MIME media type text/usv
-
-
-
-
-Henderson               Expires 17 September 2024              [Page 10]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
 
    MIME media type name: text
 
@@ -584,6 +607,16 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    This media type uses LF to denote line breaks.  However, implementors
    should be aware that some implementations may not conform i.e. may
    incorrectly use other values.
+
+
+
+
+
+
+Henderson               Expires 17 September 2024              [Page 11]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
 
 7.3.  Security considerations
 
@@ -611,13 +644,6 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    Spreadsheet programs, such as with import/export.  Database programs,
    such as with loading/saving text.  Data conversion utilities.
 
-
-
-Henderson               Expires 17 September 2024              [Page 11]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
-
 7.7.  Additional information
 
    Magic number(s): none
@@ -640,13 +666,42 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
    We have filed an IANA request for this, with same contact
    information.
 
+
+
+
+Henderson               Expires 17 September 2024              [Page 12]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
+
 9.  Security Considerations
 
    This document should not affect the security of the Internet.
 
-10.  References
+10.  Converters
 
-10.1.  Normative References
+   We implement converters to/from USV and various popular data formats,
+   including ASCII Separated Values (ASV), Comma Separated Values (CSV),
+   JavaScript Object Notation (JSON), Microsoft Excel XML (XLSX).
+
+   *  asv-to-usv[asv-to-usv-rust-crate], usv-to-
+      asv[usv-to-asv-rust-crate]
+
+   *  csv-to-usv[csv-to-usv-rust-crate], usv-to-
+      csv[usv-to-csv-rust-crate]
+
+   *  json-to-usv[json-to-usv-rust-crate], usv-to-
+      json[usv-to-json-rust-crate]
+
+   *  xlsx-to-usv[xlsx-to-usv-rust-crate], usv-to-
+      xlsx[usv-to-xlsx-rust-crate]
+
+   The converters are provided for informational purposes.  The
+   converters are not part of the specification.
+
+11.  References
+
+11.1.  Normative References
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -669,7 +724,8 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 
 
-Henderson               Expires 17 September 2024              [Page 12]
+
+Henderson               Expires 17 September 2024              [Page 13]
 
 Internet-Draft       Unicode Separated Values (USV)           March 2024
 
@@ -679,7 +735,7 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
               BCP 13, RFC 4289, DOI 10.17487/RFC4289, December 2005,
               <https://www.rfc-editor.org/info/rfc4289>.
 
-10.2.  Informative References
+11.2.  Informative References
 
    [usv-git-repository]
               Henderson, J., "USV git repository at
@@ -689,29 +745,46 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
               Henderson, J., "USV rust crate at
               https://crates.io/crates/usv", 2024.
 
-   [usv-to-asv-rust-crate]
-              Henderson, J., "USV to ASV rust crate at
-              https://crates.io/crates/usv-to-asv", 2024.
-
    [asv-to-usv-rust-crate]
               Henderson, J., "ASV to USV rust crate at
               https://crates.io/crates/asv-to-usv", 2024.
 
-   [usv-to-csv-rust-crate]
-              Henderson, J., "USV to CSV rust crate at
-              https://crates.io/crates/usv-to-csv", 2024.
+   [usv-to-asv-rust-crate]
+              Henderson, J., "USV to ASV rust crate at
+              https://crates.io/crates/usv-to-asv", 2024.
 
    [csv-to-usv-rust-crate]
               Henderson, J., "CSV to USV rust crate at
               https://crates.io/crates/csv-to-usv", 2024.
 
-   [usv-to-json-rust-crate]
-              Henderson, J., "USV to JSON rust crate at
-              https://crates.io/crates/usv-to-json", 2024.
+   [usv-to-csv-rust-crate]
+              Henderson, J., "USV to CSV rust crate at
+              https://crates.io/crates/usv-to-csv", 2024.
 
    [json-to-usv-rust-crate]
               Henderson, J., "JSON to USV rust crate at
               https://crates.io/crates/json-to-usv", 2024.
+
+   [usv-to-json-rust-crate]
+              Henderson, J., "USV to JSON rust crate at
+              https://crates.io/crates/usv-to-json", 2024.
+
+   [xlsx-to-usv-rust-crate]
+              Henderson, J., "XLSX to USV rust crate at
+              https://crates.io/crates/xlsx-to-usv", 2024.
+
+   [usv-to-xlsx-rust-crate]
+              Henderson, J., "USV to XLSX rust crate at
+              https://crates.io/crates/usv-to-xlsx", 2024.
+
+
+
+
+
+Henderson               Expires 17 September 2024              [Page 14]
+
+Internet-Draft       Unicode Separated Values (USV)           March 2024
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -722,13 +795,6 @@ Acknowledgements
 
    The author would like to thank Y.  Shafranovich, author of the CSV
    RFC, which provided guidance for this USV RFC.
-
-
-
-Henderson               Expires 17 September 2024              [Page 13]
-
-Internet-Draft       Unicode Separated Values (USV)           March 2024
-
 
    A special thank you goes to P.X.V.
 
@@ -771,14 +837,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-Henderson               Expires 17 September 2024              [Page 14]
+Henderson               Expires 17 September 2024              [Page 15]

@@ -136,8 +136,8 @@
       </t>
       <t>
         We provide information references for a USV git repository <xref
-        target="usv-git-repository"/> and a programming implementation as a USV
-        Rust crate <xref target="usv-rust-crate"/>.
+        target="usv-git-repository"/>, a programming implementation as a USV
+        Rust crate <xref target="usv-rust-crate"/>, and converter tools.
       </t>
       <section anchor="requirements-language">
         <name>Requirements Language</name>
@@ -425,7 +425,7 @@ abc␞␄ignorable
       <section>
         <name>Hello World</name>
         <t>
-          This kind of data …
+          This kind of data ...
         </t>
         <sourcecode name="hello-world.txt" type="txt" markers="true">
 <![CDATA[
@@ -433,7 +433,7 @@ hello, world
 ]]>
         </sourcecode>
         <t>
-          … is represented in USV as two units:
+          ... is represented in USV as two units:
         </t>
         <sourcecode name="hello-world.usv" type="usv" markers="true">
 <![CDATA[
@@ -455,7 +455,7 @@ world␟
       <section>
         <name>Hello World Goodnight Moon</name>
         <t>
-          This kind of data …
+          This kind of data ...
         </t>
         <sourcecode name="hello-world-goodnight-moon.txt" type="txt" markers="true">
 <![CDATA[
@@ -463,7 +463,7 @@ world␟
 ]]>
         </sourcecode>
         <t>
-          … is represented in USV as two records, each with two units:
+          ... is represented in USV as two records, each with two units:
         </t>
         <sourcecode name="hello-world-goodnight-moon.usv" type="usv" markers="true">
 <![CDATA[
@@ -585,27 +585,43 @@ veritatis et quasi architecto beatae vitae dicta sunt explicabo.
       </section>
     </section>
 
-
     <section>
       <name>Source Code Examples</name>
-      <t>Hello World using Rust and the USV crate</t>
+      <t>These source code examples demonstrate the Rust programming language and the USV Rust crate.</t>
+
+      <t>Units:</t>
       <sourcecode name="usv-rust-crate-units.rs" type="rust" markers="true">
 <![CDATA[
 use usv::*;
-let input = "hello␟world␟";
-let units = input.units().collect();
+let str = "a␟b␟";
+let units: Units = str.units().collect();
 ]]>
       </sourcecode>
-      <!-- markers="true" means that the rendered file will have <CODE BEGINS> and <CODE ENDS> added. -->
-      <!-- The CDATA wrapper is optional but is strongly recommended to avoid any unexpected processing
-            or issues with angle brackets.
-            <sourcecode></sourcecode> can optionally be wrapped in <figure></figure> -->
-      <t>Hello World Goodnight Moon using Rust and the USV crate</t>
+
+      <t>Records:</t>
       <sourcecode name="usv-rust-crate-records.rs" type="rust" markers="true">
 <![CDATA[
 use usv::*;
-let input = "hello␟world␟␞goodnight␟moon␟␞";
-let records = input.records().collect();
+let str = "a␟b␟␞c␟d␟␞";
+let records: Records = str.records().collect();
+]]>
+      </sourcecode>
+
+      <t>Groups:</t>
+      <sourcecode name="usv-rust-crate-groups.rs" type="rust" markers="true">
+<![CDATA[
+use usv::*;
+let str = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝";
+let groups: Groups = str.groups().collect();
+]]>
+      </sourcecode>
+        
+      <t>Files:</t>
+      <sourcecode name="usv-rust-crate-groups.rs" type="rust" markers="true">
+<![CDATA[
+use usv::*;
+let str = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜";
+let files: Files = str.files().collect();
 ]]>
       </sourcecode>
     </section>
@@ -728,6 +744,27 @@ let records = input.records().collect();
     </section>
 
     <!-- NOTE: The Acknowledgements and Contributors sections are at the end of this template -->
+
+    <section anchor="Converters">
+      <!-- All drafts are required to have an IANA considerations section. See RFC 8126 for a guide.-->
+        <name>Converters</name>
+        <t>
+          We implement converters to/from USV and various popular data formats,
+          including ASCII Separated Values (ASV), Comma Separated Values (CSV),
+          JavaScript Object Notation (JSON), Microsoft Excel XML (XLSX).
+        </t>
+        <ul>
+          <li>asv-to-usv<xref target="asv-to-usv-rust-crate"/>, usv-to-asv<xref target="usv-to-asv-rust-crate"/></li>
+          <li>csv-to-usv<xref target="csv-to-usv-rust-crate"/>, usv-to-csv<xref target="usv-to-csv-rust-crate"/></li>
+          <li>json-to-usv<xref target="json-to-usv-rust-crate"/>, usv-to-json<xref target="usv-to-json-rust-crate"/></li>
+          <li>xlsx-to-usv<xref target="xlsx-to-usv-rust-crate"/>, usv-to-xlsx<xref target="usv-to-xlsx-rust-crate"/></li>
+        </ul>
+        <t>
+          The converters are provided for informational purposes. The converters
+          are not part of the specification.
+        </t>
+      </section>
+  
   </middle>
 
   <back>
@@ -778,17 +815,6 @@ let records = input.records().collect();
           </front>
         </reference>
 
-        <reference anchor="usv-to-asv-rust-crate">
-          <!-- Example minimum reference -->
-          <front>
-            <title>USV to ASV rust crate at https://crates.io/crates/usv-to-asv</title>
-            <author initials="J" surname="Henderson">
-              <organization/>
-            </author>
-            <date year="2024"/>
-          </front>
-        </reference>
-
         <reference anchor="asv-to-usv-rust-crate">
           <!-- Example minimum reference -->
           <front>
@@ -800,10 +826,10 @@ let records = input.records().collect();
           </front>
         </reference>
 
-        <reference anchor="usv-to-csv-rust-crate">
+        <reference anchor="usv-to-asv-rust-crate">
           <!-- Example minimum reference -->
           <front>
-            <title>USV to CSV rust crate at https://crates.io/crates/usv-to-csv</title>
+            <title>USV to ASV rust crate at https://crates.io/crates/usv-to-asv</title>
             <author initials="J" surname="Henderson">
               <organization/>
             </author>
@@ -822,10 +848,10 @@ let records = input.records().collect();
           </front>
         </reference>
 
-        <reference anchor="usv-to-json-rust-crate">
+        <reference anchor="usv-to-csv-rust-crate">
           <!-- Example minimum reference -->
           <front>
-            <title>USV to JSON rust crate at https://crates.io/crates/usv-to-json</title>
+            <title>USV to CSV rust crate at https://crates.io/crates/usv-to-csv</title>
             <author initials="J" surname="Henderson">
               <organization/>
             </author>
@@ -837,6 +863,39 @@ let records = input.records().collect();
           <!-- Example minimum reference -->
           <front>
             <title>JSON to USV rust crate at https://crates.io/crates/json-to-usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="usv-to-json-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>USV to JSON rust crate at https://crates.io/crates/usv-to-json</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="xlsx-to-usv-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>XLSX to USV rust crate at https://crates.io/crates/xlsx-to-usv</title>
+            <author initials="J" surname="Henderson">
+              <organization/>
+            </author>
+            <date year="2024"/>
+          </front>
+        </reference>
+
+        <reference anchor="usv-to-xlsx-rust-crate">
+          <!-- Example minimum reference -->
+          <front>
+            <title>USV to XLSX rust crate at https://crates.io/crates/usv-to-xlsx</title>
             <author initials="J" surname="Henderson">
               <organization/>
             </author>
