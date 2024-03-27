@@ -23,3 +23,12 @@ USV spacers:
 * Carriage Return (CR): [U+000D](https://codepoints.net/U+000D)
 
 * Line Feed (LF): [U+000A](https://codepoints.net/U+000A)
+
+
+## Character details
+
+* [Escape (ESC)](../escape/)
+
+* [End of Transmission (EOT)](../end-of-transmission/)
+
+* [Spacers (CR|LF)](../spacers/)

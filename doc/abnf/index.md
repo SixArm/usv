@@ -28,47 +28,47 @@ Sections:
 
 Runs:
 
-* file-run = *( *liner-character file *liner-character FS )
+* file-run = *( *spacer-character file *spacer-character FS )
 
-* group-run = *( *liner-character group *liner-character GS )
+* group-run = *( *spacer-character group *spacer-character GS )
 
-* record-run = *( *liner-character record *liner-character RS )
+* record-run = *( *spacer-character record *spacer-character RS )
 
-* unit-run = *( *liner-character unit *liner-character US )
+* unit-run = *( *spacer-character unit *spacer-character US )
 
 Character classes:
 
-* content-character = typical-character / ESC '*'
+* content-character = typical-character / escape-character
 
-* typical-character = '*' - special-character
+* typical-character = '*' - special-character - escape-character
 
 * special-character = US / RS / GS / FS / ESC / EOT
 
 * escape-character = ESC ( special-character / typical-character )
 
-* liner-character = CR / LF
+* spacer-character = CR / LF
 
 
 ## Unicode characters
 
 Separators:
 
-* US = U+241F Symbol for Unit Separator (US)
+* US = U+001F Unit Separator / U+241F Symbol for Unit Separator
 
-* RS = U+241E Symbol for Record Separator (RS)
+* RS = U+001E Record Separator / U+241E Symbol for Record Separator
 
 * GS = U+241D Symbol for Group Separator (GS)
 
-* FS = U+241C Symbol for File Separator (FS)
+* FS = U+001D Group Separator / U+241D Symbol for Group Separator<
 
 Modifiers:
 
-* ESC = U+241B Symbol for Escape (ESC)
+* ESC = U+001B Escape / U+241B Symbol for Escape
 
-* EOT = U+2404 Symbol for End of Transmission (EOT)
+* EOT = U+0004 End Of Transmission / U+2404 Symbol for End Of Transmission
 
-Liners:
+Spacers:
 
-* CR = U+000D Carriage Return (CR)
+* CR = U+000D Carriage Return
 
-* LF = U+000A End of Line (EOL, LF, NL)
+* LF = U+000A Line Feed, New Line, End of Line

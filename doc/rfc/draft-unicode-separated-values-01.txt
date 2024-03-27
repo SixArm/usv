@@ -170,7 +170,7 @@ Henderson               Expires 17 September 2024               [Page 3]
 Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 
-   Liners:
+   Spacers:
 
    *  Carriage Return (CR) is U+000D
 
@@ -308,13 +308,13 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
 4.3.  Runs
 
-   file-run = *( *liner-character file *liner-character FS )
+   file-run = *( *spacer-character file *spacer-character FS )
 
-   group-run = *( *liner-character group *liner-character GS )
+   group-run = *( *spacer-character group *spacer-character GS )
 
-   record-run = *( *liner-character record *liner-character RS )
+   record-run = *( *spacer-character record *spacer-character RS )
 
-   unit-run = *( *liner-character unit *liner-character US )
+   unit-run = *( *spacer-character unit *spacer-character US )
 
 4.4.  Character classes
 
@@ -324,7 +324,7 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 
    special-character = US / RS / GS / FS / ESC / EOT
 
-   liner-character = CR / LF
+   spacer-character = CR / LF
 
 4.5.  Unicode symbols
 
@@ -486,7 +486,7 @@ Internet-Draft       Unicode Separated Values (USV)           March 2024
 5.4.  Articles
 
    USV can format paragraphs, such as in this example data stream of
-   articles; note the units contain leading liners and trailing liners.
+   articles; note the units contain leading spacers and trailing spacers.
 
 
 

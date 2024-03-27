@@ -185,7 +185,7 @@
         <li>End of Transmission (EOT) is U+0004 or U+2404</li>
       </ul>
 
-      <t>Liners:</t>
+      <t>Spacers:</t>
 
       <ul>
         <li>Carriage Return (CR) is U+000D</li>
@@ -371,13 +371,13 @@ abc␞␄ignorable
 
         <name>Runs</name>
   
-        <t>file-run = *( *liner-character file *liner-character FS )</t>
+        <t>file-run = *( *spacer-character file *spacer-character FS )</t>
 
-        <t>group-run = *( *liner-character group *liner-character GS )</t>
+        <t>group-run = *( *spacer-character group *spacer-character GS )</t>
 
-        <t>record-run = *( *liner-character record *liner-character RS )</t>
+        <t>record-run = *( *spacer-character record *spacer-character RS )</t>
 
-        <t>unit-run = *( *liner-character unit *liner-character US )</t>
+        <t>unit-run = *( *spacer-character unit *spacer-character US )</t>
 
       </section>
 
@@ -391,7 +391,7 @@ abc␞␄ignorable
 
         <t>special-character = US / RS / GS / FS / ESC / EOT</t>
 
-        <t>liner-character = CR / LF</t>
+        <t>spacer-character = CR / LF</t>
 
       </section>
 
@@ -413,7 +413,7 @@ abc␞␄ignorable
 
         <t>CR = U+000D Carriage Return</t>
 
-        <t>LF = U+000A Line Feed</t>
+        <t>LF = U+000A Line Feed, New Line, End Of Line</t>
 
       </section>
 
@@ -558,7 +558,7 @@ p␟
         <name>Articles</name>
         <t>
           USV can format paragraphs, such as in this example data stream of
-          articles; note the units contain leading liners and trailing liners.
+          articles; note the units contain leading spacers and trailing spacers.
         </t>
         <sourcecode name="articles.usv" type="usv" markers="true">
 <![CDATA[

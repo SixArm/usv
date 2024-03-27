@@ -36,4 +36,4 @@ USV can manage data collections such as spreadsheet sheets and folios, and datab
   
 * Because USV has more dimensions, it can replace ad hoc binders, such as ZIP files comprising CSV sheets, or XML files comprising Excel workbooks.
 
-* Because USV has ragged-right capabilities, it can help save and restore system disk paths, spreadsheet folio tabs, database table names, and more.
+* Because USV has jagged array capabilities, it can help save and restore system disk paths, spreadsheet folio tabs, database table names, and more.

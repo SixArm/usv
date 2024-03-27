@@ -166,7 +166,7 @@ If the future offers editor support as you describe, then it will be great to us
 
 Yes you're correct directionally on your technical points. To decode one record, you have to read that one record until you reach its record separator; in other words, you can't just use split on one byte value as you can with CSV. That said, you can decode one unit at a time, or one record at a time, or one group at a time, or one file at a time; you don't have to decode the whole file.
 
-As for cleverness, it's not especially clever. USV is essentially just ASCII Separated Values (ASV) plus visible symbols and some simple extras for escape, end of transmission, and liners. The core ideas of ASV and USV are all from the 1970's.
+As for cleverness, it's not especially clever. USV is essentially just ASCII Separated Values (ASV) plus visible symbols and some simple extras for escape, end of transmission, and spacers. The core ideas of ASV and USV are all from the 1970's.
 
 
 ## This is kinda stupid

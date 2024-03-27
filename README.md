@@ -1,151 +1,113 @@
-# Unicode Separated Values (USV)
+# Unicode Separated Values (USV) ™
 
-Unicode Separated Values (USV) is a data format that uses Unicode characters to mark parts. 
-
-USV builds on ASCII separated values (ASV) and contrasts with comma separated values (CSV).
-
-USV offers pragmatic ways to edit data in text editors by using visual symbols and line breaks.
-
-USV has capabilities for spreadsheet folios and sheets, databases schemas and tables, and more.
+Unicode Separated Values (USV) ™ is a data format that uses Unicode characters for markup.
 
 [FAQ](doc/faq/) &bull; 
 [RFC](doc/rfc/) &bull; 
 [Code](doc/code/) &bull; 
 [Comparisons](doc/comparisons/) &bull; 
-[Criticisms](doc/criticisms/) &bull; 
 [TODO](doc/todo/) &bull; 
 [XKCD](https://xkcd.com/927/)
 
 
-## USV characters
+## Introduction
 
-Separators:
+Unicode Separated Values (USV) enables new ways of working with data as plain text.
 
-* Unit Separator (US) is U+001F or U+241F ␟
+* USV builds on ASCII Separated Values (ASV) and uses all the same control characters.
+  
+* USV contrasts with Comma Separated Values (CSV) because USV is more specific and powerful.
 
-* Record Separator (RS) is U+001E or U+241E ␞
+* USV is similar in spirit to Markdown because the purpose is easy freeform text editing.
 
-* Group Separator (GS) is U+001D or U+241D ␝
-
-* File Separator (FS) is U+001C or U+241C ␜
-
-Modifiers:
-
-* Escape (ESC) is U+001B or U+241B ␛
-
-* End of Transmission (EOT) is U+0004 or U+2404 ␄
-
-Liners:
-
-* Carriage Return (CR) is U+000D
-
-* Line Feed (LF) is U+000A
+* [More…](doc/comparisons/)
 
 
-## Hello World
+### USV example
 
-The USV unit "hello" and USV unit "world" with USV symbols:
-
-```usv
-hello␟world␟
-```
-
-The USV unit "hello" and USV unit "world" with USV controls:
-
-```usv
-hello\u{001F}world\u{001F}
-```
-
-
-## Hello World for Comma Separated Values (CSV)
-
-CSV example:
-
-```xlsx
-a,b
-c,d
-```
-
-USV with symbols:
+USV looks like this for units and records:
 
 ```usv
 a␟b␟␞
 c␟d␟␞
 ```
 
-USV with controls:
+USV looks like this for units, records, groups, files:
 
 ```usv
-a\u{001F}b\u{001F}\u{001E}
-c\u{001F}d\u{001F}\u{001E}
-```
-
-## Hello World for Microsoft Excel (XLSX)
-
-XLSX example:
-
-```xlsx
-Sheet 1
-a,b
-c,d
-
-Sheet 2
-d,e
-f,g
-```
-
-USV with symbols:
-
-```usv
-Sheet 1␟␞
+My Workbook␟␞␝
+My Worksheet␟␞
 a␟b␟␞
 c␟d␟␞
-␝
-Sheet 2␟␞
-e␟f␟␞
-g␟h␟␞
-␝
+␝␜
 ```
 
-USV with controls:
+### USV purpose
 
-```usv
-Sheet 1\u{001F}\u{001E}
-a\u{001F}b\u{001F}\u{001E}
-c\u{001F}d\u{001F}\u{001E}
-\u{001D}
-Sheet 2\u{001F}\u{001E}
-e\u{001F}f\u{001F}\u{001E}
-g\u{001F}h\u{001F}\u{001E}
-\u{001D}
-```
+USV has the purpose of helping people use data.
 
-## Comparisons to text data formats
+* Edit data: by using plain text and any typical text editor.
 
-| Capability                | [USV](./) | [ASV](doc/comparisons/asv) | [CSV](doc/comparisons/csv)  |
-| ------------------------- | --- | --- | --- |
-| Units / Cells / Fields    | ✅ | ✅ | ✅ |
-| Records / Lines / Rows    | ✅ | ✅ | ✅ |
-| Groups / Sheets / Tables  | ✅ | ✅ | ⛔ |
-| Files / Folios / Schemas  | ✅ | ✅ | ⛔ |
-| Visible separators        | ✅ | ⛔ | ✅ |
-| Separator line spacing    | ✅ | ⛔ | 🟡 |
-| IETF.org standards-track  | ✅ | ⛔ | 🟡 |
-| Unicode UTF-8 default     | ✅ | ⛔ | ⛔ |
+* Save data: by using collections for spreadsheets, databases, and more.
+
+* Share data: by using an international standard and matching tools.
 
 
-## Comparisons to spreadsheets and databases
+* [More](doc/purpose/)
 
-USV semantics are units, records, groups, files. 
 
-Spreadsheet semantics are cells, lines, sheets, folios. 
+### USV markup
 
-Databases semantics are fields, rows, tables, schemas. 
+USV uses Unicode characters for data markup.
+
+* Unit Separator (US): for a spreadsheet cell, database field, etc.
+
+* Record Separator (RS): for a spreadsheet line, database row, etc.
+
+* Group Separator (GS): for a spreadsheet sheet, database table, etc.
+
+* File Separator (FS): for a spreadsheet folio, database schema, etc.
+
+* [More](doc/markup/)
+
+
+### USV style
+
+USV uses style options to display marks in various ways.
+
+* Style Symbols: use visible symbol characters such as `␟`
+
+* Style Controls: use invisible control characters such as `\u001F`
+
+* Style Braces: use curly-braces with abbreviations such as: `{US}`
+ 
+* [More](doc/style/)
+
+
+### USV layout
+
+USV uses layout options to format data in various ways: by item, or with single-space, double-space.
+
+* Layout Default: format the data so it looks good on a typical terminal screen.
+
+* Layout 0, 1, 2: format each mark with 0 or 1 or 2 surrounding spacers.
+
+* Layout by Units, Records, Groups, Files: format a chunk to display on one line.
+ 
+* [More](doc/layout/)
 
 
 ## Documentation
 
-Commentary:
+Core:
+
+* [Markup with separators, modifiers, spacers](doc/markup/)
+
+* [Style with symbols, controls, braces](doc/style/)
+
+* [Layout with spacers for units, records, groups, files](doc/layout/)
+
+Community:
 
 * [Frequently Asked Questions (FAQ)](doc/faq/)
 
@@ -162,20 +124,6 @@ Specification:
 * [Code examples and production crates](doc/code/)
 
 * [Command line argument parsing](doc/clap/)
-
-Character details:
-
-* [Escape (ESC)](doc/escape/)
-
-* [End of Transmission (EOT)](doc/end-of-transmission/)
-
-* [Liners (CR|LF)](doc/liners/)
-
-Extras:
-
-* [Style](doc/style/) with symbols, controls, braces
-
-* [Layout](doc/layout/) with lines for units, records, groups, files
 
 How to:
 
@@ -208,6 +156,32 @@ Example files:
 * [end-of-transmission.usv](examples/end-of-transmission.usv)
 
 
+## Hello World
+
+Suppose you want USV text with two units: "hello" and "world".
+
+The USV text with USV symbol characters for unit separators:
+
+```usv
+hello␟world␟
+```
+
+The USV text with USV control characters for unit separators:
+
+```usv
+hello\u001Fworld\u001F
+```
+
+
+## Comparisons to spreadsheets and databases
+
+USV semantics are units, records, groups, files. 
+
+Spreadsheet semantics are cells, lines, sheets, folios. 
+
+Databases semantics are fields, rows, tables, schemas. 
+
+
 ## Examples
 
 USV with 2 units by 2 records by 2 groups by 2 files, and the style as sheets:
@@ -233,12 +207,13 @@ Parsing example with the USV Rust crate and its iterators:
 
 ```rust
 use usv::*;
-let input = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜";
-for f in input.files() {
-    for g in file.groups() {
-        for r in group.records() {
-            for u in r.units() {
-                println!(&u);
+let text = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜";
+let files = text.files(); 
+for file in files {
+    for group in file {
+        for record in group {
+            for unit in record {
+                println!(&unit);
             }
         }
     }
@@ -252,7 +227,7 @@ USV can handle data that contains commas, semicolons, quotes, tabs, newlines, an
 
 USV can format units/columns/cells and records/rows/lines and groups/tables/grids and files/schemas/folios.
 
-USV aims to be an international standard, and has a official IETF RFCXML Internet Draft submitted.
+USV aims to be an international standard, and has an official IETF RFCXML Internet Draft.
 
 USV uses Unicode characters that are semantically meaningful.
 
@@ -276,7 +251,9 @@ USV works with many kinds of languages. Any language that can handle UTF-8 chara
 
 The USV project aims to become a free open source IETF standard and IANA standard, much like the standards for CSV and TDF.
 
-Until the standardization happens, the terms "USV" and "Unicode Separated Values" are trademarks of this project, and this repository is copyright 2022-2024. When IETF and IANA approve the submissions as a standard, then the trademarks and copyrights will go to a free libre open source software advocacy foundation.
+Until the standardization happens, the terms "Unicode Separated Values" and "USV" are both trademarks of this project. This repository is copyright 2022-2024. The trademarks and copyrights are by Joel Parker Henderson, me, an individual, not a company.
+
+When IETF and IANA approve the submissions as a standard, then the trademarks and copyright will go to a free libre open source software advocacy foundation. We welcome advice about how to do this well.
 
 
 ## Conclusion
@@ -289,6 +266,5 @@ We welcome constructive feedback about USV, as well as git issues, pull requests
 [RFC](doc/rfc/) &bull; 
 [Code](doc/code/) &bull; 
 [Comparisons](doc/comparisons/) &bull; 
-[Criticisms](doc/criticisms/) &bull; 
 [TODO](doc/todo/) &bull; 
 [XKCD](https://xkcd.com/927/)
