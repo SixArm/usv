@@ -29,9 +29,9 @@ while True:
                 print(f"\n", end='', flush=True)
                 comma = ''
             case "\u001D" | "␝":
-                raise Exception("error: group separator") 
+                raise Exception("error: group separator")
             case "\u001C" | "␜":
-                raise Exception("error: file separator") 
+                raise Exception("error: file separator")
             case "\u0004" | "␄":
                 break
             case (c):

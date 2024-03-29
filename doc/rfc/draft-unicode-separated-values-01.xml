@@ -185,13 +185,6 @@
         <li>End of Transmission (EOT) is U+0004 or U+2404</li>
       </ul>
 
-      <t>Spacers:</t>
-
-      <ul>
-        <li>Carriage Return (CR) is U+000D</li>
-        <li>Line Feed (LF) is U+000A</li>
-      </ul>
-
     </section>
 
     <section>
@@ -292,7 +285,7 @@ name␟name␟␞aaa␟bbb␟␞
       <section>
         <name>Escape (ESC)</name>
         <t>
-          Escape (ESC) makes the next character content. 
+          Escape (ESC) makes the next character content.
         </t>
 
         <t>
@@ -370,7 +363,7 @@ abc␞␄ignorable
       <section>
 
         <name>Runs</name>
-  
+
         <t>file-run = *( *spacer-character file *spacer-character FS )</t>
 
         <t>group-run = *( *spacer-character group *spacer-character GS )</t>
@@ -391,7 +384,7 @@ abc␞␄ignorable
 
         <t>special-character = US / RS / GS / FS / ESC / EOT</t>
 
-        <t>spacer-character = CR / LF</t>
+        <t>spacer-character = Defined by Unicode Derived Core Property White_Space</t>
 
       </section>
 
@@ -410,10 +403,6 @@ abc␞␄ignorable
         <t>ESC = U+001B Escape / U+241B Symbol for Escape</t>
 
         <t>EOT = U+0004 End of Transmission / U+2404 Symbol for End of Transmission</t>
-
-        <t>CR = U+000D Carriage Return</t>
-
-        <t>LF = U+000A Line Feed, New Line, End Of Line</t>
 
       </section>
 
@@ -441,8 +430,8 @@ hello␟world␟
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one unit per line, then you can add carriage
-          returns and/or newlines:
+          If you prefer to see one unit per line, then you can add whitespace,
+          such as newlines:
         </t>
         <sourcecode name="hello-world-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -471,8 +460,8 @@ hello␟world␟␞goodnight␟moon␟␞
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one record per line, then you can add carriage
-          returns and/or newlines:
+          If you prefer to see one record per line, then you can add whitespace,
+          such as newlines:
         </t>
         <sourcecode name="hello-world-goodnight-moon-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -493,8 +482,8 @@ a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m�
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one record per line, then you can add carriage
-          returns and/or newlines:
+          If you prefer to see one record per line, then you can add whitespace,
+          such as newlines:
         </t>
         <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -515,8 +504,8 @@ o␟p␟␞
 ]]>
         </sourcecode>
         <t>
-          If you prefer to see one unit per line, then you can add carriage
-          returns and/or newlines:
+          If you prefer to see one unit per line, then you can add whitespace,
+          such as newlines:
         </t>
         <sourcecode name="units-records-groups-files-with-lines.usv" type="usv" markers="true">
 <![CDATA[
@@ -615,7 +604,7 @@ let str = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝";
 let groups: Groups = str.groups().collect();
 ]]>
       </sourcecode>
-        
+
       <t>Files:</t>
       <sourcecode name="usv-rust-crate-groups.rs" type="rust" markers="true">
 <![CDATA[
@@ -764,7 +753,7 @@ let files: Files = str.files().collect();
           are not part of the specification.
         </t>
       </section>
-  
+
   </middle>
 
   <back>
@@ -787,7 +776,7 @@ let files: Files = str.files().collect();
 
         <!-- "Multipurpose Internet Mail Extensions (MIME) Part Four: Registration Procedures" -->
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4289.xml"/>
-       
+
       </references>
 
       <references>

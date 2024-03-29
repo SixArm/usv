@@ -46,12 +46,12 @@ Character classes:
 
 * escape-character = ESC ( special-character / typical-character )
 
-* spacer-character = CR / LF
+* spacer-character = Defined by Unicode Derived Core Property White_Space
 
 
 ## Unicode characters
 
-Separators:
+Markers:
 
 * US = U+001F Unit Separator / U+241F Symbol for Unit Separator
 
@@ -66,9 +66,3 @@ Modifiers:
 * ESC = U+001B Escape / U+241B Symbol for Escape
 
 * EOT = U+0004 End Of Transmission / U+2404 Symbol for End Of Transmission
-
-Spacers:
-
-* CR = U+000D Carriage Return
-
-* LF = U+000A Line Feed, New Line, End of Line

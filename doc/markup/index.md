@@ -1,6 +1,6 @@
 # USV markup
 
-USV markup uses Unicode characters. 
+USV markup uses Unicode characters.
 
 USV separators:
 
@@ -18,12 +18,6 @@ USV modifiers:
 
 * End of Transmission (EOT): [U+0004](https://codepoints.net/U+0004) [U+2404](https://codepoints.net/U+2404) ␄
 
-USV spacers:
-
-* Carriage Return (CR): [U+000D](https://codepoints.net/U+000D)
-
-* Line Feed (LF): [U+000A](https://codepoints.net/U+000A)
-
 
 ## Character details
 
@@ -31,4 +25,4 @@ USV spacers:
 
 * [End of Transmission (EOT)](../end-of-transmission/)
 
-* [Spacers (CR|LF)](../spacers/)
+* [Spacers](../spacers/)

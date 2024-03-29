@@ -1,31 +1,37 @@
 # How to use split and regex
 
-To use split and regex, rather than a specific USV parsing tool or library, then you have choices. 
+To use split and regex, rather than a specific USV parsing tool or library, then you have choices.
 
-This pseudocode is the current best approximation of USV using split and regex:
+The pseudocode here is the current best approximation of USV using split and regex.
+
+If you are certain that your data never uses any escape characters:
 
 ```regex
-data = usv split on "[\u0004\u2404]" first
+transmission = split input on "[\u0004\u2404]" first
 
-files = data split on "[\n\r]*(?<![\u001B\u241B])\u001C\u241C[\n\r]*"
+files = split transmission on "[\u001C\u241C]"
 
-groups = file split on "[\n\r]*(?<![\u001B\u241B])[\u001D\u241D]␝[\n\r]*"
+groups = split file on "[\u001D\u241D]
 
-records = group split on "[\n\r]*(?<![\u001B\u241B])[\u001E\u241E][\n\r]*"
+records = split group on "[\u001E\u241E]"
 
-units = unit split on "[\n\r]*(?<![\u001B\u241B])[\u001F\u241F][\n\r]*"
+units = split unit on "[\u001F\u241F]"
+
+unit = trim(unit)
 ```
 
-If your split and regex do not have capabilities for negative look, and you are certain that your data does not use any escape characters:
+If your data may use any escape characters, and also if your split and regex offer capabilities for negative lookbehind:
 
 ```regex
-data = usv split on "[\u0004\u2404]" first
+transmission = split input on "[\u0004\u2404]" first
 
-files = data split on "[\n\r]*\u001C\u241C][\n\r]*"
+files = split transmission on "(?<![\u001B\u241B])\u001C\u241C"
 
-groups = file split on "[\n\r]*[\u001D\u241D][\n\r]*"
+groups = split file on "(?<![\u001B\u241B])[\u001D\u241D]␝"
 
-records = group split on "[\n\r]*[\u001E\u241E][\n\r]*"
+records = split group on "(?<![\u001B\u241B])[\u001E\u241E]"
 
-units = unit split on "[\n\r]*[\u001F\u241F][\n\r]*"
+units = split unit on "(?<![\u001B\u241B])[\u001F\u241F]"
+
+unit = trim(unit)
 ```

@@ -3,9 +3,9 @@
 Comma Separated Values (CSV) uses a comma character to separate values, and a newline character to separate records.
 
 * Has fields, which are equivalent to USV units.
-  
+
 * Has records, which are equivalent to USV records.
-  
+
 * Does not have a greater hierarchy, such as USV groups and fields, or spreadsheet sheets and folios, or database tables or schemas, etc.
 
 * Forbids the tab character in content.
@@ -20,13 +20,13 @@ Comma Separated Values (CSV) uses a comma character to separate values, and a ne
 ## Custom delimiter character
 
 Some CSV implementations and users enable a custom delimiter character.
- 
+
 * For example, some users prefer to use the semicolon character. This is prevalent among some European regions, where the comma character is frequently in use within numbers as a digit separator, such as "123,456,789".
-  
+
 * For example, some users prefer to use the vertical pipe character. This is prevalent among some developers of natural language content, when the developers are aware that content may contain commas or semicolons, yet is unlikely to contain a pipe character.
 
 There is no standardization to know what the delimiter character is, ahead of time.
-  
+
 * In practice, some CSV implementations use a heuristic to guess the delimiter character by inspecting the data.
 
 * In practice, some CSV users send along out-of-band instructions that explain the delimiter character.

@@ -31,7 +31,7 @@ Rust has a crate in its own repo suitable for production use:
 * `cargo install usv`
 
 * [https://crates.io/crate/usv](https://crates.io/crate/usv)
- 
+
 * [https://github.com/sixarm/usv-rust-crate](https://github.com/sixarm/usv-rust-crate)
 
 Command line converters:

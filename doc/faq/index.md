@@ -9,7 +9,6 @@ Constructive feedback is welcome. See also [criticisms](../criticisms/).
 - [Why choose USV over CSV or TSV?](#why-choose-usv-over-csv-or-tsv)
 - [Why choose USV over ASV?](#why-choose-usv-over-asv)
 - [Why choose USV over ASV for machine-only data?](#why-choose-usv-over-asv-for-machine-only-data)
-- [What if I want special whitespace handling?](#what-if-i-want-special-whitespace-handling)
 - [Why use control picture characters rather than the control characters themselves?](#why-use-control-picture-characters-rather-than-the-control-characters-themselves)
 - [Why are the symbols so small on my screen?](#why-are-the-symbols-so-small-on-my-screen)
 
@@ -76,18 +75,6 @@ however in practice we haven't found much support for this approach.
 For machine-only data, such as data that will never be used for human reading or
 human editing, then USV or ASV are similar because both can handle units,
 fields, groups, and files.
-
-
-## What if I want special whitespace handling?
-
-You could use USV plus your own code for special whitespace handling.
-
-You could try other kinds of processing, such as serializers, deserializers,
-before filters, after filters, and transformation functions.
-
-You could leverage consider other whitespace adjustments, such as command line
-interfaces tools (such as `sed`, `awk`, `mlr`), or programming language
-functions and methods (such as as `trim`, `strip`, `chomp`).
 
 
 ## Why use control picture characters rather than the control characters themselves?

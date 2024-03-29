@@ -2,11 +2,11 @@
 
 Unicode Separated Values (USV) ™ is a data format that uses Unicode characters for markup.
 
-[FAQ](doc/faq/) &bull; 
-[RFC](doc/rfc/) &bull; 
-[Code](doc/code/) &bull; 
-[Comparisons](doc/comparisons/) &bull; 
-[TODO](doc/todo/) &bull; 
+[FAQ](doc/faq/) &bull;
+[RFC](doc/rfc/) &bull;
+[Code](doc/code/) &bull;
+[Comparisons](doc/comparisons/) &bull;
+[TODO](doc/todo/) &bull;
 [XKCD](https://xkcd.com/927/)
 
 
@@ -15,7 +15,7 @@ Unicode Separated Values (USV) ™ is a data format that uses Unicode characters
 Unicode Separated Values (USV) enables new ways of working with data as plain text.
 
 * USV builds on ASCII Separated Values (ASV) and uses all the same control characters.
-  
+
 * USV contrasts with Comma Separated Values (CSV) because USV is more specific and powerful.
 
 * USV is similar in spirit to Markdown because the purpose is easy freeform text editing.
@@ -52,7 +52,6 @@ USV has the purpose of helping people use data.
 
 * Share data: by using an international standard and matching tools.
 
-
 * [More](doc/purpose/)
 
 
@@ -68,6 +67,10 @@ USV uses Unicode characters for data markup.
 
 * File Separator (FS): for a spreadsheet folio, database schema, etc.
 
+* Escape (ESC): for escaping these special characters within content.
+
+* End of Transmission (EOT): to stop parsing.
+
 * [More](doc/markup/)
 
 
@@ -80,20 +83,20 @@ USV uses style options to display marks in various ways.
 * Style Controls: use invisible control characters such as `\u001F`
 
 * Style Braces: use curly-braces with abbreviations such as: `{US}`
- 
+
 * [More](doc/style/)
 
 
 ### USV layout
 
-USV uses layout options to format data in various ways: by item, or with single-space, double-space.
+USV uses layout options to format data in various ways.
 
 * Layout Default: format the data so it looks good on a typical terminal screen.
 
-* Layout 0, 1, 2: format each mark with 0 or 1 or 2 surrounding spacers.
+* Layout 0, 1, 2: format each mark with 0 or 1 or 2 surrounding newlines.
 
 * Layout by Units, Records, Groups, Files: format a chunk to display on one line.
- 
+
 * [More](doc/layout/)
 
 
@@ -101,7 +104,7 @@ USV uses layout options to format data in various ways: by item, or with single-
 
 Core:
 
-* [Markup with separators, modifiers, spacers](doc/markup/)
+* [Markup with separators and modifiers](doc/markup/)
 
 * [Style with symbols, controls, braces](doc/style/)
 
@@ -175,11 +178,11 @@ hello\u001Fworld\u001F
 
 ## Comparisons to spreadsheets and databases
 
-USV semantics are units, records, groups, files. 
+USV semantics are units, records, groups, files.
 
-Spreadsheet semantics are cells, lines, sheets, folios. 
+Spreadsheet semantics are cells, lines, sheets, folios.
 
-Databases semantics are fields, rows, tables, schemas. 
+Databases semantics are fields, rows, tables, schemas.
 
 
 ## Examples
@@ -208,7 +211,7 @@ Parsing example with the USV Rust crate and its iterators:
 ```rust
 use usv::*;
 let text = "a␟b␟␞c␟d␟␞␝e␟f␟␞g␟h␟␞␝␜i␟j␟␞k␟l␟␞␝m␟n␟␞o␟p␟␞␝␜";
-let files = text.files(); 
+let files = text.files();
 for file in files {
     for group in file {
         for record in group {
@@ -262,9 +265,9 @@ USV is helping us with data projects. We hope USV may help you too.
 
 We welcome constructive feedback about USV, as well as git issues, pull requests, and standardization help.
 
-[FAQ](doc/faq/) &bull; 
-[RFC](doc/rfc/) &bull; 
-[Code](doc/code/) &bull; 
-[Comparisons](doc/comparisons/) &bull; 
-[TODO](doc/todo/) &bull; 
+[FAQ](doc/faq/) &bull;
+[RFC](doc/rfc/) &bull;
+[Code](doc/code/) &bull;
+[Comparisons](doc/comparisons/) &bull;
+[TODO](doc/todo/) &bull;
 [XKCD](https://xkcd.com/927/)

@@ -1,4 +1,4 @@
-# Command line argument parsing (CLAP) 
+# Command line argument parsing (CLAP)
 
 USV tools should enable users to choose their preferred output style.
 

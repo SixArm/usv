@@ -36,7 +36,7 @@ USV aims just for use cases that CSV doesn't seem to handle well, such as text t
 ## Fundamentally wrong
 
 <blockquote>
-"Using Unicode graphic characters as metasyntactic escape characters is fundamentally wrong. Those Unicode characters are for displaying the symbols for Unit Separator, Record Separator, etc. and not for actually being separators! ASCII already has those! Included in Unicode!" 
+"Using Unicode graphic characters as metasyntactic escape characters is fundamentally wrong. Those Unicode characters are for displaying the symbols for Unit Separator, Record Separator, etc. and not for actually being separators! ASCII already has those! Included in Unicode!"
 </blockquote>
 
 USV accepts ASCII control characters and the corresponding Unicode symbol characters as equivalent.
@@ -58,10 +58,10 @@ I edit it in regular editors, every day. I use vi, emacs, VS Code, JEOTrains IDE
 ## No efficient storage
 
 <blockquote>
-"There is no efficient storage, like binary formats." 
+"There is no efficient storage, like binary formats."
 </blockquote>
 
-USV is a text format, on purpose, because it's aiming to be human-readable and human-editable. USV storage goals are similar in magnitude to CSV. 
+USV is a text format, on purpose, because it's aiming to be human-readable and human-editable. USV storage goals are similar in magnitude to CSV.
 
 If you want efficient storage like a binary format, one way is to use compression on the text data. USV, CSV. and similar text formats can work well with compression, especially if the content has compression-friendly aspects such as repetitions, sequences, patterns, and so forth.
 
@@ -77,15 +77,15 @@ Currently there's library support using the [USV Rust crate](https://crates.io/c
 I welcome help creating library support from anyone who wants to help. The Rust crate is relatively easy to understand, and should be portable to similar family languages such as C, C++, C#, Java, JavaScript, Python, Ruby, etc.
 
 
-## Not all data is representable 
+## Not all data is representable
 
 <blockquote>
-"Not all data is representable." 
+"Not all data is representable."
 </blockquote>
 
 Can you provide an example of data that is not representable, or an explanation of what the data could be?
 
-USV aims for all data to be representable. Specifically, USV aims to be able to represent all UTF-8 encoded text. USV provides an escape character, so you can escape any of the USV special characters as you wish. 
+USV aims for all data to be representable. Specifically, USV aims to be able to represent all UTF-8 encoded text. USV provides an escape character, so you can escape any of the USV special characters as you wish.
 
 
 ## Editors work with invisible characters
@@ -105,7 +105,7 @@ In fact, the difficulties with invisible characters seems to be the reason the r
 "The adoptability challenge remains here to be Excel support."
 </blockquote>
 
-Yes you're right. USV is brand-new on the standards track in 2024. Excel support is a long-term goal. Submitting to the IETF is to help programs like Excel to start supporting it. 
+Yes you're right. USV is brand-new on the standards track in 2024. Excel support is a long-term goal. Submitting to the IETF is to help programs like Excel to start supporting it.
 
 If you have experience with writing Excel import/export capabilities, I welcome your help.
 
@@ -151,9 +151,9 @@ You can freely convert between ASV and USV and back again, if you like, by using
 "Just because a glyph is "invisible" doesn't mean it has to actually be invisible. The symbols for the separators are hard to read, like you're pointing out, which means someone would eventually replace them with some other graphical display, in which case you were just as well off with the actual separators themselves. They would have been better off advocating for editor support for actual separator display."
 </blockquote>
 
-Yes you're correct. Programmers have been advocating for editor support for actual separator display since the 1980's ASCII Separated Values. 
+Yes you're correct. Programmers have been advocating for editor support for actual separator display since the 1980's ASCII Separated Values.
 
-So far, the advocating has not succeeded. USV is a compromise for the present. 
+So far, the advocating has not succeeded. USV is a compromise for the present.
 
 If the future offers editor support as you describe, then it will be great to use that instead of USV, and in fact USV will have been very useful for getting people using group separators, file separators, escapes, End of Transmissions, and other ASV features that are more extensive than CSV.
 

@@ -3,9 +3,9 @@
 Tab Separated Values (TSV) uses a tab character to separate values, and a newline character to separate records.
 
 * Has fields, which are equivalent to USV units.
-  
+
 * Has records, which are equivalent to USV records.
-  
+
 * Does not have a greater hierarchy, such as USV groups and fields, or spreadsheet sheets and folios, or database tables or schemas, etc.
 
 * Forbids the tab character in content.

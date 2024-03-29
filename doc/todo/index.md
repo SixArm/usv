@@ -79,7 +79,7 @@ Add comparisons to other data formats:
 * [ ] [Rows of String Values (RSV)](https://github.com/Stenway/RSV-Specification)
 
 
-## Improve converters 
+## Improve converters
 
 Improve converters: csv-to-usv and usv-to-csv
 

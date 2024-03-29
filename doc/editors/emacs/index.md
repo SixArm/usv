@@ -39,7 +39,7 @@ With a prefix argument (C-u C-x =), this command additionally calls the command 
 * The character’s encodings, both internally in the buffer, and externally if you were to save the buffer to a file.
 * If you are running Emacs on a graphical display, the font name and glyph code for the character. If you are running Emacs on a text terminal, the code(s) sent to the terminal.
 * If the character was composed on display with any following characters to form one or more grapheme clusters, the composition information: the font glyphs if the frame is on a graphical display, and the characters that were composed.
-* The character’s text properties (see Text Properties in the Emacs Lisp Reference Manual), including any non-default faces used to display the character, and any overlays containing it (see Overlays in the same manual). 
+* The character’s text properties (see Text Properties in the Emacs Lisp Reference Manual), including any non-default faces used to display the character, and any overlays containing it (see Overlays in the same manual).
 
 Here’s an example, with some lines folded to fit into this manual:
 
