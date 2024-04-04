@@ -57,9 +57,9 @@ Markers:
 
 * RS = U+001E Record Separator / U+241E Symbol for Record Separator
 
-* GS = U+241D Symbol for Group Separator (GS)
+* GS = U+001D Group Separator / U+241D Symbol for Group Separator
 
-* FS = U+001D Group Separator / U+241D Symbol for Group Separator<
+* FS = U+001C File Separator / U+241C Symbol for File Separator
 
 Modifiers:
 

@@ -14,33 +14,12 @@ Unicode Separated Values (USV) ™ is a data format that uses Unicode characters
 
 Unicode Separated Values (USV) enables new ways of working with data as plain text.
 
-* USV builds on ASCII Separated Values (ASV) and uses all the same control characters.
+* USV builds on ASCII Separated Values (ASV) plus adds capabilities for visible markup.
 
 * USV contrasts with Comma Separated Values (CSV) because USV is more specific and powerful.
 
 * USV is similar in spirit to Markdown because the purpose is easy freeform text editing.
 
-* [More…](doc/comparisons/)
-
-
-### USV example
-
-USV looks like this for units and records:
-
-```usv
-a␟b␟␞
-c␟d␟␞
-```
-
-USV looks like this for units, records, groups, files:
-
-```usv
-My Workbook␟␞␝
-My Worksheet␟␞
-a␟b␟␞
-c␟d␟␞
-␝␜
-```
 
 ### USV purpose
 
@@ -52,7 +31,37 @@ USV has the purpose of helping people use data.
 
 * Share data: by using an international standard and matching tools.
 
-* [More](doc/purpose/)
+
+### USV example
+
+USV looks like this for a 1-dimensional data of units, such as a log:
+
+```usv
+a␟
+b␟
+c␟
+d␟
+```
+
+USV looks like this for 2-dimensional data of units and records, such as a table:
+
+```usv
+a␟b␟␞
+c␟d␟␞
+```
+
+USV looks like this for 3-dimensional data of units and records ang groups, such as a folio:
+
+```usv
+Sheet1␟␞
+a␟b␟␞
+c␟d␟␞
+␝␜
+Sheet2␟␞
+e␟f␟␞
+g␟h␟␞
+␝␜
+```
 
 
 ### USV markup
@@ -71,8 +80,6 @@ USV uses Unicode characters for data markup.
 
 * End of Transmission (EOT): to stop parsing.
 
-* [More](doc/markup/)
-
 
 ### USV style
 
@@ -84,8 +91,6 @@ USV uses style options to display marks in various ways.
 
 * Style Braces: use curly-braces with abbreviations such as: `{US}`
 
-* [More](doc/style/)
-
 
 ### USV layout
 
@@ -93,11 +98,9 @@ USV uses layout options to format data in various ways.
 
 * Layout Default: format the data so it looks good on a typical terminal screen.
 
-* Layout 0, 1, 2: format each mark with 0 or 1 or 2 surrounding newlines.
+* Layout Lines: format each mark with 0 or 1 or 2 surrounding newlines.
 
-* Layout by Units, Records, Groups, Files: format a chunk to display on one line.
-
-* [More](doc/layout/)
+* Layout by Units or Records or Groups or Files: format a chunk to display on one line.
 
 
 ## Documentation
@@ -108,7 +111,7 @@ Core:
 
 * [Style with symbols, controls, braces](doc/style/)
 
-* [Layout with spacers for units, records, groups, files](doc/layout/)
+* [Layout with units, records, groups, files, spacers](doc/layout/)
 
 Community:
 
@@ -123,6 +126,8 @@ Specification:
 * [Request For Comments (RFC)](doc/rfc/)
 
 * [Augmented Backus–Naur Form (ABNF)](doc/anbf/)
+
+Code:
 
 * [Code examples and production crates](doc/code/)
 

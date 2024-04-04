@@ -25,7 +25,7 @@ then you already know much about USV.
 
 Yes, USV is aiming to become an IETF standard similar to <a
 href="https://www.ietf.org/rfc/rfc4180.txt">IETF RCF 4180 for CSV</a>.
-We have submitted the first IETF Internet Draft.
+We have submitted the IETF Internet Draft and it is a work in progress.
 
 Yes, USV is aiming to become an IANA standard similar to <a
 href="https://www.iana.org/assignments/media-types/text/tab-separated-values">IANA

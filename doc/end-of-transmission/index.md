@@ -1,13 +1,21 @@
 # End of Transmission (EOT)
 
-The End of Transmission (EOT) symbol tells any reader that it can stop reading, and is especially useful for streaming data, such as to close a connection. EOT can also be useful for providing data files that contain USV data, then EOT, then extra non-USV information such as comments, images, attachments, etc.
+The End of Transmission (EOT) mark tells any reader that it can stop reading.
 
-* EOT tells the data reader that data streaming is done.
+* EOT tells the data reader that data is done.
 
 * EOT has no effect on the output content.
 
-Example of a unit then an End of Transmission:
+Example of a unit "abc" then EOT then extra data "xxx" that is ignored.
 
 ```usv
-abc␞␄
+abc␞␄xxx
 ```
+
+EOT can be useful for a variety of use cases:
+
+* Streaming data, such as to signal that the reader can close a connection.
+
+* Appending data, such as USV content, then extra information such as comments.
+    
+* Attaching data, such as a USV spreadsheet that has MIME attachments.
