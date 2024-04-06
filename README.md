@@ -34,7 +34,7 @@ USV has the purpose of helping people use data.
 
 ### USV example
 
-USV looks like this for a 1-dimensional data of units, such as a log:
+USV looks like this for a 1-dimensional data made of units, such as a log:
 
 ```usv
 a␟
@@ -43,14 +43,14 @@ c␟
 d␟
 ```
 
-USV looks like this for 2-dimensional data of units and records, such as a table:
+USV looks like this for 2-dimensional data made of units and records, such as a spreadsheet table:
 
 ```usv
 a␟b␟␞
 c␟d␟␞
 ```
 
-USV looks like this for 3-dimensional data of units and records ang groups, such as a folio:
+USV looks like this for 3-dimensional data made of units and records and groups, such as a spreadsheet folio:
 
 ```usv
 Sheet1␟␞
