@@ -17,14 +17,6 @@ Unicode separated values (USV) is similar to these formats, plus offers more cap
 
 ## Summary table
 
-| Capability                  | [USV](../../) | [ASV](asv) |
-| ---                         | --- | --- |
-| Units / cells / fields      | ✅ | ✅ |
-| Records / lines / rows      | ✅ | ✅ |
-| Groups / sheets / tables    | ✅ | ✅ |
-| Files / folios / schemas    | ✅ | ✅ |
-
-
 | Capability                  | [USV](../../) | [ASV](asv) | [CSV](csv) | [TSV](tsv) | [RSV](rsv) | [JSON](json) | [XLSX](xlsx) |
 | ---                         | --- | --- | --- | --- | --- | --- | --- |
 | Units / cells / fields      | ✅ | ✅ | ✅ | ✅ | ✅ | 🟡 | ✅ |
