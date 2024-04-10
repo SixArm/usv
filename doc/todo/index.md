@@ -16,6 +16,21 @@ Add USV formats to productivity applications:
 * Etc.
 
 
+## Create libraries
+
+Create USV libraries for programming languages:
+
+* [x] Rust crate
+
+* [ ] Python pip package
+
+* [ ] Node npm package
+
+* [ ] Ruby gem
+
+* Etc.
+
+
 ## Add handling
 
 Add USV handling to statistics systems:
@@ -28,20 +43,13 @@ Add USV handling to statistics systems:
 
 * [ ] Mathematica
 
-* Etc.
+* [ ] Python fasspec
 
+* [ ] Python Pandas
 
-## Create libraries
+* [ ] Python Polars
 
-Create USV libraries for programming languages:
-
-* [x] Rust crate
-
-* [ ] Python pip package
-
-* [ ] Node npm package
-
-* [ ] Ruby gem
+* [ ] Python Dask
 
 * Etc.
 
