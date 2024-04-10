@@ -6,17 +6,17 @@ USV tools for terminals should enable options with these settings.
 
 Options for USV separators and modifiers:
 
-* -u, --us : Set the unit separator string.
+* -u, --unit-separator : Set the unit separator string.
 
-* -r, --rs : Set the record separator string.
+* -r, --record-separator : Set the record separator string.
 
-* -g, --gs : Set the group separator string.
+* -g, --group-separator : Set the group separator string.
 
-* -f, --fs : Set the file separator string.
+* -f, --file-separator : Set the file separator string.
 
-* -e, --esc : Set the escape string.
+* -e, --escape : Set the escape string.
 
-* -z, --eot : Set the end-of-transmission string.
+* -z, --end-of-transmission : Set the end-of-transmission string.
 
 Options for USV marks:
 
