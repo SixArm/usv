@@ -18,23 +18,28 @@ Unicode Separated Values (USV) enables new ways of working with data as plain te
 
 * USV contrasts with Comma Separated Values (CSV) because USV is more specific and powerful.
 
-* USV is similar in spirit to Markdown because the purpose is easy freeform text editing.
+* USV is similar in spirit to Markdown (MD) because the purpose is easy freeform text editing.
 
 
-### USV purpose
+### USV markup
 
-USV has the purpose of helping people use data.
+USV uses Unicode characters for data markup.
 
-* Edit data: by using plain text and any typical text editor.
+* <tt>[U+001F](https://codepoints.net/U+001F)/[U+241F](https://codepoints.net/U+241F)</tt> Unit Separator.
 
-* Save data: by using collections for spreadsheets, databases, and more.
+* <tt>[U+001E](https://codepoints.net/U+001E)/[U+241E](https://codepoints.net/U+241E)</tt> Record Separator.
 
-* Share data: by using an international standard and matching tools.
+* <tt>[U+001D](https://codepoints.net/U+001D)/[U+241D](https://codepoints.net/U+241D)</tt> Group Separator.
 
+* <tt>[U+001C](https://codepoints.net/U+001C)/[U+241C](https://codepoints.net/U+241C)</tt> File Separator.
 
-### USV example
+* <tt>[U+001B](https://codepoints.net/U+001B)/[U+241B](https://codepoints.net/U+241B)</tt> Escape.
 
-USV looks like this for a 1-dimensional data made of units, such as a log:
+* <tt>[U+0004](https://codepoints.net/U+0004)/[U+2404](https://codepoints.net/U+2404)</tt> End of Transmission.
+
+### USV examples
+
+USV looks like this for a 1-dimensional data made of units, such as a log. Each unit ends with a Unit Separator character and an optional newline character.
 
 ```usv
 a␟
@@ -43,42 +48,50 @@ c␟
 d␟
 ```
 
-USV looks like this for 2-dimensional data made of units and records, such as a spreadsheet table:
+USV looks like this for 2-dimensional data made of units and records, such as a spreadsheet table. Each record ends with a Record Separator character and an optional newline character.
 
 ```usv
 a␟b␟␞
 c␟d␟␞
 ```
 
-USV looks like this for 3-dimensional data made of units and records and groups, such as a spreadsheet folio:
+USV looks like this for 3-dimensional data made of units and records and groups, such as a spreadsheet folio. Each group ends with a Group Separator character and an optional newline character.
+
 
 ```usv
 Sheet1␟␞
 a␟b␟␞
 c␟d␟␞
-␝␜
+␝
+Sheet2␟␞
+e␟f␟␞
+g␟h␟␞
+␝
+```
+
+USV looks like this for 4-dimensional data made of units and records and groups and files, such as a collection of spreadsheet folios. Each file ends with a File Separator character and an optional newline character.
+
+
+```usv
+Folio1␟␞
+Sheet1␟␞
+a␟b␟␞
+c␟d␟␞
+␝
 Sheet2␟␞
 e␟f␟␞
 g␟h␟␞
 ␝␜
+Folio2␟␞
+Sheet3␟␞
+a␟b␟␞
+c␟d␟␞
+␝
+Sheet4␟␞
+e␟f␟␞
+g␟h␟␞
+␝␜
 ```
-
-
-### USV markup
-
-USV uses Unicode characters for data markup.
-
-* Unit Separator (US): for a spreadsheet cell, database field, etc.
-
-* Record Separator (RS): for a spreadsheet line, database row, etc.
-
-* Group Separator (GS): for a spreadsheet sheet, database table, etc.
-
-* File Separator (FS): for a spreadsheet folio, database schema, etc.
-
-* Escape (ESC): for escaping these special characters within content.
-
-* End of Transmission (EOT): to stop parsing.
 
 
 ### USV style

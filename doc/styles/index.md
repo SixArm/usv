@@ -2,8 +2,8 @@
 
 USV styles can customize various kinds of output so it looks like you prefer.
 
-* Symbols: use full-width symbols, such as "␟" for Unit Separator. This is the default.
+* Symbols: characters are visible symbols, such as "␟" for Unit Separator.
 
-* Controls: use zero-width controls, such as "\u001F" for Unit Separator.
+* Controls: characters are invisible controls, such as "\u001F" for Unit Separator.
 
-* Braces: use braces, such as "{US}" for Unit Separator.
+* Braces: instead of characters, use pretty-print braces, such as "{US}" for Unit Separator.

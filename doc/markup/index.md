@@ -1,22 +1,18 @@
 # USV markup
 
-USV markup uses Unicode characters.
+USV uses Unicode characters for data markup.
 
-USV separators:
+* <tt>[U+001F](https://codepoints.net/U+001F)/[U+241F](https://codepoints.net/U+241F)</tt> Unit Separator. For a spreadsheet cell, database field, etc.
 
-* Unit Separator (US): [U+001F](https://codepoints.net/U+001F) or [U+241F](https://codepoints.net/U+241F) ␟
+* <tt>[U+001E](https://codepoints.net/U+001E)/[U+241E](https://codepoints.net/U+241E)</tt> Record Separator. For a spreadsheet line, database row, etc.
 
-* Record Separator (RS): [U+001E](https://codepoints.net/U+001E) or [U+241E](https://codepoints.net/U+241E) ␞
+* <tt>[U+001D](https://codepoints.net/U+001D)/[U+241D](https://codepoints.net/U+241D)</tt> Group Separator. For a spreadsheet sheet, database table, etc.
 
-* Group Separator (GS): [U+001D](https://codepoints.net/U+001D) or [U+241D](https://codepoints.net/U+241D) ␝
+* <tt>[U+001C](https://codepoints.net/U+001C)/[U+241C](https://codepoints.net/U+241C)</tt> File Separator. For a spreadsheet folio, database schema, etc.
 
-* File Separator (FS): [U+001C](https://codepoints.net/U+001C) or [U+241C](https://codepoints.net/U+241C) ␜
+* <tt>[U+001B](https://codepoints.net/U+001B)/[U+241B](https://codepoints.net/U+241B)</tt> Escape. For protecting markup characters in content.
 
-USV modifiers:
-
-* Escape (ESC): is [U+001B](https://codepoints.net/U+001B) or [U+241B](https://codepoints.net/U+241B) ␛
-
-* End of Transmission (EOT): [U+0004](https://codepoints.net/U+0004) [U+2404](https://codepoints.net/U+2404) ␄
+* <tt>[U+0004](https://codepoints.net/U+0004)/[U+2404](https://codepoints.net/U+2404)</tt> End of Transmission. For concluding parsing.
 
 
 ## Character details
